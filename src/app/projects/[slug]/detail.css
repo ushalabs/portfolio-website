@@ -1,0 +1,28 @@
+.page-main { padding-block: clamp(3.75rem, 8vw, 8rem); }
+.page-title { margin: 1.1rem 0 1.4rem; }
+.back-link { color: var(--muted); display: inline-flex; gap: .55rem; align-items: center; min-height: 44px; }
+.back-link:hover { color: var(--accent); }
+.detail-heading { padding-block: clamp(1.75rem, 5vw, 4.5rem) 2.2rem; }
+.detail-heading .lead { margin: 0 0 1.45rem; }
+.detail > .project-visual .project-image-stage { max-height: 565px; }
+.detail > .project-visual .project-image { max-height: min(48vw, 510px); }
+.detail > .project-visual.visual-phone .project-image { max-height: 89%; }
+.detail > .project-visual.project-downshift .project-image { transform: none; }
+.detail-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(1rem, 5vw, 4rem); margin-top: clamp(2.5rem, 6vw, 5rem); }
+.detail-block { border-top: 1px solid var(--border); padding: 1.4rem 0; min-width: 0; }
+.detail-block h2 { font-size: clamp(1.65rem, 3vw, 2.75rem); font-weight: 570; line-height: 1.1; letter-spacing: -.055em; margin: 0 0 1rem; }
+.detail-block h3 { font-size: 1rem; margin: 1.5rem 0 .75rem; }
+.detail-block p, .detail-block li { color: var(--muted); line-height: 1.65; }
+.detail-block ul:not(.tags) { list-style: disc; padding-inline-start: 1.2rem; }
+.detail-block li::marker { color: var(--accent); }
+.detail-block .evidence-links a { display: inline-flex; align-items: center; gap: .5rem; min-height: 30px; overflow-wrap: anywhere; }
+.evidence-links a:hover { color: var(--accent); text-decoration: underline; }
+.detail-gallery, .related { margin-top: clamp(2rem, 5vw, 4rem); }
+.gallery-items { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+.portrait-gallery { grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); }
+.gallery-items figure { margin: 0; background: var(--surface); border: 1px solid var(--border); padding: 1rem; }
+.gallery-items img { max-width: 100%; height: auto; max-height: 560px; width: 100%; object-fit: contain; }
+.gallery-items figcaption { font-size: .8rem; color: var(--muted); margin-top: .75rem; }
+.related a { display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-height: 55px; padding-block: .65rem; border-bottom: 1px solid var(--border); }
+.related a:hover { color: var(--accent); }
+@media (max-width: 690px) { .detail-grid, .gallery-items:not(.portrait-gallery) { grid-template-columns: 1fr; } }
