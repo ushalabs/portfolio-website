@@ -1,0 +1,13 @@
+.reading-progress { position: fixed; z-index: 21; top: 0; left: 0; right: 0; height: 2px; pointer-events: none; transform: scaleX(var(--reading-progress, 0)); transform-origin: left; background: var(--accent); }
+.desktop-nav a { position: relative; }
+.desktop-nav a[aria-current] { color: var(--accent); }
+.desktop-nav a[aria-current]::after { content: ""; position: absolute; bottom: 1px; inset-inline: 0; height: 1px; background: currentColor; }
+@media (prefers-reduced-motion: no-preference) and (pointer: fine) {
+  .button-primary > svg { transition: transform .22s ease-out; }
+  .button-primary:hover > svg { transform: translate(var(--magnet-x, 0), var(--magnet-y, 0)); }
+  .project-visual .project-image, .project-visual .phone-secondary { transition: scale .32s ease-out; }
+  .project-visual:hover .project-image { scale: 1.025; }
+  .project-visual:hover .phone-secondary { scale: 1.035; }
+  .page-main { animation: page-arrival .27s ease-out both; }
+}
+@keyframes page-arrival { from { opacity: .83; } to { opacity: 1; } }

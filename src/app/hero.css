@@ -8,6 +8,7 @@
 .hero-visual::before { content: ""; position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(#bda1ee12 1px, transparent 1px), linear-gradient(90deg, #bda1ee12 1px, transparent 1px); background-size: 38px 38px; mask-image: radial-gradient(ellipse, #000, transparent 79%); }
 .visual-top, .visual-bottom { display: flex; justify-content: space-between; align-items: center; gap: .5rem; color: var(--muted); padding: 1rem 1.1rem; z-index: 2; font-size: clamp(.53rem, 1vw, .69rem); pointer-events: none; }
 .visual-top span:first-child, .visual-bottom span:first-child { color: var(--accent); }
+.visual-bottom { position: absolute; inset: auto 0 0; }
 .visual-bottom b { display: inline-block; width: .38rem; height: .38rem; background: var(--accent); margin-right: .35rem; }
 .visual-body { position: absolute; inset: 1%; }
 .hero-fallback { object-fit: contain; transition: opacity .22s; }
