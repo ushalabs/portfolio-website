@@ -5,7 +5,9 @@
 .detail-heading { padding-block: clamp(1.75rem, 5vw, 4.5rem) 2.2rem; }
 .detail-heading .lead { margin: 0 0 1.45rem; }
 .detail > .project-visual .project-image-stage { max-height: 565px; }
+.detail > .project-visual:not(.visual-phone) .project-image-stage { display: flex; align-items: center; justify-content: center; }
 .detail > .project-visual .project-image { max-height: min(48vw, 510px); }
+.detail > .project-visual.visual-screen .project-image { width: auto; max-width: 100%; }
 .detail > .project-visual.visual-phone .project-image { max-height: 89%; }
 .detail > .project-visual.project-downshift .project-image { transform: none; }
 .detail-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(1rem, 5vw, 4rem); margin-top: clamp(2.5rem, 6vw, 5rem); }

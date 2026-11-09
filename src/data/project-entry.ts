@@ -1,4 +1,4 @@
-import media from "./project-media.json";
+import media from "./project-media.json" with { type: "json" };
 import type { Project, ProjectMedia } from "./project-types";
 
 type ProjectEntry = Omit<Project, "id" | "githubUrl" | "thumbnail" | "gallery" | "sources" | "demoUrl" | "playStoreUrl"> & {

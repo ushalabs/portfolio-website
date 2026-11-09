@@ -3,6 +3,7 @@
 .hero h1 { font-size: clamp(3.55rem, 6.4vw, 7.35rem); font-weight: 570; letter-spacing: -.086em; line-height: .94; margin: 1.55rem 0 1.8rem; }
 .hero h1 em { font-style: normal; color: var(--accent); }
 .hero-identity { font-weight: 625; font-size: clamp(1.1rem, 1.65vw, 1.45rem); margin: 0 0 .3rem; }
+.hero-roles { color: var(--accent); margin: 0 0 .75rem; font-size: clamp(.63rem, 1.2vw, .78rem); letter-spacing: .025em; }
 .hero .lead { margin: 0 0 1.65rem; }
 .hero-visual { margin: 0; position: relative; isolation: isolate; min-width: 0; align-self: center; display: grid; grid-template-rows: auto 1fr auto; aspect-ratio: 1.09; border: 1px solid var(--border); background: radial-gradient(ellipse at 52% 52%, #1b1723 0%, #121016 52%, #0e0d12 100%); }
 .hero-visual::before { content: ""; position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(#bda1ee12 1px, transparent 1px), linear-gradient(90deg, #bda1ee12 1px, transparent 1px); background-size: 38px 38px; mask-image: radial-gradient(ellipse, #000, transparent 79%); }

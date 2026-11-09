@@ -3,7 +3,7 @@ import { ArrowDown, ArrowRight, ArrowUpRight, GitFork } from "lucide-react";
 import { site } from "@/data/site";
 
 export function Mark() {
-  return <span className="wordmark"><svg width="27" height="27" viewBox="0 0 27 27" fill="none" aria-hidden="true"><path d="M2 4h6v13l5.5 5L19 17V4h6v15l-11.5 8L2 19V4Z" fill="currentColor"/><path d="M11.5 4h4v10h-4z" fill="var(--accent)"/></svg><span>usha<span className="wordmark-labs">labs</span></span></span>;
+  return <span className="wordmark"><svg width="27" height="27" viewBox="0 0 27 27" fill="none" aria-hidden="true"><path d="M2 4h6v13l5.5 5L19 17V4h6v15l-11.5 8L2 19V4Z" fill="currentColor"/><path d="M11.5 4h4v10h-4z" fill="var(--accent)"/></svg><span>usha<span className="wordmark-labs"> labs</span></span></span>;
 }
 
 export function SectionLabel({ index, children }: { index: string; children: React.ReactNode }) {

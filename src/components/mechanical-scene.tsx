@@ -29,7 +29,9 @@ function Mechanism({ active }: { active: boolean }) {
   const rotor = useRef<Group>(null);
   const pieces = useRef<(Mesh | null)[]>([]);
   const progress = useRef(0);
+  const aim = useRef({ x: 0, y: 0 });
   const invalidate = useThree(state => state.invalidate);
+  const canvas = useThree(state => state.gl.domElement);
   const ring = useMemo(() => {
     const shape = outline(1.36) as Shape;
     shape.holes.push(outline(.82, 1));
@@ -43,17 +45,33 @@ function Mechanism({ active }: { active: boolean }) {
       progress.current = Math.min(window.scrollY / Math.max(360, window.innerHeight * .8), 1);
       invalidate();
     }
+    function point(event: PointerEvent) {
+      const box = canvas.getBoundingClientRect();
+      aim.current.x = ((event.clientX - box.left) / box.width) * 2 - 1;
+      aim.current.y = 1 - ((event.clientY - box.top) / box.height) * 2;
+      invalidate();
+    }
+    function reset() {
+      aim.current = { x: 0, y: 0 };
+      invalidate();
+    }
     update();
     window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
-  }, [active, invalidate]);
+    canvas.addEventListener("pointermove", point, { passive: true });
+    canvas.addEventListener("pointerleave", reset);
+    return () => {
+      window.removeEventListener("scroll", update);
+      canvas.removeEventListener("pointermove", point);
+      canvas.removeEventListener("pointerleave", reset);
+    };
+  }, [active, canvas, invalidate]);
 
-  useFrame(({ pointer }, dt) => {
+  useFrame((_, dt) => {
     const group = rotor.current;
     if (!group || !active) return;
     const scroll = progress.current;
-    const targetX = -.54 - pointer.y * .18 + scroll * .36;
-    const targetY = -.46 + pointer.x * .24 - scroll * .52;
+    const targetX = -.54 - aim.current.y * .18 + scroll * .36;
+    const targetY = -.46 + aim.current.x * .24 - scroll * .52;
     group.rotation.x = MathUtils.damp(group.rotation.x, targetX, 7, dt);
     group.rotation.y = MathUtils.damp(group.rotation.y, targetY, 7, dt);
     for (const [index, mesh] of pieces.current.entries()) {

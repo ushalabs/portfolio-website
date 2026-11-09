@@ -65,7 +65,7 @@ export function InteractionLayer() {
       const context = gsap.context(() => {
         gsap.from(".hero-copy", { y: 14, duration: .65, ease: "power2.out", clearProps: "transform" });
         gsap.utils.toArray<HTMLElement>(".featured-copy").forEach(element => {
-          gsap.from(element, { y: 22, opacity: .72, ease: "power2.out", duration: .55, scrollTrigger: { trigger: element, start: "top 91%", once: true } });
+          gsap.from(element, { y: 22, ease: "power2.out", duration: .55, scrollTrigger: { trigger: element, start: "top 91%", once: true } });
         });
       });
       cleanup = () => context.revert();

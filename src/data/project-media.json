@@ -38,7 +38,7 @@
       "src": "/projects/meetingminutes-ai/workspace.webp",
       "width": 1024,
       "height": 576,
-      "alt": "MeetingMinutes AI settings view captured from its recorded product demo",
+      "alt": "MeetingMinutes AI settings captured from its recorded product demo",
       "kind": "screenshot",
       "source": "https://www.loom.com/v1/oembed?url=https%3A%2F%2Fwww.loom.com%2Fshare%2F3eddffe62d8043dda581798a05442c87"
     }
@@ -46,11 +46,11 @@
   "downshift": [
     {
       "src": "/projects/downshift/dark-dashboard.webp",
-      "width": 1600,
-      "height": 941,
-      "alt": "Downshift Windows download queue in dark mode",
+      "width": 1075,
+      "height": 713,
+      "alt": "Downshift Windows download queue in the plum theme",
       "kind": "screenshot",
-      "source": "https://github.com/ushalabs/Downshift-Downloader/blob/c568eff/docs/Downshift%201.png"
+      "source": "https://github.com/ushalabs/Downshift-Downloader/blob/c568eff/assets/screenshots/downloads-plum.png"
     },
     {
       "src": "/projects/downshift/light-dashboard.webp",
