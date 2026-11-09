@@ -1,0 +1,166 @@
+{
+  "velora": [
+    {
+      "src": "/projects/velora/stories.webp",
+      "width": 810,
+      "height": 1440,
+      "alt": "Velora stories screen",
+      "kind": "screenshot",
+      "source": "https://github.com/ushalabs/Velora-Chat-App/blob/81e88e9e887f4ada0a5751da97b793c569515b66/assets/readme/stories.png"
+    },
+    {
+      "src": "/projects/velora/comments.webp",
+      "width": 810,
+      "height": 1440,
+      "alt": "Comments on a post in Velora",
+      "kind": "screenshot",
+      "source": "https://github.com/ushalabs/Velora-Chat-App/blob/81e88e9e887f4ada0a5751da97b793c569515b66/assets/readme/posts-comments.png"
+    },
+    {
+      "src": "/projects/velora/profile.webp",
+      "width": 810,
+      "height": 1440,
+      "alt": "Velora user profile",
+      "kind": "screenshot",
+      "source": "https://github.com/ushalabs/Velora-Chat-App/blob/81e88e9e887f4ada0a5751da97b793c569515b66/assets/readme/profile.png"
+    },
+    {
+      "src": "/projects/velora/icon.webp",
+      "width": 512,
+      "height": 512,
+      "alt": "Velora app icon",
+      "kind": "icon",
+      "source": "https://github.com/ushalabs/Velora-Chat-App/blob/81e88e9e887f4ada0a5751da97b793c569515b66/assets/images/icon.png"
+    }
+  ],
+  "meetingminutes-ai": [
+    {
+      "src": "/projects/meetingminutes-ai/workspace.webp",
+      "width": 1024,
+      "height": 576,
+      "alt": "MeetingMinutes AI settings view captured from its recorded product demo",
+      "kind": "screenshot",
+      "source": "https://www.loom.com/v1/oembed?url=https%3A%2F%2Fwww.loom.com%2Fshare%2F3eddffe62d8043dda581798a05442c87"
+    }
+  ],
+  "downshift": [
+    {
+      "src": "/projects/downshift/dark-dashboard.webp",
+      "width": 1600,
+      "height": 941,
+      "alt": "Downshift Windows download queue in dark mode",
+      "kind": "screenshot",
+      "source": "https://github.com/ushalabs/Downshift-Downloader/blob/c568eff/docs/Downshift%201.png"
+    },
+    {
+      "src": "/projects/downshift/light-dashboard.webp",
+      "width": 973,
+      "height": 732,
+      "alt": "Downshift Windows download settings in light mode",
+      "kind": "screenshot",
+      "source": "https://github.com/ushalabs/Downshift-Downloader/blob/c568eff/docs/Downshift%202.png"
+    },
+    {
+      "src": "/projects/downshift/icon.webp",
+      "width": 256,
+      "height": 256,
+      "alt": "Downshift app icon",
+      "kind": "icon",
+      "source": "https://github.com/ushalabs/Downshift-Downloader/blob/c568eff/assets/downshift.png"
+    }
+  ],
+  "solvanta": [
+    {
+      "src": "/projects/solvanta/overview.webp",
+      "width": 720,
+      "height": 1600,
+      "alt": "Earlier Solvanta Android prototype showing simulated energy flow",
+      "kind": "screenshot",
+      "source": "https://github.com/ushalabs/Solvanta-EnergyOS/blob/cf8f913/docs/ui-evidence/android/01-overview-dark.png"
+    },
+    {
+      "src": "/projects/solvanta/rooftop.webp",
+      "width": 720,
+      "height": 1600,
+      "alt": "Earlier Solvanta Android prototype showing a rooftop solar layout with fixture data",
+      "kind": "screenshot",
+      "source": "https://github.com/ushalabs/Solvanta-EnergyOS/blob/cf8f913/docs/ui-evidence/android/05-rooftop-dark.png"
+    }
+  ],
+  "aegisops": [
+    {
+      "src": "/projects/aegisops/operator-dashboard.webp",
+      "width": 1600,
+      "height": 767,
+      "alt": "AegisOps operator dashboard showing service health and incidents",
+      "kind": "screenshot",
+      "source": "https://github.com/ushalabs/AegisOps/blob/4a03afd/docs/screenshots/phase%2015/Home.png"
+    }
+  ],
+  "sentinel-secops": [
+    {
+      "src": "/projects/sentinel-secops/analyst-dashboard.webp",
+      "width": 1600,
+      "height": 866,
+      "alt": "Sentinel analyst dashboard with detections and incident queue",
+      "kind": "screenshot",
+      "source": "https://github.com/ushalabs/Sentinel-SecOps/blob/086568d/docs/assets/readme/dashboard.png"
+    },
+    {
+      "src": "/projects/sentinel-secops/analytics.webp",
+      "width": 1220,
+      "height": 742,
+      "alt": "Sentinel security analytics dashboard",
+      "kind": "screenshot",
+      "source": "https://github.com/ushalabs/Sentinel-SecOps/blob/086568d/docs/assets/readme/analytics.png"
+    }
+  ],
+  "lumen": [
+    {
+      "src": "/projects/lumen/filename-search.webp",
+      "width": 575,
+      "height": 430,
+      "alt": "Lumen desktop overlay showing filename search results",
+      "kind": "screenshot",
+      "source": "https://github.com/ushalabs/Lumen/blob/05bc8da/docs/screenshots/filename_search.png"
+    },
+    {
+      "src": "/projects/lumen/semantic-search.webp",
+      "width": 575,
+      "height": 340,
+      "alt": "Lumen desktop overlay showing semantic search results",
+      "kind": "screenshot",
+      "source": "https://github.com/ushalabs/Lumen/blob/05bc8da/docs/screenshots/semantic_search.png"
+    }
+  ],
+  "leanmate": [
+    {
+      "src": "/projects/leanmate/banner.webp",
+      "width": 1600,
+      "height": 900,
+      "alt": "LeanMate Fitness App repository banner",
+      "kind": "banner",
+      "source": "https://github.com/ushalabs/LeanMate-Fitness-App/blob/eb468ebd0f792554589c1d3d4f11b68ede13db2f/docs/leanmate-github-banner.png"
+    }
+  ],
+  "ridego": [
+    {
+      "src": "/projects/ridego/icon.webp",
+      "width": 512,
+      "height": 512,
+      "alt": "RideGo app icon",
+      "kind": "icon",
+      "source": "https://github.com/ushalabs/RideGo/blob/eaebb01/assets/icons/app_icon.png"
+    }
+  ],
+  "ionexa": [
+    {
+      "src": "/projects/ionexa/banner.svg",
+      "width": 1280,
+      "height": 360,
+      "alt": "IOneXa repository banner",
+      "kind": "banner",
+      "source": "https://github.com/ushalabs/IOneXa/blob/90007dc/assets/banner.svg"
+    }
+  ]
+}

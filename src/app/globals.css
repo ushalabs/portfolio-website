@@ -2,5 +2,6 @@
 @import "./tokens.css";
 @import "./layout-system.css";
 @import "./hero.css";
+@import "./projects.css";
 
 body { margin: 0; color: var(--text); background: var(--background); font-family: var(--font-geist-sans), sans-serif; }
