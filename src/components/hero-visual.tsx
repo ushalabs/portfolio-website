@@ -15,12 +15,30 @@ export function HeroVisual() {
 
   useEffect(() => {
     const preference = window.matchMedia("(prefers-reduced-motion: no-preference) and (pointer: fine) and (min-width: 850px)");
-    function update() { setEnabled(preference.matches); }
+    let timer = 0;
+    let canRender: boolean | undefined;
+    function update() {
+      window.clearTimeout(timer);
+      if (!preference.matches) {
+        setEnabled(false);
+        return;
+      }
+      timer = window.setTimeout(() => {
+        const device = navigator as Navigator & { deviceMemory?: number; connection?: { saveData?: boolean } };
+        if (device.connection?.saveData || (device.deviceMemory && device.deviceMemory < 4)) return;
+        if (canRender === undefined) {
+          const context = document.createElement("canvas").getContext("webgl2");
+          canRender = !!context;
+          context?.getExtension("WEBGL_lose_context")?.loseContext();
+        }
+        setEnabled(canRender);
+      }, 600);
+    }
     update();
     preference.addEventListener("change", update);
     const observer = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting));
     if (host.current) observer.observe(host.current);
-    return () => { preference.removeEventListener("change", update); observer.disconnect(); };
+    return () => { window.clearTimeout(timer); preference.removeEventListener("change", update); observer.disconnect(); };
   }, []);
 
   const live = enabled && !failed;

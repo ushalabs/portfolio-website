@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
 import { ProjectDirectory } from "@/components/project-directory";
 import { SectionLabel } from "@/components/primitives";
 import { projects } from "@/data/projects";
+import { pageMetadata } from "@/data/seo";
 import "./directory.css";
 
-export const metadata: Metadata = { title: "Project archive", description: "Explore the Usha Labs project archive across mobile, desktop, full-stack engineering, and AI automation." };
+export const metadata = pageMetadata({ title: "Project archive", description: "Explore the Usha Labs project archive across mobile, desktop, full-stack engineering, and AI automation.", path: "/projects", image: "archive" });
 
 export default function ProjectsPage() {
   return <main className="shell page-main" id="main">

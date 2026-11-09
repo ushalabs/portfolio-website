@@ -6,6 +6,7 @@ import { ProjectActions, Tags } from "@/components/project-actions";
 import { ProjectImage, ProjectVisual } from "@/components/project-media";
 import { SectionLabel } from "@/components/primitives";
 import { getProject, projects } from "@/data/projects";
+import { pageMetadata } from "@/data/seo";
 import "./detail.css";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -16,7 +17,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const project = getProject((await params).slug);
-  return project ? { title: project.title, description: project.shortDescription } : {};
+  return project ? pageMetadata({ title: project.title, description: project.shortDescription, path: `/projects/${project.slug}`, image: project.slug }) : {};
 }
 
 function DetailList({ title, entries }: { title: string; entries: readonly string[] }) {
@@ -45,7 +46,7 @@ export default async function ProjectPage({ params }: Props) {
       <DetailList title="Engineering approach" entries={project.architecture} />
       <DetailList title="Challenges and solutions" entries={project.challenges} />
       <DetailList title="Project status and outcomes" entries={project.outcomes} />
-      <section className="detail-block"><h2>Source material</h2><ul className="evidence-links">{project.sources.map((url, index) => <li key={url}><a href={url} target="_blank" rel="noopener noreferrer">{index === 0 ? "Repository README" : decodeURIComponent(url.split("/").slice(7).join("/") || url.split("/").at(-1) || "")}<ArrowUpRight size={14} aria-hidden="true" /></a></li>)}</ul></section>
+      <section className="detail-block"><h2>Source material</h2><ul className="evidence-links">{project.sources.map((url, index) => <li key={url}><a href={url} target="_blank" rel="noopener noreferrer">{index === 0 ? "Repository README" : decodeURIComponent(new URL(url).pathname.split("/").slice(5).join("/"))}<ArrowUpRight size={14} aria-hidden="true" /></a></li>)}</ul></section>
     </div>
     {screenshots.length > 0 && <section className="detail-block detail-gallery"><h2>From the project</h2><div className={`gallery-items ${screenshots.every(media => media.height > media.width) ? "portrait-gallery" : ""}`}>{screenshots.map(media => <figure key={media.src}><ProjectImage media={media} sizes="(max-width: 690px) 90vw, (max-width: 1100px) 47vw, 560px" /><figcaption>{media.alt}</figcaption></figure>)}</div></section>}
     <section className="detail-block related"><h2>Related projects</h2>{related.map(item => <Link key={item.id} href={`/projects/${item.slug}`}><span>{item.title}</span><ArrowUpRight size={20} aria-hidden="true" /></Link>)}</section>

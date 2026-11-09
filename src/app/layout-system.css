@@ -35,6 +35,9 @@ button { cursor: pointer; }
 .footer > a { display: inline-flex; align-items: center; min-height: 44px; gap: .4rem; }
 .footer .wordmark { color: var(--text); }
 .footer small span { color: var(--accent); padding-inline: .25rem; }
+.not-found { min-height: 66svh; border-top: 0; }
+.not-found h1 { margin: 1.5rem 0; }
+.not-found .lead { margin-bottom: 1.5rem; }
 @media (max-width: 830px) {
   :root { --header-height: 4rem; }
   .header-inner { grid-template-columns: 1fr auto; }
