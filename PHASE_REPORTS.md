@@ -9,3 +9,4 @@
 | 4 · Portfolio archive | Added 12 evidence-backed projects and a keyboard-operable category filter. Staged diff passed Git whitespace checks. |
 | 5 · Case studies | Added statically generated detail routes, galleries, source material, and related work for every project. Staged diff passed Git whitespace checks. |
 | 6 · Stack, about, and education | Added evidence-linked skill disclosures and a timeline for education and independent work. Strict TypeScript and ESLint passed. |
+| 7 · Contact and navigation tools | Added direct contact links, clipboard feedback, verified byte-identical résumé downloads, mobile navigation, and a keyboard command palette. Strict TypeScript passed. |

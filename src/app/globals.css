@@ -4,5 +4,6 @@
 @import "./hero.css";
 @import "./projects.css";
 @import "./profile.css";
+@import "./contact.css";
 
 body { margin: 0; color: var(--text); background: var(--background); font-family: var(--font-geist-sans), sans-serif; }

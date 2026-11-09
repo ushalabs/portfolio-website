@@ -1,0 +1,47 @@
+.contact-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .8fr); align-items: center; gap: clamp(2.5rem, 6vw, 7rem); }
+.contact-layout h2 { text-wrap: initial; margin: 1.2rem 0; font-size: clamp(3.3rem, 7.5vw, 7.1rem); }
+.contact-links { border-top: 1px solid var(--border); }
+.contact-links > a { min-height: 64px; display: flex; justify-content: space-between; gap: .7rem; align-items: center; border-bottom: 1px solid var(--border); padding-block: .65rem; }
+.contact-links > a:hover { color: var(--accent); }
+.contact-links a span { display: block; overflow-wrap: anywhere; }
+.contact-links a .mono { color: var(--accent); margin-bottom: .2rem; }
+.contact-links > a svg { flex: 0 0 auto; }
+.copy-email { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; margin-top: 1rem; }
+.copy-email [role="status"] { color: var(--accent); font-size: .85rem; }
+.resume-panel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 1rem; align-items: center; padding: clamp(1.25rem, 3.5vw, 3.5rem); margin-top: clamp(3rem, 7vw, 7rem); background: #191522; border: 1px solid #423550; }
+.resume-panel .mono { color: var(--accent); }
+.resume-panel h3 { font-size: clamp(2.2rem, 5vw, 4.75rem); letter-spacing: -.08em; line-height: 1; margin-top: .5rem; }
+.resume-panel ul { list-style: none; padding: 0; margin: 0; }
+.resume-panel li { border-top: 1px solid #443750; }
+.resume-panel li:last-child { border-bottom: 1px solid #443750; }
+.resume-panel li a { display: grid; grid-template-columns: auto 1fr auto; align-items: center; min-height: 56px; gap: .7rem; padding: .4rem .2rem; }
+.resume-panel a:hover { color: var(--accent); }
+.resume-panel a svg { color: var(--accent); }
+.command-trigger, .mobile-navigation summary { display: inline-flex; gap: .3rem; justify-content: center; align-items: center; min-width: 44px; min-height: 44px; border: 1px solid var(--border); color: var(--muted); background: transparent; cursor: pointer; }
+.command-trigger:hover, .mobile-navigation summary:hover { color: var(--accent); }
+.command-trigger kbd { font-size: .72rem; }
+.mobile-navigation { display: none; }
+.mobile-navigation summary { list-style: none; }
+.mobile-navigation summary::-webkit-details-marker { display: none; }
+.mobile-navigation nav { position: absolute; right: var(--gutter); top: calc(100% + .25rem); width: min(290px, calc(100% - var(--gutter) * 2)); padding: .6rem; background: var(--surface); border: 1px solid var(--border); box-shadow: 0 16px 34px #0008; }
+.mobile-navigation nav a { display: flex; min-height: 44px; padding-inline: .75rem; }
+.command-dialog { position: fixed; inset: 0; margin: auto; background: var(--surface); color: var(--text); border: 1px solid var(--border); padding: 1rem; max-height: min(640px, 83dvh); width: min(535px, calc(100% - 2rem)); box-shadow: 0 24px 80px #000a; }
+.command-dialog::backdrop { background: #000b; }
+.command-dialog header { display: flex; justify-content: space-between; align-items: center; padding: .15rem .35rem .65rem; }
+.command-dialog h2 { font-size: 1.3rem; font-weight: 580; letter-spacing: -.035em; }
+.command-dialog header button { min-height: 44px; min-width: 44px; display: grid; place-items: center; }
+.command-search { display: flex; gap: .7rem; align-items: center; padding: .75rem; border: 1px solid var(--border); color: var(--muted); }
+.command-search:focus-within { border-color: var(--accent); }
+.command-search input { background: transparent; color: var(--text); flex: 1; min-width: 0; }
+.command-search input:focus-visible { outline-offset: 1px; }
+.command-dialog ul { list-style: none; margin: .6rem 0 0; padding: 0; }
+.command-dialog li button { display: flex; justify-content: space-between; align-items: center; gap: .5rem; width: 100%; min-height: 43px; padding-inline: .75rem; text-align: left; }
+.command-dialog li button:hover, .command-dialog li button:focus-visible { color: var(--accent); background: #262031; }
+.command-dialog > p { padding: .75rem; color: var(--muted); }
+@media (max-width: 830px) {
+  .mobile-navigation { display: block; }
+  .header-actions .resume-nav { display: none; }
+  .header-actions { gap: .45rem; }
+}
+@media (max-width: 760px) { .contact-layout, .resume-panel { grid-template-columns: 1fr; } }
+@media (max-width: 380px) { .command-trigger { display: none; } }
