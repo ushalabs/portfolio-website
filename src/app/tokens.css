@@ -1,0 +1,14 @@
+:root {
+  color-scheme: dark;
+  --background: #0b0b0f;
+  --text: #f2f0ed;
+  --muted: #a9a6b1;
+  --accent: #ae93f6;
+  --accent-hover: #c3afff;
+  --surface: #15151b;
+  --border: #302e39;
+  --page-width: 1360px;
+  --gutter: clamp(1.25rem, 5.3vw, 6.5rem);
+  --section-space: clamp(5.5rem, 10vw, 10rem);
+  --header-height: 4.5rem;
+}
