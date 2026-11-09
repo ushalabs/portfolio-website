@@ -6,3 +6,4 @@
 | 1 · Design system | Added the editorial type scale, page shell, focus treatment, and shared navigation and action styles. Staged diff passed Git whitespace checks. |
 | 2 · Hero | Added a custom Three.js rotor, pointer and scroll response, a static vector fallback, and device and motion gating. Staged diff passed Git whitespace checks. |
 | 3 · Featured projects | Integrated the featured trio in the requested order. Visually reviewed their media and checked that the referenced files exist. |
+| 4 · Portfolio archive | Added 12 evidence-backed projects and a keyboard-operable category filter. Staged diff passed Git whitespace checks. |
