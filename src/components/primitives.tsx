@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowDown, ArrowRight, ArrowUpRight, Github } from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUpRight, GitFork } from "lucide-react";
 import { site } from "@/data/site";
 
 export function Mark() {
@@ -16,7 +16,7 @@ export function InternalAction({ href, children, direction = "right", primary = 
 }
 
 export function ExternalAction({ href, children, github = false }: { href: string; children: React.ReactNode; github?: boolean }) {
-  const Icon = github ? Github : ArrowUpRight;
+  const Icon = github ? GitFork : ArrowUpRight;
   return <a className="button" href={href} target="_blank" rel="noopener noreferrer">{children}<Icon size={16} aria-hidden="true" /></a>;
 }
 
