@@ -148,14 +148,35 @@ test("project card tilt responds to the pointer and respects reduced motion", as
   const box = (await slot.boundingBox())!;
   await page.mouse.move(box.x + box.width * .9, box.y + box.height * .15);
   await expect(card).not.toHaveCSS("transform", "none");
-  const tilt = await slot.evaluate(element => {
+  const readTilt = () => slot.evaluate(element => {
     const style = getComputedStyle(element);
     return Math.hypot(parseFloat(style.getPropertyValue("--project-tilt-x")), parseFloat(style.getPropertyValue("--project-tilt-y")));
   });
-  expect(tilt).toBeGreaterThan(2);
-  expect(tilt).toBeLessThan(4);
+  await expect.poll(readTilt).toBeGreaterThan(1.5);
+  expect(await readTilt()).toBeLessThanOrEqual(2.001);
+  const lightX = await slot.evaluate(element => getComputedStyle(element).getPropertyValue("--project-light-x"));
+  await page.mouse.move(box.x + box.width * .25, box.y + box.height * .3);
+  await expect.poll(() => slot.evaluate(element => getComputedStyle(element).getPropertyValue("--project-light-x"))).not.toBe(lightX);
+  await expect(card.locator(".project-icon")).not.toHaveCSS("transform", "none");
   await page.emulateMedia({ reducedMotion: "reduce" });
   await expect(card).toHaveCSS("transform", "none");
+  await expect(card.locator(".project-icon")).toHaveCSS("transform", "none");
+});
+
+test("the homepage backdrop connects sections and its parallax respects reduced motion", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/");
+  const sections = page.locator(".portfolio-atmosphere > section");
+  expect(await sections.evaluateAll(elements => elements.map(section => section.id))).toEqual(["work", "stack", "experience", "about", "contact"]);
+
+  const patterns = await page.locator("#work .project-card").evaluateAll(cards => cards.map(card => getComputedStyle(card).getPropertyValue("--project-pattern")));
+  expect(new Set(patterns).size).toBe(4);
+  const light = page.locator(".work-atmosphere-light");
+  await page.locator("#work").evaluate(section => window.scrollTo(0, section.getBoundingClientRect().top + window.scrollY + 300));
+  await expect.poll(() => light.evaluate(element => new DOMMatrix(getComputedStyle(element).transform).m42)).toBeLessThan(-5);
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await expect(light).toHaveCSS("transform", "none");
+  await expect(page.getByRole("link", { name: "Velora", exact: true })).toBeVisible();
 });
 
 test("project routes, media, canonical tags, previews and 404", async ({ page, request }) => {

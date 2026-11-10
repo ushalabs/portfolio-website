@@ -1,0 +1,57 @@
+.portfolio-atmosphere {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse 64% 25% at 90% 7%, #1d1829 0%, transparent 80%),
+    radial-gradient(ellipse 64% 24% at 8% 53%, #1b1725 0%, transparent 80%),
+    radial-gradient(ellipse 62% 21% at 95% 77%, #1c1829 0%, transparent 80%),
+    linear-gradient(180deg, #101019, #13131c 28%, #101019 58%, #13121c 82%, #101019);
+}
+.portfolio-atmosphere::before,
+.portfolio-atmosphere::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.portfolio-atmosphere::before {
+  background:
+    linear-gradient(90deg, #c3b2e912 1px, transparent 1px),
+    linear-gradient(#c3b2e90d 1px, transparent 1px);
+  background-size: 64px 64px;
+  background-position: center top;
+  opacity: .48;
+  mask-image:
+    radial-gradient(ellipse 75% 24% at 88% 14%, #000 0%, transparent 95%),
+    radial-gradient(ellipse 72% 22% at 7% 54%, #000 0%, transparent 95%),
+    radial-gradient(ellipse 74% 21% at 88% 83%, #000 0%, transparent 95%);
+}
+.portfolio-atmosphere::after {
+  background: url("/atmosphere/grain.svg") repeat;
+  opacity: .047;
+  mask-image: linear-gradient(transparent, #000 5%, #000 91%, transparent);
+}
+.portfolio-atmosphere > .section {
+  position: relative;
+  isolation: isolate;
+  border-top-color: transparent;
+  border-image: linear-gradient(90deg, #8273a544, #63567557 28%, #64567430 74%, #64567412) 1;
+}
+.portfolio-atmosphere > .section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse 64% 82% at var(--atmosphere-origin), #9470ed0c 0%, transparent 86%);
+}
+#stack { --atmosphere-origin: 83% 47%; }
+#experience { --atmosphere-origin: 18% 34%; }
+#about { --atmosphere-origin: 74% 51%; }
+#contact { --atmosphere-origin: 43% 48%; }
+
+@media (max-width: 700px) {
+  .portfolio-atmosphere::before { background-size: 52px 52px; opacity: .33; }
+  .portfolio-atmosphere::after { opacity: .036; }
+}

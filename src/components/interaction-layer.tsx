@@ -69,23 +69,45 @@ export function InteractionLayer() {
   useEffect(() => {
     if (pathname !== "/") return;
     const preference = matchMedia("(prefers-reduced-motion: no-preference) and (pointer: fine) and (min-width: 850px)");
-    let disposed = false;
+    let animationVersion = 0;
     let cleanup: (() => void) | undefined;
     async function animate() {
+      const version = ++animationVersion;
       cleanup?.();
       cleanup = undefined;
       if (!preference.matches) return;
-      const { gsap } = await import("gsap");
-      if (disposed || !preference.matches) return;
+      const [{ gsap }, { ScrollTrigger }] = await Promise.all([import("gsap"), import("gsap/ScrollTrigger")]);
+      if (version !== animationVersion || !preference.matches) return;
+      gsap.registerPlugin(ScrollTrigger);
       const context = gsap.context(() => {
         gsap.from(".hero-copy", { y: 14, duration: .65, ease: "power2.out", clearProps: "transform" });
+        gsap.to(".work-atmosphere-light", {
+          y: -26,
+          ease: "none",
+          scrollTrigger: { trigger: "#work", start: "top bottom", end: "bottom top", scrub: .45 },
+        });
+
+        const cards = gsap.utils.toArray<HTMLElement>("#work .project-card-slot");
+        for (let index = 0; index < cards.length; index += 2) {
+          const row = cards.slice(index, index + 2);
+          gsap.from(row, {
+            y: 8,
+            opacity: .94,
+            duration: .38,
+            stagger: .055,
+            ease: "power2.out",
+            immediateRender: false,
+            clearProps: "transform,opacity",
+            scrollTrigger: { trigger: row[0], start: "top 93%", once: true },
+          });
+        }
       });
       cleanup = () => context.revert();
     }
     function start() { void animate(); }
     const idle = window.setTimeout(start, 250);
     preference.addEventListener("change", start);
-    return () => { disposed = true; clearTimeout(idle); preference.removeEventListener("change", start); cleanup?.(); };
+    return () => { animationVersion++; clearTimeout(idle); preference.removeEventListener("change", start); cleanup?.(); };
   }, [pathname]);
 
   useEffect(() => {

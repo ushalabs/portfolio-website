@@ -15,14 +15,17 @@ function ProjectMark({ icon, title }: Pick<Project, "icon" | "title">) {
 
 export function ProjectCard({ project, heading: Heading = "h2" }: { project: Project; heading?: "h2" | "h3" }) {
   return <li className="project-card-slot" data-project={project.slug}>
-    <article className="project-card">
+    <article className="project-card" data-discipline={project.category[0]}>
       <div className="project-card-heading">
         <ProjectMark icon={project.icon} title={project.title} />
         <div>
           <p className="project-card-category">{project.category[0]}</p>
           <Heading><Link href={`/projects/${project.slug}`} prefetch={false} className="project-card-link">{project.title}</Link></Heading>
         </div>
-        <ArrowUpRight className="project-card-arrow" size={17} aria-hidden="true" />
+        <div className="project-card-corner" aria-hidden="true">
+          <span>{String(project.order).padStart(2, "0")}</span>
+          <ArrowUpRight className="project-card-arrow" size={17} />
+        </div>
       </div>
       <p className="project-card-description">{project.shortDescription}</p>
       <div className="project-card-footer">

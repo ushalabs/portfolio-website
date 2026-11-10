@@ -41,3 +41,11 @@
 - Replaced homepage and archive previews with compact repository-icon cards and separate GitHub actions.
 - Preserved the project order, category filters, and case-study media. Added pointer-responsive tilt with a reduced-motion fallback.
 - Verified all seven repository and icon-source URLs and the Google Play listing.
+
+## Atmospheric refinement
+
+1. Connected the homepage sections below the hero with a shared charcoal backdrop, subtle violet lighting, grain, and a masked technical grid.
+2. Layered the project card surfaces and icon frames, with four category-specific line patterns and a restrained pointer spotlight. Capped the combined tilt at 2°.
+3. Added section and card numbering, editorial rules, and adjusted spacing while preserving the grid, featured order, and separate project actions.
+4. Used ScrollTrigger for a small Projects lighting shift and short card reveals. Fine-pointer and motion preferences gate the spatial effects.
+5. Passed the production checks and all 20 Chrome tests. Reviewed desktop and mobile screenshots and verified project destinations. [Acceptance report](ACCEPTANCE_REPORT.md)

@@ -18,3 +18,14 @@ The seven-project portfolio was validated locally on Windows with Chrome against
 The supplied MeetingMinutes video remains the case-study demo. The seven repository icon sources are listed in the [media manifest](MEDIA_MANIFEST.md).
 
 The original release’s Lighthouse results and Git checkpoints are recorded in the [phase reports](PHASE_REPORTS.md). The current revision is local. [Deployment instructions](DEPLOYMENT.md)
+
+## Atmosphere and interaction refinement
+
+| Check | Result |
+| --- | --- |
+| Production checks | ESLint, strict TypeScript and the Next.js production build passed. |
+| Chrome browser suite | All 20 tests passed, including six viewport widths, keyboard and touch navigation, all seven project routes, and three axe scans with zero WCAG A/AA violations. |
+| Motion | Verified the 2° tilt limit, pointer spotlight tracking, icon lift, and the static reduced-motion behavior for both cards and Projects parallax. |
+| Local motion sampling | Synthetic pointer movement on a project card averaged 59.5 FPS across 120 animation frame intervals in headless Chrome. |
+| Visual review | Reviewed the Projects section at 1440px and 390px and the Experience section at 1440px. |
+| Links | Checked 37 unique internal destinations and anchors across nine pages. All seven repositories, the GitHub profile, and Velora’s Play Store listing returned HTTP 200. LinkedIn rejected the automated check with HTTP 999. |
