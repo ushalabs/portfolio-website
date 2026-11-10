@@ -13,7 +13,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ slu
   const { slug } = await params;
   const project = getProject(slug);
   if (!project && slug !== "home" && slug !== "archive") return new Response("Not found", { status: 404 });
-  const title = project?.title ?? (slug === "home" ? "Muhammad Usman Qureshi" : "Project archive");
+  const title = project?.title ?? (slug === "home" ? site.name : "Project archive");
   const eyebrow = project ? `CASE STUDY / ${String(project.order).padStart(2, "0")}` : "ENGINEERING PORTFOLIO";
   const subtitle = project?.shortDescription ?? (slug === "home" ? "Mobile, desktop, full-stack & AI automation" : "Mobile, desktop, full-stack, AI & systems projects");
 

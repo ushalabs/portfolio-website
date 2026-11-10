@@ -43,7 +43,6 @@ button { cursor: pointer; }
   .header-inner { grid-template-columns: 1fr auto; }
   .desktop-nav { display: none; }
 }
-@media (max-width: 420px) { .header-actions .resume-nav { display: none; } }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }

@@ -1,22 +1,33 @@
 import Image from "next/image";
 import type { Project, ProjectMedia } from "@/data/project-types";
+import { ProjectAnimation } from "./project-animation";
 
 export function ProjectImage({ media, sizes, className }: { media: ProjectMedia; sizes: string; className?: string }) {
   return <Image src={media.src} alt={media.alt} width={media.width} height={media.height} sizes={sizes} className={className} />;
 }
 
+export function ProjectIcon({ project }: { project: Project }) {
+  const { icon } = project;
+  return <span className="project-icon"><Image src={icon.src} width={icon.width} height={icon.height} sizes="48px" alt="" /></span>;
+}
+
 export function ProjectVisual({ project }: { project: Project }) {
   const media = project.thumbnail;
-  const secondary = project.slug === "velora" ? project.gallery[1] : null;
-  const icon = project.slug === "velora" ? project.gallery.find(item => item.kind === "icon") : null;
-  const isPhone = media?.kind === "screenshot" && media.height > media.width;
-  const treatment = isPhone ? "visual-phone" : media?.kind === "icon" ? "visual-icon" : "visual-screen";
-  return <figure className={`project-visual project-${project.slug} ${treatment}`}>
-    <div className="project-visual-label mono"><span>{String(project.order).padStart(2, "0")} / {project.category[0]}</span><span>{media?.kind === "screenshot" ? "App capture" : media?.kind === "banner" ? "Project artwork" : media?.kind === "icon" ? "App icon" : "Source project"}</span></div>
-    {media ? <div className="project-image-stage">
-      {icon && <ProjectImage media={icon} className="feature-app-icon" sizes="64px" />}
-      {secondary && <ProjectImage media={secondary} className="phone-secondary" sizes="(max-width: 750px) 32vw, 210px" />}
-      <ProjectImage media={media} className="project-image" sizes="(max-width: 750px) 80vw, 640px" />
-    </div> : <div className="project-text-visual"><span className="mono">{project.category[0]}</span><span>{project.title}</span></div>}
+  if (!media) return null;
+
+  if (project.demoVideo) return <figure className="case-media">
+    <video controls playsInline preload="none" poster={media.src} width={1920} height={1080} aria-label={`${project.title} screen recording`}>
+      <source src={project.demoVideo} type="video/mp4" />
+      <a href={project.demoVideo}>Open the demo video</a>
+    </video>
+    <figcaption>MeetingMinutes AI product walkthrough</figcaption>
+  </figure>;
+
+  if (project.demoAnimation) return <ProjectAnimation source={project.demoAnimation} poster={media} />;
+
+  const caption = media.kind === "reference" ? "Design reference" : media.kind === "banner" ? "Product artwork" : "App capture";
+  return <figure className={`case-media ${media.height > media.width ? "case-media-portrait" : ""}`}>
+    <ProjectImage media={media} sizes="(max-width: 800px) 90vw, 40vw" />
+    <figcaption><strong>{caption}</strong> <span>{media.alt}</span></figcaption>
   </figure>;
 }

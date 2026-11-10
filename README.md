@@ -1,6 +1,6 @@
 # Usha Labs
 
-The engineering portfolio of Muhammad Usman Qureshi. It features an interactive mechanical assembly, selected project showcases, a filterable archive, and source-backed case studies.
+The engineering portfolio of Usman Qureshi. It features an interactive prism, seven project showcases, a filterable archive, and source-backed case studies.
 
 ## Run locally
 
@@ -21,7 +21,7 @@ Open [the local portfolio](http://localhost:3000/). To verify a production build
 | `src/components/` | Hero, Three.js scene, project presentation, navigation, and contact |
 | `src/data/` | Typed project registry, media provenance, and identity data |
 | `public/projects/` | Verified project imagery |
-| `public/resumes/` | The two supplied PDF résumés |
+| `public/resumes/` | The supplied PDF résumé downloaded from the top bar |
 | `tests/` | Playwright production smoke tests and axe scans |
 
 [Project audit](PROJECT_AUDIT.md) · [Media manifest](MEDIA_MANIFEST.md) · [Phase reports](PHASE_REPORTS.md) · [Acceptance report](ACCEPTANCE_REPORT.md)

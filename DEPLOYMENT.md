@@ -42,4 +42,4 @@ npx vercel@latest deploy --prod
 
 For Git-based deployment, import the new repository into Vercel, select the Next.js preset and Node.js 24, set the same production environment variable, and deploy `main`.
 
-After deployment, verify the returned URL, a featured case study, both PDF downloads, `/robots.txt`, `/sitemap.xml`, and a project social image. Check that canonical URLs use the production origin. [Vercel Next.js documentation](https://vercel.com/docs/frameworks/full-stack/nextjs) · [Vercel CLI deployment documentation](https://vercel.com/docs/cli/deploy)
+After deployment, verify the returned URL, a featured case study, the top-bar PDF download, `/robots.txt`, `/sitemap.xml`, and a project social image. Check that canonical URLs use the production origin. [Vercel Next.js documentation](https://vercel.com/docs/frameworks/full-stack/nextjs) · [Vercel CLI deployment documentation](https://vercel.com/docs/cli/deploy)

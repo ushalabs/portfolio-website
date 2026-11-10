@@ -1,14 +1,15 @@
 import Link from "next/link";
 import { ArrowUpRight, Plus } from "lucide-react";
+import { site } from "@/data/site";
 import { SectionLabel } from "./primitives";
 
 const toolkit = [
-  { name: "Languages", technologies: "TypeScript · JavaScript · Python · C++20 · SQL · Dart · Luau", project: "Downshift", slug: "downshift" },
+  { name: "Languages", technologies: "TypeScript · JavaScript · Python · C++20 · SQL", project: "Downshift", slug: "downshift" },
   { name: "Frontend", technologies: "React · Next.js · Tailwind CSS · Vite", project: "MeetingMinutes AI", slug: "meetingminutes-ai" },
-  { name: "Mobile", technologies: "React Native · Expo · Expo Router · Flutter", project: "Velora", slug: "velora" },
-  { name: "Backend & data", technologies: "FastAPI · Node.js · PostgreSQL · Firestore · Supabase · SQLite", project: "RideGo", slug: "ridego" },
-  { name: "AI & automation", technologies: "Gemini · Whisper · LangGraph · RAG · pgvector · n8n", project: "AegisOps", slug: "aegisops" },
-  { name: "Systems & delivery", technologies: "Qt 6 · CMake · Docker · Prometheus · Git · GitHub Actions", project: "Lumen", slug: "lumen" },
+  { name: "Mobile", technologies: "React Native · Expo · Expo Router", project: "Velora", slug: "velora" },
+  { name: "Backend & data", technologies: "FastAPI · PostgreSQL · Firestore · Supabase · SQLite", project: "Solvanta", slug: "solvanta" },
+  { name: "AI & automation", technologies: "Gemini · Whisper · XGBoost · n8n", project: "Sentinel SecOps", slug: "sentinel-secops" },
+  { name: "Systems & delivery", technologies: "Qt 6 · CMake · Docker · Git · GitHub Actions", project: "Lumen", slug: "lumen" },
 ];
 
 export function Stack() {
@@ -34,6 +35,6 @@ export function Experience() {
 export function About() {
   return <section className="shell section editorial about" id="about" aria-labelledby="about-heading">
     <div><SectionLabel index="04">About</SectionLabel><h2 className="section-title" id="about-heading">Behind<br /> Usha Labs<span className="accent">.</span></h2></div>
-    <div className="about-copy"><p>I’m Muhammad Usman Qureshi, a final-year Software Engineering student at Riphah International University and the developer behind Usha Labs.</p><p>I build mobile and desktop apps, full-stack systems, and AI automation. I’m interested in how software behaves in practice, from the details of a native application to the point where a workflow hands control back to a person.</p><p>I’m open to relevant engineering opportunities and international collaboration.</p></div>
+    <div className="about-copy"><p>I’m {site.name}, a final-year Software Engineering student at Riphah International University and the developer behind Usha Labs.</p><p>I build mobile and desktop apps, full-stack systems, and AI automation. I’m interested in how software behaves in practice, from the details of a native application to the point where a workflow hands control back to a person.</p><p>I’m open to relevant engineering opportunities and international collaboration.</p></div>
   </section>;
 }

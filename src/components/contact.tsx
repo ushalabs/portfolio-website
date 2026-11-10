@@ -1,5 +1,5 @@
-import { ArrowDown, ArrowUpRight, FileText } from "lucide-react";
-import { resumes, site } from "@/data/site";
+import { ArrowUpRight } from "lucide-react";
+import { site } from "@/data/site";
 import { SectionLabel } from "./primitives";
 import { CopyEmail } from "./copy-email";
 
@@ -7,7 +7,7 @@ const contacts = [
   { label: "Email", value: site.email, href: `mailto:${site.email}`, external: false },
   { label: "Phone", value: site.phone, href: site.telephone, external: false },
   { label: "GitHub", value: "github.com/ushalabs", href: site.github, external: true },
-  { label: "LinkedIn", value: "Muhammad Usman Qureshi", href: site.linkedin, external: true },
+  { label: "LinkedIn", value: site.name, href: site.linkedin, external: true },
 ];
 
 export function Contact() {
@@ -21,9 +21,5 @@ export function Contact() {
         <CopyEmail />
       </div>
     </div>
-    <section className="resume-panel" id="resumes" aria-labelledby="resume-heading">
-      <div><p className="mono">PDF DOWNLOADS</p><h3 id="resume-heading">Résumés</h3></div>
-      <ul>{resumes.map(item => <li key={item.href}><a href={item.href} download><FileText size={19} aria-hidden="true" /><span>{item.title}</span><ArrowDown size={16} aria-hidden="true" /></a></li>)}</ul>
-    </section>
   </section>;
 }

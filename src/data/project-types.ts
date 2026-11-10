@@ -6,7 +6,7 @@ export type ProjectMedia = {
   width: number;
   height: number;
   alt: string;
-  kind: "screenshot" | "icon" | "banner";
+  kind: "screenshot" | "icon" | "banner" | "reference";
   source: string;
 };
 
@@ -26,7 +26,10 @@ export type Project = {
   featured: boolean;
   order: number;
   thumbnail: ProjectMedia | null;
+  icon: ProjectMedia;
   gallery: readonly ProjectMedia[];
+  demoVideo?: string;
+  demoAnimation?: string;
   technicalHighlights: readonly string[];
   architecture: readonly string[];
   challenges: readonly string[];

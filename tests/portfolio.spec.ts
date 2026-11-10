@@ -2,7 +2,7 @@ import { chromium, expect, test } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import { projects } from "../src/data/projects";
 import { categories } from "../src/data/project-types";
-import { resumes, site } from "../src/data/site";
+import { resumePath, site } from "../src/data/site";
 
 for (const width of [360, 390, 768, 1024, 1440, 1920]) {
   test(`layout and navigation at ${width}px`, async ({ page }) => {
@@ -15,12 +15,14 @@ for (const width of [360, 390, 768, 1024, 1440, 1920]) {
       expect((await page.goto(route))?.status()).toBe(200);
       await expect(page.locator("main h1")).toBeVisible();
       expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
-      await expect(page.getByRole("link", { name: "Contact", exact: true }).first()).toBeVisible();
+      await expect(page.getByRole("link", { name: "Get in Touch", exact: true })).toBeVisible();
     }
     await page.goto("/");
-    await page.getByRole("link", { name: "Explore work" }).click();
+    await page.getByRole("link", { name: "Explore Projects" }).click();
     await expect(page).toHaveURL(/#work$/);
-    await expect(page.locator("[data-featured] h3")).toHaveText(["Velora", "MeetingMinutes AI", "Downshift"]);
+    await expect(page.locator("[data-featured] h3")).toHaveText(["Velora", "MeetingMinutes AI", "Downshift", "Sentinel SecOps", "Lumen", "Solvanta", "LeanMate"]);
+    await expect(page.locator("#work .project-icon img")).toHaveCount(7);
+    await expect(page.locator("#work [data-preview] img")).toHaveCount(7);
     if (width <= 830) {
       await page.getByLabel("Open navigation").click();
       await page.getByRole("navigation", { name: "Mobile" }).getByRole("link", { name: "About" }).click();
@@ -41,7 +43,8 @@ test("keyboard filters, quick navigation, and disclosures", async ({ page }) => 
   for (const category of categories) {
     await page.keyboard.press("ArrowRight");
     await expect(page.getByRole("radio", { name: category, exact: true })).toBeChecked();
-    await expect(page.getByRole("status")).toHaveText(`${projects.filter(item => item.category.includes(category)).length} projects`);
+    const count = projects.filter(item => item.category.includes(category)).length;
+    await expect(page.getByRole("status")).toHaveText(count === 1 ? "1 project" : `${count} projects`);
   }
   await page.keyboard.press("Control+k");
   await expect(page.getByRole("dialog", { name: "Quick navigation" })).toBeVisible();
@@ -55,6 +58,45 @@ test("keyboard filters, quick navigation, and disclosures", async ({ page }) => 
   await page.goto("/#stack");
   await page.getByText("Mobile", { exact: true }).click();
   await expect(page.getByRole("link", { name: "In practice · Velora" })).toBeVisible();
+});
+
+test("homepage project grid pairs the cards and centers the seventh", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/");
+  await expect(page.locator("h1")).toHaveText("Usman Qureshi");
+  await expect(page.locator("#work [data-preview]")).toHaveCount(7);
+  const cards = await page.locator("[data-featured]").evaluateAll(links => links.map(link => {
+    const { x, y, width } = link.getBoundingClientRect();
+    return { x, y, width };
+  }));
+  expect(cards[0].y).toBe(cards[1].y);
+  expect(cards[2].y).toBeGreaterThan(cards[0].y);
+  expect(cards[6].x + cards[6].width / 2).toBeCloseTo(720, 0);
+  expect(cards[6].width).toBeCloseTo(cards[0].width, 0);
+  const previews = await page.locator(".preview-device").evaluateAll(devices => devices.map(device => {
+    const card = device.closest(".selected-project")!.getBoundingClientRect();
+    const frame = device.getBoundingClientRect();
+    const tilt = new DOMMatrix(getComputedStyle(device).transform);
+    return {
+      center: (frame.x + frame.width / 2 - card.x) / card.width,
+      topEdgeClimbsRight: tilt.m12 < 0,
+      bottomLeansLeft: tilt.m21 < 0,
+    };
+  }));
+  expect(previews.every(preview => preview.center > .66 && preview.topEdgeClimbsRight && preview.bottomLeansLeft)).toBe(true);
+  for (const slug of ["velora", "leanmate", "solvanta"]) {
+    await expect(page.locator(`[data-featured="${slug}"] [data-preview]`)).toHaveAttribute("data-preview", "mobile");
+  }
+  await expect(page.locator('[data-featured="meetingminutes-ai"] .preview-screen img')).toHaveAttribute("src", /dark-preview/);
+  await expect(page.locator('[data-featured="sentinel-secops"] .preview-screen img')).toHaveAttribute("src", /analyst-dark-preview/);
+  await expect(page.locator('[data-featured="solvanta"] .preview-screen img')).toHaveAttribute("src", "/projects/solvanta/solar-phone-preview.webp");
+  const scrollControl = await page.locator(".hero-scroll").evaluate(link => {
+    const arrow = link.querySelector("svg")!.getBoundingClientRect();
+    const control = link.getBoundingClientRect();
+    return { width: arrow.width, offset: Math.abs(arrow.x + arrow.width / 2 - (control.x + control.width / 2)) };
+  });
+  expect(scrollControl.width).toBe(18);
+  expect(scrollControl.offset).toBeLessThan(1);
 });
 
 test("touch navigation and static hero on a mobile device", async ({ browser, baseURL }) => {
@@ -80,7 +122,7 @@ test("project routes, media, canonical tags, previews and 404", async ({ page, r
     await expect(page.getByRole("link", { name: `GitHub for ${project.title}` })).toHaveAttribute("href", project.githubUrl);
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", new RegExp(`${route}$`));
     await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", new RegExp(`/social/${project.slug}$`));
-    for (const image of project.gallery) {
+    for (const image of [project.icon, ...project.gallery]) {
       const response = await request.get(image.src);
       expect(response.status()).toBe(200);
       expect(response.headers()["content-type"]).toMatch(/^image\//);
@@ -97,21 +139,56 @@ test("project routes, media, canonical tags, previews and 404", async ({ page, r
   await expect(page.getByRole("heading", { name: "Off the map." })).toBeVisible();
 });
 
-test("direct contact, copy feedback, and PDF downloads", async ({ page, context, request }) => {
+test("case studies keep the supplied and animated media below the write-up", async ({ page, request }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/projects/meetingminutes-ai");
+  const video = page.getByLabel("MeetingMinutes AI screen recording");
+  const dimensions = await page.locator(".detail").evaluate(detail => {
+    const media = detail.querySelector(".case-media-stack")!.getBoundingClientRect();
+    const copy = detail.querySelector(".detail-grid")!.getBoundingClientRect();
+    return { ratio: media.width / detail.getBoundingClientRect().width, belowCopy: media.top > copy.bottom };
+  });
+  expect(dimensions.ratio).toBeCloseTo(.4, 2);
+  expect(dimensions.belowCopy).toBe(true);
+  await expect(page.getByRole("heading", { name: "Source material" })).toHaveCount(0);
+  await expect(video).toHaveAttribute("preload", "none");
+  await expect(video.locator("source")).toHaveAttribute("src", "/projects/meetingminutes-ai/demo.mp4");
+  await expect(page.locator('a[href*="loom.com"]')).toHaveCount(0);
+  const response = await request.get("/projects/meetingminutes-ai/demo.mp4", { headers: { Range: "bytes=0-1023" } });
+  expect(response.status()).toBe(206);
+  expect(response.headers()["content-type"]).toContain("video/mp4");
+  await video.evaluate(async element => {
+    const player = element as HTMLVideoElement;
+    player.muted = true;
+    await player.play();
+    player.pause();
+  });
+
+  await page.goto("/projects/sentinel-secops");
+  const gif = page.getByRole("img", { name: "Sentinel SecOps dashboard demonstrating live threat detection" });
+  await page.getByRole("button", { name: "Play GIF" }).click();
+  await expect(gif).toHaveAttribute("src", "/projects/sentinel-secops/live-demo.gif");
+  await page.getByRole("button", { name: "Stop GIF" }).click();
+  await expect(gif).toHaveAttribute("src", /demo-poster/);
+
+  await page.goto("/projects/solvanta");
+  await expect(page.locator(".case-media figcaption")).toContainText("Design reference");
+});
+
+test("direct contact, copy feedback, and the top-bar PDF download", async ({ page, context, request }) => {
   await context.grantPermissions(["clipboard-read", "clipboard-write"]);
   await page.goto("/#contact");
   for (const href of [`mailto:${site.email}`, site.telephone, site.github, site.linkedin]) await expect(page.locator(`#contact a[href="${href}"]`)).toBeVisible();
   await page.getByRole("button", { name: "Copy email" }).click();
   await expect(page.locator(".copy-email [role=status]")).toHaveText("Email copied.");
   expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(site.email);
-  for (const resume of resumes) {
-    const response = await request.get(resume.href);
-    expect(response.status()).toBe(200);
-    expect((await response.body()).subarray(0, 5).toString()).toBe("%PDF-");
-    const event = page.waitForEvent("download");
-    await page.getByRole("link", { name: resume.title }).click();
-    expect((await event).suggestedFilename()).toBe(resume.href.split("/").at(-1));
-  }
+  const response = await request.get(resumePath);
+  expect(response.status()).toBe(200);
+  expect((await response.body()).subarray(0, 5).toString()).toBe("%PDF-");
+  const event = page.waitForEvent("download");
+  await page.getByRole("banner").getByRole("link", { name: "Resume" }).click();
+  expect((await event).suggestedFilename()).toBe("usman-qureshi-resume.pdf");
+  await expect(page.locator("#resumes")).toHaveCount(0);
 });
 
 test("3D responds to pointer and scroll and honors reduced motion", async ({ page }) => {
@@ -148,8 +225,8 @@ test("WebGL unavailable and no JavaScript keep the portfolio usable", async ({ b
   try {
     const page = await context.newPage();
     await page.goto(baseURL!);
-    await expect(page.getByRole("heading", { name: "Selected work." })).toBeVisible();
-    await page.getByRole("link", { name: "Case study for Velora" }).click();
+    await expect(page.getByRole("heading", { name: "Projects", exact: true })).toBeVisible();
+    await page.locator('[data-featured="velora"]').click();
     await expect(page).toHaveURL(/\/projects\/velora$/);
   } finally {
     await context.close();

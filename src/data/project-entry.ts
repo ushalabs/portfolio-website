@@ -1,7 +1,7 @@
 import media from "./project-media.json" with { type: "json" };
 import type { Project, ProjectMedia } from "./project-types";
 
-type ProjectEntry = Omit<Project, "id" | "githubUrl" | "thumbnail" | "gallery" | "sources" | "demoUrl" | "playStoreUrl"> & {
+type ProjectEntry = Omit<Project, "id" | "githubUrl" | "thumbnail" | "icon" | "gallery" | "sources" | "demoUrl" | "playStoreUrl"> & {
   repo: string;
   revision: string;
   evidence: string[];
@@ -11,9 +11,12 @@ type ProjectEntry = Omit<Project, "id" | "githubUrl" | "thumbnail" | "gallery" |
 
 export function project({ repo, revision, evidence, demoUrl, playStoreUrl, ...entry }: ProjectEntry): Project {
   const githubUrl = `https://github.com/ushalabs/${repo}`;
-  const gallery = (media as Record<string, ProjectMedia[]>)[entry.slug] ?? [];
+  const assets = (media as Record<string, ProjectMedia[]>)[entry.slug] ?? [];
+  const icon = assets.find(asset => asset.kind === "icon");
+  if (!icon) throw new Error(`Missing repository icon for ${entry.slug}`);
+  const gallery = assets.filter(asset => asset.kind !== "icon");
   return {
-    ...entry, id: entry.slug, githubUrl, gallery, thumbnail: gallery[0] ?? null,
+    ...entry, id: entry.slug, githubUrl, icon, gallery, thumbnail: gallery[0] ?? null,
     demoUrl: demoUrl ?? null, playStoreUrl: playStoreUrl ?? null,
     sources: ["README.md", ...evidence].map(path => `${githubUrl}/blob/${revision}/${path}`),
   };

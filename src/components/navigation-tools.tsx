@@ -9,11 +9,9 @@ import { navigation } from "@/data/site";
 type Destination = { label: string; href: string };
 
 const sections = [
-  { label: "Home", href: "/" },
   ...navigation,
   { label: "Project archive", href: "/projects" },
   { label: "Contact", href: "/#contact" },
-  { label: "Résumés", href: "/#resumes" },
 ];
 
 export function MobileNavigation() {

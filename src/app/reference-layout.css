@@ -1,0 +1,27 @@
+.site-header { background: #101019f7; border-bottom-color: transparent; }
+.header-inner { width: min(1440px, 84%); padding-inline-start: clamp(0rem, 3.8vw, 4rem); }
+.wordmark { gap: .8rem; font-size: clamp(1.24rem, 1.55vw, 1.65rem); font-weight: 680; letter-spacing: -.042em; white-space: nowrap; }
+.wordmark svg { flex: 0 0 auto; }
+.desktop-nav { gap: clamp(.75rem, 2.3vw, 2.6rem); }
+.desktop-nav a { color: var(--text); }
+.desktop-nav a[aria-current] { color: #df9bff; }
+.desktop-nav a[aria-current]::after { content: "]"; position: static; inset: auto; height: auto; background: transparent; margin-left: .3rem; }
+.desktop-nav a[aria-current]::before { content: "["; margin-right: .3rem; }
+.header-actions .resume-nav, .header-actions .header-contact { border-radius: 2rem; padding-inline: clamp(.75rem, 1.4vw, 1.25rem); gap: .55rem; }
+.header-actions .resume-nav { border: 1px solid #443e54; color: var(--text); }
+.header-actions .resume-nav:hover { border-color: var(--accent); color: var(--accent); }
+.header-actions .command-trigger { display: none; }
+.case-media { border: 1px solid #343042; border-radius: 1rem; overflow: hidden; margin: 0; background: #171620; }
+.case-media img, .case-media video { display: block; width: 100%; height: auto; margin-inline: auto; }
+.case-media-portrait img { width: min(100%, 484px); }
+.case-media video { aspect-ratio: 16 / 9; background: #0b0b11; }
+.case-media figcaption { display: flex; flex-wrap: wrap; align-items: center; gap: .55rem 1rem; color: var(--muted); padding: .85rem 1.2rem; font-size: .85rem; border-top: 1px solid #343042; }
+.case-media figcaption strong { color: var(--text); font-weight: 620; }
+@media (min-width: 831px) { :root { --header-height: 5.25rem; } }
+@media (max-width: 1150px) { .header-inner { width: calc(100% - var(--gutter) * 2); padding-inline-start: 0; } }
+@media (max-width: 480px) {
+  .wordmark { gap: .55rem; }
+  .wordmark svg { width: 31px; height: 31px; }
+  .header-actions .resume-nav, .header-actions .header-contact { justify-content: center; min-width: 44px; padding-inline: .6rem; }
+  .header-action-label { display: none; }
+}

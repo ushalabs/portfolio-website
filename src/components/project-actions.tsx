@@ -5,6 +5,7 @@ export function ProjectActions({ project, detail = true }: { project: Project; d
   return <div className="actions">
     {detail && <InternalAction href={`/projects/${project.slug}`} primary>Case study<span className="sr-only"> for {project.title}</span></InternalAction>}
     <ExternalAction href={project.githubUrl} github>GitHub<span className="sr-only"> for {project.title}</span></ExternalAction>
+    {!detail && (project.demoVideo || project.demoAnimation) && <InternalAction href="#project-demo" direction="down">View demo</InternalAction>}
     {project.playStoreUrl && <ExternalAction href={project.playStoreUrl}>Google Play</ExternalAction>}
     {project.demoUrl && <ExternalAction href={project.demoUrl}>{project.demoUrl.includes("loom.com") ? "Watch demo" : "Live demo"}</ExternalAction>}
   </div>;

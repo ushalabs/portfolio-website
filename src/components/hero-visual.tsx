@@ -43,12 +43,10 @@ export function HeroVisual() {
 
   const live = enabled && !failed;
   return <figure className="hero-visual" ref={host} data-interactive={live && ready ? "true" : "false"}>
-    <div className="visual-top mono"><span>FIG. 01</span><span>EXPLODED ASSEMBLY</span></div>
-    <div className="visual-axis" aria-hidden="true"><span>+</span><span>+</span><span>+</span><span>+</span></div>
     <div className="visual-body" aria-hidden="true">
-      <Image className="hero-fallback" src="/assembly.svg" alt="" fill sizes="(max-width: 850px) 92vw, 44vw" preload />
+      <Image className="hero-fallback" src="/hero/prism.svg" alt="" fill sizes="(max-width: 650px) 92vw, 37vw" />
       {live && <Scene visible={visible} onReady={() => setReady(true)} onError={() => setFailed(true)} />}
     </div>
-    <figcaption className="visual-bottom mono"><span><b /> ROTOR / 01</span><span>{live && ready ? "POINTER-RESPONSIVE 3D" : "STATIC STUDY"}</span></figcaption>
+    <figcaption className="sr-only">A violet glass prism with an orbital ring</figcaption>
   </figure>;
 }

@@ -19,11 +19,11 @@ export const featuredProjects = [
     shortDescription: "From meeting recordings to editable decisions, action items, and approved email recaps.",
     longDescription: "A single-user workspace for the follow-up work that happens after a meeting. Upload a recording or paste a transcript, review the structured minutes and action owners, then choose whether to send an email recap.",
     category: ["AI & Automation", "Full-Stack"], tags: ["FastAPI", "Whisper", "Gemini"], techStack: ["React", "TypeScript", "Vite", "Tailwind CSS", "FastAPI", "Supabase", "PostgreSQL", "Groq Whisper", "Gemini", "Resend"],
-    demoUrl: "https://www.loom.com/share/3eddffe62d8043dda581798a05442c87",
+    demoVideo: "/projects/meetingminutes-ai/demo.mp4",
     status: "Working demo", featured: true, order: 2,
     technicalHighlights: ["Audio uploads and pasted transcripts", "Editable summaries, decisions, and action items", "Searchable meeting history and action dashboard", "Email preview, approval, and delivery history"],
     architecture: ["A React and Vite frontend calls a FastAPI service backed by Supabase PostgreSQL.", "Groq Whisper transcribes recordings, Gemini structures the notes, and Resend delivers approved recaps."],
-    challenges: ["The email path requires explicit approval and protects against duplicate sends."], outcomes: ["A repository-linked video demonstrates the workspace."],
+    challenges: ["The email path requires explicit approval and protects against duplicate sends."], outcomes: ["The screen recording demonstrates the workspace."],
     evidence: ["docs/ARCHITECTURE.md", "frontend/package.json", "backend/pyproject.toml"],
   }),
   project({

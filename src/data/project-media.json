@@ -1,28 +1,12 @@
 {
   "velora": [
     {
-      "src": "/projects/velora/stories.webp",
-      "width": 810,
-      "height": 1440,
-      "alt": "Velora stories screen",
+      "src": "/projects/velora/chat-themes.webp",
+      "width": 484,
+      "height": 600,
+      "alt": "Velora conversations, groups, and friend requests in dark and light themes",
       "kind": "screenshot",
-      "source": "https://github.com/ushalabs/Velora-Chat-App/blob/81e88e9e887f4ada0a5751da97b793c569515b66/assets/readme/stories.png"
-    },
-    {
-      "src": "/projects/velora/comments.webp",
-      "width": 810,
-      "height": 1440,
-      "alt": "Comments on a post in Velora",
-      "kind": "screenshot",
-      "source": "https://github.com/ushalabs/Velora-Chat-App/blob/81e88e9e887f4ada0a5751da97b793c569515b66/assets/readme/posts-comments.png"
-    },
-    {
-      "src": "/projects/velora/profile.webp",
-      "width": 810,
-      "height": 1440,
-      "alt": "Velora user profile",
-      "kind": "screenshot",
-      "source": "https://github.com/ushalabs/Velora-Chat-App/blob/81e88e9e887f4ada0a5751da97b793c569515b66/assets/readme/profile.png"
+      "source": "User attachment 2, `codex-clipboard-b3700fce-9c27-4dd2-8cb2-56a2f5a66bb4.png`"
     },
     {
       "src": "/projects/velora/icon.webp",
@@ -35,30 +19,30 @@
   ],
   "meetingminutes-ai": [
     {
-      "src": "/projects/meetingminutes-ai/workspace.webp",
-      "width": 1024,
-      "height": 576,
-      "alt": "MeetingMinutes AI settings captured from its recorded product demo",
+      "src": "/projects/meetingminutes-ai/card-preview.webp",
+      "width": 1200,
+      "height": 675,
+      "alt": "MeetingMinutes AI meeting list and action items in its product walkthrough",
       "kind": "screenshot",
-      "source": "https://www.loom.com/v1/oembed?url=https%3A%2F%2Fwww.loom.com%2Fshare%2F3eddffe62d8043dda581798a05442c87"
+      "source": "Local MeetingMinutes AI MP4, frame at 00:50"
+    },
+    {
+      "src": "/projects/meetingminutes-ai/icon.svg",
+      "width": 64,
+      "height": 64,
+      "alt": "MeetingMinutes AI app icon",
+      "kind": "icon",
+      "source": "https://github.com/ushalabs/MeetingMinutes-AI/blob/3f18910/frontend/public/favicon.svg"
     }
   ],
   "downshift": [
     {
-      "src": "/projects/downshift/dark-dashboard.webp",
-      "width": 1075,
-      "height": 713,
-      "alt": "Downshift Windows download queue in the plum theme",
+      "src": "/projects/downshift/downloads.webp",
+      "width": 1635,
+      "height": 962,
+      "alt": "Downshift on Windows with the video download queue and transfer details open",
       "kind": "screenshot",
-      "source": "https://github.com/ushalabs/Downshift-Downloader/blob/c568eff/assets/screenshots/downloads-plum.png"
-    },
-    {
-      "src": "/projects/downshift/light-dashboard.webp",
-      "width": 973,
-      "height": 732,
-      "alt": "Downshift Windows download settings in light mode",
-      "kind": "screenshot",
-      "source": "https://github.com/ushalabs/Downshift-Downloader/blob/c568eff/docs/Downshift%202.png"
+      "source": "User attachment 4, `codex-clipboard-bdee12bd-af68-47f7-b9f2-102cd9bc85c1.png`"
     },
     {
       "src": "/projects/downshift/icon.webp",
@@ -71,48 +55,38 @@
   ],
   "solvanta": [
     {
-      "src": "/projects/solvanta/overview.webp",
-      "width": 720,
-      "height": 1600,
-      "alt": "Earlier Solvanta Android prototype showing simulated energy flow",
-      "kind": "screenshot",
-      "source": "https://github.com/ushalabs/Solvanta-EnergyOS/blob/cf8f913/docs/ui-evidence/android/01-overview-dark.png"
+      "src": "/projects/solvanta/design-reference.webp",
+      "width": 1600,
+      "height": 1200,
+      "alt": "Solvanta design reference showing energy usage, home routines, and climate controls",
+      "kind": "reference",
+      "source": "User attachment 3, `codex-clipboard-19d64e33-6eb8-4cc3-93dd-d7c612482f98.png`"
     },
     {
-      "src": "/projects/solvanta/rooftop.webp",
-      "width": 720,
-      "height": 1600,
-      "alt": "Earlier Solvanta Android prototype showing a rooftop solar layout with fixture data",
-      "kind": "screenshot",
-      "source": "https://github.com/ushalabs/Solvanta-EnergyOS/blob/cf8f913/docs/ui-evidence/android/05-rooftop-dark.png"
-    }
-  ],
-  "aegisops": [
-    {
-      "src": "/projects/aegisops/operator-dashboard.webp",
-      "width": 1600,
-      "height": 767,
-      "alt": "AegisOps operator dashboard showing service health and incidents",
-      "kind": "screenshot",
-      "source": "https://github.com/ushalabs/AegisOps/blob/4a03afd/docs/screenshots/phase%2015/Home.png"
+      "src": "/projects/solvanta/icon.webp",
+      "width": 174,
+      "height": 174,
+      "alt": "Solvanta mark from its repository wordmark",
+      "kind": "icon",
+      "source": "https://github.com/ushalabs/Solvanta-EnergyOS/blob/cf8f913/docs/assets/solvanta-banner.png"
     }
   ],
   "sentinel-secops": [
     {
-      "src": "/projects/sentinel-secops/analyst-dashboard.webp",
-      "width": 1600,
-      "height": 866,
-      "alt": "Sentinel analyst dashboard with detections and incident queue",
+      "src": "/projects/sentinel-secops/demo-poster.webp",
+      "width": 1200,
+      "height": 472,
+      "alt": "First frame of Sentinel SecOps live detection demo",
       "kind": "screenshot",
-      "source": "https://github.com/ushalabs/Sentinel-SecOps/blob/086568d/docs/assets/readme/dashboard.png"
+      "source": "https://github.com/ushalabs/Sentinel-SecOps/blob/086568d/docs/assets/readme/live_demo.gif"
     },
     {
-      "src": "/projects/sentinel-secops/analytics.webp",
-      "width": 1220,
-      "height": 742,
-      "alt": "Sentinel security analytics dashboard",
-      "kind": "screenshot",
-      "source": "https://github.com/ushalabs/Sentinel-SecOps/blob/086568d/docs/assets/readme/analytics.png"
+      "src": "/projects/sentinel-secops/icon.webp",
+      "width": 171,
+      "height": 171,
+      "alt": "Sentinel SecOps shield mark",
+      "kind": "icon",
+      "source": "https://github.com/ushalabs/Sentinel-SecOps/blob/086568d/docs/assets/readme/banner.png"
     }
   ],
   "lumen": [
@@ -131,36 +105,32 @@
       "alt": "Lumen desktop overlay showing semantic search results",
       "kind": "screenshot",
       "source": "https://github.com/ushalabs/Lumen/blob/05bc8da/docs/screenshots/semantic_search.png"
+    },
+    {
+      "src": "/projects/lumen/icon.svg",
+      "width": 128,
+      "height": 128,
+      "alt": "Lumen app icon",
+      "kind": "icon",
+      "source": "https://github.com/ushalabs/Lumen/blob/05bc8da/assets/branding/lumen_logo.svg"
     }
   ],
   "leanmate": [
     {
-      "src": "/projects/leanmate/banner.webp",
-      "width": 1600,
-      "height": 900,
-      "alt": "LeanMate Fitness App repository banner",
+      "src": "/projects/leanmate/product-banner.webp",
+      "width": 1672,
+      "height": 941,
+      "alt": "LeanMate product artwork showing nutrition, training, and fitness goal screens",
       "kind": "banner",
-      "source": "https://github.com/ushalabs/LeanMate-Fitness-App/blob/eb468ebd0f792554589c1d3d4f11b68ede13db2f/docs/leanmate-github-banner.png"
-    }
-  ],
-  "ridego": [
+      "source": "User attachment 5, `codex-clipboard-c11e3489-975c-41ca-a874-09366b9eca16.png`"
+    },
     {
-      "src": "/projects/ridego/icon.webp",
-      "width": 512,
-      "height": 512,
-      "alt": "RideGo app icon",
+      "src": "/projects/leanmate/icon.webp",
+      "width": 192,
+      "height": 192,
+      "alt": "LeanMate app icon",
       "kind": "icon",
-      "source": "https://github.com/ushalabs/RideGo/blob/eaebb01/assets/icons/app_icon.png"
-    }
-  ],
-  "ionexa": [
-    {
-      "src": "/projects/ionexa/banner.svg",
-      "width": 1280,
-      "height": 360,
-      "alt": "IOneXa repository banner",
-      "kind": "banner",
-      "source": "https://github.com/ushalabs/IOneXa/blob/90007dc/assets/banner.svg"
+      "source": "https://github.com/ushalabs/LeanMate-Fitness-App/blob/eb468ebd0f792554589c1d3d4f11b68ede13db2f/assets/icon.png"
     }
   ]
 }

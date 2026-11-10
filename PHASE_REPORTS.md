@@ -28,3 +28,10 @@
 - 789fc66 Polish scroll, pointer, and navigation interactions
 - 8ef9e9f Add search metadata, social previews, and performance gates
 - b53526d Verify the production build and document Vercel readiness
+
+## Reference-led portfolio refresh
+
+- Aligned the homepage with the supplied reference and reduced the public catalog to seven projects.
+- Rebuilt the card previews with far-right tilted devices, single-screen phone crops, and genuine desktop and dark browser captures.
+- Moved case-study media below the written content, replaced the résumé section with a direct download, and standardized the site name to Usman Qureshi.
+- Added browser coverage for the card geometry, media playback, and direct PDF download.

@@ -1,48 +1,59 @@
 "use client";
 
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { RoundedBox } from "@react-three/drei/core/RoundedBox";
+import { Edges } from "@react-three/drei/core/Edges";
 import { Component, useEffect, useMemo, useRef, type ReactNode } from "react";
-import { Color, Group, MathUtils, Path, Shape, type Mesh } from "three";
+import { AdditiveBlending, CatmullRomCurve3, Color, Group, MathUtils, Vector3 } from "three";
 
-const layers = [
-  { depth: -.68, size: 1.12, color: "#514863", angle: -.08 },
-  { depth: -.39, size: 1.02, color: "#a6a0ad", angle: .06 },
-  { depth: -.10, size: .95, color: "#786695", angle: .15 },
-  { depth: .20, size: .88, color: "#c6bfd0", angle: .23 },
-  { depth: .51, size: .78, color: "#a18abf", angle: .3 },
-];
+const vertex = `
+  varying vec3 face;
+  varying vec2 tex;
+  void main() {
+    face = normal;
+    tex = uv;
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+  }
+`;
 
-function outline(scale: number, offset = 0) {
-  const points = Array.from({ length: 8 }, (_, index) => {
-    const angle = (index * Math.PI) / 4 + Math.PI / 8;
-    return [Math.cos(angle) * scale, Math.sin(angle) * scale] as const;
-  });
-  const path = offset ? new Path() : new Shape();
-  const ordered = offset ? points.reverse() : points;
-  ordered.forEach(([x, y], index) => index ? path.lineTo(x, y) : path.moveTo(x, y));
-  path.closePath();
-  return path;
-}
+const fragment = `
+  varying vec3 face;
+  varying vec2 tex;
+  void main() {
+    vec2 edge = min(tex, 1.0 - tex);
+    float rim = exp(-min(edge.x, edge.y) * 22.0);
+    float seam = exp(-abs(tex.x + tex.y - 1.0) * 48.0);
+    float facet = step(tex.x, tex.y) * .075 + step(1.0 - tex.x, tex.y) * .055;
+    float reflection = exp(-pow((tex.x * .68 + tex.y * .56 - .69) * 11.0, 2.0));
+    float side = abs(face.x) * .36 + abs(face.y) * .16 + abs(face.z) * .27;
+    vec3 color = mix(vec3(.085,.059,.157), vec3(.49,.39,.73), side + facet + reflection * .35);
+    color += vec3(.41,.26,.81) * rim * .47;
+    color += vec3(.14,.12,.22) * seam * .30;
+    color += vec3(.16,.10,.39) * smoothstep(.68, 1.0, tex.y) * abs(face.z);
+    gl_FragColor = vec4(color, .94);
+  }
+`;
 
-function Mechanism({ active }: { active: boolean }) {
-  const rotor = useRef<Group>(null);
-  const pieces = useRef<(Mesh | null)[]>([]);
-  const progress = useRef(0);
-  const aim = useRef({ x: 0, y: 0 });
+const initial = [-.48, -.55, -.43] as const;
+
+function Prism({ active }: { active: boolean }) {
+  const prism = useRef<Group>(null);
+  const aim = useRef({ x: 0, y: 0, scroll: 0 });
   const invalidate = useThree(state => state.invalidate);
   const canvas = useThree(state => state.gl.domElement);
-  const ring = useMemo(() => {
-    const shape = outline(1.36) as Shape;
-    shape.holes.push(outline(.82, 1));
-    return shape;
+  const orbit = useMemo(() => {
+    const angle = .55;
+    return new CatmullRomCurve3(Array.from({ length: 128 }, (_, index) => {
+      const t = (index / 128) * Math.PI * 2;
+      const x = Math.cos(t) * 2.48;
+      const y = Math.sin(t) * .8;
+      return new Vector3(x * Math.cos(angle) - y * Math.sin(angle), x * Math.sin(angle) + y * Math.cos(angle), -Math.sin(t) * 1.67);
+    }), true);
   }, []);
-  const extrusion = useMemo(() => ({ depth: .13, bevelEnabled: true, bevelSegments: 2, bevelSize: .035, bevelThickness: .035, steps: 1, curveSegments: 4 }), []);
 
   useEffect(() => {
     if (!active) return;
     function update() {
-      progress.current = Math.min(window.scrollY / Math.max(360, window.innerHeight * .8), 1);
+      aim.current.scroll = Math.min(window.scrollY / Math.max(400, window.innerHeight), 1);
       invalidate();
     }
     function point(event: PointerEvent) {
@@ -52,7 +63,8 @@ function Mechanism({ active }: { active: boolean }) {
       invalidate();
     }
     function reset() {
-      aim.current = { x: 0, y: 0 };
+      aim.current.x = 0;
+      aim.current.y = 0;
       invalidate();
     }
     update();
@@ -66,32 +78,33 @@ function Mechanism({ active }: { active: boolean }) {
     };
   }, [active, canvas, invalidate]);
 
-  useFrame((_, dt) => {
-    const group = rotor.current;
-    if (!group || !active) return;
-    const scroll = progress.current;
-    const targetX = -.54 - aim.current.y * .18 + scroll * .36;
-    const targetY = -.46 + aim.current.x * .24 - scroll * .52;
-    group.rotation.x = MathUtils.damp(group.rotation.x, targetX, 7, dt);
-    group.rotation.y = MathUtils.damp(group.rotation.y, targetY, 7, dt);
-    for (const [index, mesh] of pieces.current.entries()) {
-      if (mesh) mesh.position.z = MathUtils.damp(mesh.position.z, layers[index].depth * (1 + scroll * 1.8), 7, dt);
-    }
-    const gap = Math.abs(group.rotation.x - targetX) + Math.abs(group.rotation.y - targetY);
-    if (gap > .0005 || pieces.current.some((mesh, index) => mesh && Math.abs(mesh.position.z - layers[index].depth * (1 + scroll * 1.8)) > .001)) invalidate();
+  useFrame((_, delta) => {
+    if (!prism.current || !active) return;
+    const { rotation } = prism.current;
+    const targetX = initial[0] - aim.current.y * .24 + aim.current.scroll * .45;
+    const targetY = initial[1] + aim.current.x * .28 - aim.current.scroll * .72;
+    rotation.x = MathUtils.damp(rotation.x, targetX, 7, delta);
+    rotation.y = MathUtils.damp(rotation.y, targetY, 7, delta);
+    if (Math.abs(rotation.x - targetX) + Math.abs(rotation.y - targetY) > .0005) invalidate();
   });
 
-  return <group ref={rotor} rotation={[-.54, -.46, -.30]}>
-    {layers.map(({ size, depth, color, angle }, index) => <mesh key={depth} ref={mesh => { pieces.current[index] = mesh; }} position-z={depth} scale={[size, size, 1]} rotation-z={angle}>
-      <extrudeGeometry args={[ring, extrusion]} />
-      <meshStandardMaterial color={color} metalness={.28} roughness={.36} />
-    </mesh>)}
-    <mesh position={[0, 0, .05]} rotation={[Math.PI / 2, 0, .2]}><cylinderGeometry args={[.49, .49, .94, 8, 1]} /><meshStandardMaterial color="#272332" metalness={.3} roughness={.45} /></mesh>
-    <RoundedBox args={[.64, .64, .21]} radius={.035} smoothness={2} position={[0, 0, .62]} rotation-z={Math.PI / 4}>
-      <meshStandardMaterial color="#c1a7f3" metalness={.26} roughness={.32} />
-    </RoundedBox>
-    {[-1, 1].flatMap(x => [-1, 1].map(y => <mesh key={`${x}/${y}`} position={[x * .68, y * .68, .69]} rotation-x={Math.PI / 2}><cylinderGeometry args={[.055, .055, .03, 12]} /><meshStandardMaterial color="#241e30" metalness={.5} roughness={.4} /></mesh>))}
-  </group>;
+  return <>
+    <group ref={prism} rotation={[...initial]}>
+      <mesh>
+        <boxGeometry args={[2.35, 2.35, 2.35]} />
+        <shaderMaterial vertexShader={vertex} fragmentShader={fragment} transparent />
+        <Edges color="#c4acff" threshold={14} />
+      </mesh>
+    </group>
+    <mesh>
+      <tubeGeometry args={[orbit, 128, .011, 6, true]} />
+      <meshBasicMaterial color="#d8b8ff" toneMapped={false} />
+    </mesh>
+    <mesh renderOrder={2}>
+      <tubeGeometry args={[orbit, 128, .038, 6, true]} />
+      <meshBasicMaterial color="#a06aff" blending={AdditiveBlending} opacity={.19} transparent depthWrite={false} />
+    </mesh>
+  </>;
 }
 
 class SceneBoundary extends Component<{ children: ReactNode; onError: () => void }, { failed: boolean }> {
@@ -102,16 +115,12 @@ class SceneBoundary extends Component<{ children: ReactNode; onError: () => void
 }
 
 export default function MechanicalScene({ visible, onReady, onError }: { visible: boolean; onReady: () => void; onError: () => void }) {
-  return <SceneBoundary onError={onError}><Canvas camera={{ position: [0, 0, 6.4], fov: 39 }} dpr={[1, 1.45]} frameloop="demand" gl={{ antialias: true, alpha: true, powerPreference: "low-power" }}
+  return <SceneBoundary onError={onError}><Canvas camera={{ position: [0, 0, 7.55], fov: 42 }} dpr={[1, 1.5]} frameloop="demand" gl={{ antialias: true, alpha: true, powerPreference: "low-power" }}
     onCreated={({ gl }) => {
-      gl.setClearColor(new Color("#0b0b0f"), 0);
+      gl.setClearColor(new Color("#101019"), 0);
       gl.domElement.addEventListener("webglcontextlost", onError, { once: true });
       onReady();
     }}>
-    <ambientLight intensity={.8} />
-    <directionalLight position={[-3, 5, 5]} intensity={2.7} color="#e8e4fa" />
-    <directionalLight position={[4, -2, 2]} intensity={1.1} color="#8e6bd6" />
-    <directionalLight position={[0, 3, -3]} intensity={1.7} color="#cfbedc" />
-    <Mechanism active={visible} />
+    <Prism active={visible} />
   </Canvas></SceneBoundary>;
 }

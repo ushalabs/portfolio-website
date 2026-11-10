@@ -5,25 +5,41 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { navigation } from "@/data/site";
 
-export function SectionNavigation() {
+const railItems = [
+  { label: "Home", href: "/#home" },
+  { label: "Projects", href: "/#work" },
+  { label: "Stack", href: "/#stack" },
+  { label: "Experience", href: "/#experience" },
+  { label: "About", href: "/#about" },
+  { label: "Contact", href: "/#contact" },
+];
+
+function useActiveSection() {
   const pathname = usePathname();
-  const [active, setActive] = useState("");
+  const [active, setActive] = useState("home");
   useEffect(() => {
     if (pathname !== "/") return;
-    const sections = navigation.map(item => document.getElementById(item.href.split("#")[1]));
+    const sections = railItems.map(item => document.getElementById(item.href.split("#")[1]));
     const observer = new IntersectionObserver(entries => {
       for (const entry of entries) if (entry.isIntersecting) setActive(entry.target.id);
     }, { rootMargin: "-25% 0px -52% 0px" });
     sections.forEach(section => { if (section) observer.observe(section); });
-    function clearAtTop() { if (window.scrollY < 100) setActive(""); }
+    function clearAtTop() { if (window.scrollY < 80) setActive("home"); }
     window.addEventListener("scroll", clearAtTop, { passive: true });
     return () => { observer.disconnect(); window.removeEventListener("scroll", clearAtTop); };
   }, [pathname]);
 
-  return <nav aria-label="Primary" className="desktop-nav">{navigation.map((item, index) => {
-    const current = pathname.startsWith("/projects") ? index === 0 : item.href === `/#${active}`;
-    return <Link key={item.href} href={item.href} aria-current={current ? "location" : undefined}>{item.label}</Link>;
-  })}</nav>;
+  return pathname.startsWith("/projects") ? "/#work" : pathname === "/" ? `/#${active}` : null;
+}
+
+export function SectionNavigation() {
+  const current = useActiveSection();
+  return <nav aria-label="Primary" className="desktop-nav">{navigation.map(item => <Link key={item.href} href={item.href} aria-current={current === item.href ? "location" : undefined}>{item.label}</Link>)}</nav>;
+}
+
+export function SectionRail() {
+  const current = useActiveSection();
+  return <nav className="section-rail" aria-label="Page sections"><ol>{railItems.map((item, index) => <li key={item.href}><Link href={item.href} aria-current={current === item.href ? "location" : undefined}><span aria-hidden="true">0{index + 1}</span>{item.label}</Link></li>)}</ol></nav>;
 }
 
 export function InteractionLayer() {
@@ -59,14 +75,10 @@ export function InteractionLayer() {
       cleanup?.();
       cleanup = undefined;
       if (!preference.matches) return;
-      const [{ gsap }, { ScrollTrigger }] = await Promise.all([import("gsap"), import("gsap/ScrollTrigger")]);
+      const { gsap } = await import("gsap");
       if (disposed || !preference.matches) return;
-      gsap.registerPlugin(ScrollTrigger);
       const context = gsap.context(() => {
         gsap.from(".hero-copy", { y: 14, duration: .65, ease: "power2.out", clearProps: "transform" });
-        gsap.utils.toArray<HTMLElement>(".featured-copy").forEach(element => {
-          gsap.from(element, { y: 22, ease: "power2.out", duration: .55, scrollTrigger: { trigger: element, start: "top 91%", once: true } });
-        });
       });
       cleanup = () => context.revert();
     }
