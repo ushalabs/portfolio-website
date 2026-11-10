@@ -37,7 +37,7 @@ export default async function ProjectPage({ params }: Props) {
       <SectionLabel index={String(project.order).padStart(2, "0")}>{project.status}</SectionLabel>
       <h1 className="section-title page-title">{project.title}<span className="accent">.</span></h1>
       <p className="lead">{project.shortDescription}</p>
-      <ProjectActions project={project} detail={false} />
+      <ProjectActions project={project} />
     </div>
     <div className="detail-grid">
       <section className="detail-block detail-overview"><h2>Overview</h2><p>{project.longDescription}</p><h3>Technology</h3><Tags values={project.techStack} /></section>

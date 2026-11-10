@@ -6,11 +6,6 @@ export function ProjectImage({ media, sizes, className }: { media: ProjectMedia;
   return <Image src={media.src} alt={media.alt} width={media.width} height={media.height} sizes={sizes} className={className} />;
 }
 
-export function ProjectIcon({ project }: { project: Project }) {
-  const { icon } = project;
-  return <span className="project-icon"><Image src={icon.src} width={icon.width} height={icon.height} sizes="48px" alt="" /></span>;
-}
-
 export function ProjectVisual({ project }: { project: Project }) {
   const media = project.thumbnail;
   if (!media) return null;

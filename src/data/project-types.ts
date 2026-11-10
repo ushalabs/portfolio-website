@@ -26,7 +26,7 @@ export type Project = {
   featured: boolean;
   order: number;
   thumbnail: ProjectMedia | null;
-  icon: ProjectMedia;
+  icon: ProjectMedia | null;
   gallery: readonly ProjectMedia[];
   demoVideo?: string;
   demoAnimation?: string;

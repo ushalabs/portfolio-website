@@ -35,3 +35,9 @@
 - Rebuilt the card previews with far-right tilted devices, single-screen phone crops, and genuine desktop and dark browser captures.
 - Moved case-study media below the written content, replaced the résumé section with a direct download, and standardized the site name to Usman Qureshi.
 - Added browser coverage for the card geometry, media playback, and direct PDF download.
+
+## Editorial Projects redesign
+
+- Replaced homepage and archive previews with compact repository-icon cards and separate GitHub actions.
+- Preserved the project order, category filters, and case-study media. Added pointer-responsive tilt with a reduced-motion fallback.
+- Verified all seven repository and icon-source URLs and the Google Play listing.

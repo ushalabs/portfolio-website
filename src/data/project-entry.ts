@@ -12,8 +12,7 @@ type ProjectEntry = Omit<Project, "id" | "githubUrl" | "thumbnail" | "icon" | "g
 export function project({ repo, revision, evidence, demoUrl, playStoreUrl, ...entry }: ProjectEntry): Project {
   const githubUrl = `https://github.com/ushalabs/${repo}`;
   const assets = (media as Record<string, ProjectMedia[]>)[entry.slug] ?? [];
-  const icon = assets.find(asset => asset.kind === "icon");
-  if (!icon) throw new Error(`Missing repository icon for ${entry.slug}`);
+  const icon = assets.find(asset => asset.kind === "icon") ?? null;
   const gallery = assets.filter(asset => asset.kind !== "icon");
   return {
     ...entry, id: entry.slug, githubUrl, icon, gallery, thumbnail: gallery[0] ?? null,

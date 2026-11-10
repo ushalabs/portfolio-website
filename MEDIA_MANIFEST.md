@@ -1,6 +1,6 @@
 # Project media manifest
 
-Homepage previews use original project images, the generated lighting plate, and device frames. Case-study media is shown below the written content.
+Project listings display repository-sourced icons and logos. Screenshots, artwork, and recordings appear on case-study pages below the written content.
 
 | Portfolio asset | Original | Output | Source |
 | --- | --- | --- | --- |
@@ -31,20 +31,3 @@ The decorative night shoreline was generated with the built-in image tool using 
 The built-in image tool generated the background. The optimized asset is `public/hero/night-shore.webp` at 1920 × 768. Prompt follows.
 
 > Create a wide decorative website hero background using attached image #1 only as visual direction for the environment. A low jagged graphite mountain shoreline at night, dark still water below it with a thin violet reflection beneath the center-right, and dark near-black indigo sky above. Compose as an ultra-wide cinematic panorama: the mountain skyline sits in the lower third, runs primarily across the right two-thirds, with low jagged rocks whose texture is picked out by sparse lavender rim light. Keep the left third and upper 65% nearly black and calm for separate HTML copy and a live 3D sculpture. Blend edges into #101019, realistic stone and dark water, restrained contrast, no stars or large beams. Render only the unoccupied background landscape. Exclude all interface, people, words, logos, buttons, diagrams, cubes, crystals, and orbit lines. Landscape output with roughly 2.5:1 framing.
-
-## Homepage preview compositions
-
-| Additional preview asset | Source |
-| --- | --- |
-| `/projects/meetingminutes-ai/dark-preview.webp` | Native dark dashboard rendered from [repository revision 3f18910](https://github.com/ushalabs/MeetingMinutes-AI/tree/3f18910/frontend) with local sample data based on the repository visual test, 1200 × 700 |
-| `/projects/downshift/card-preview.webp` | [Repository plum theme and verified test download](https://github.com/ushalabs/Downshift-Downloader/blob/c568eff/assets/screenshots/downloads-plum.png), 1075 × 713 |
-| `/projects/sentinel-secops/analyst-dark-preview.webp` | [Repository dark analyst dashboard](https://github.com/ushalabs/Sentinel-SecOps/blob/086568d/docs/assets/phase%208/01_analyst_dashboard.png), 1200 × 750 |
-| `/projects/solvanta/solar-phone-preview.webp` | New supplied Solvanta phone artwork, `codex-clipboard-1fc1d48c-b7eb-4298-b71c-7ec35de169be.png`, 202 × 543 |
-| Velora and LeanMate phone previews | Browser crops from the supplied Velora light-mode panel and the LeanMate home screen within its supplied banner |
-| Lumen desktop preview | Repository semantic search capture, already listed in the case-study assets |
-| `/projects/preview-lighting.webp` | Built-in image generation, 1000 × 563 |
-
-
-The built-in image tool generated the card lighting plate with this prompt.
-
-> Create one wide background-only studio lighting plate for seven software project previews on the dark Usha Labs portfolio. This is a subtle photographic texture behind separate, real app screenshots and CSS-built device frames. Canvas near black indigo #14131e on the left and along the top, almost featureless for overlaying real text. On the lower-right only, a soft diagonal amethyst key light skims a graphite studio surface, with a faint curved violet reflection and a cool white specular line. Tight restrained contrast, no visible object silhouette, no hard foreground, no clutter. Richest area at the right edge and bottom third. Wide 16:9 landscape. Absolutely no app interfaces, devices, screens, text, letters, logos, people, watermark, nebula, stars, or particles.

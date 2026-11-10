@@ -3,14 +3,8 @@
 .filters { display: flex; flex-wrap: wrap; gap: .5rem; border: 0; padding: 0; margin: 2.1rem 0 1rem; }
 .filter-option { position: relative; cursor: pointer; }
 .filter-option input { position: absolute; width: 1px; height: 1px; opacity: 0; }
-.filter-option span { min-height: 44px; display: flex; align-items: center; padding: .45rem .85rem; border: 1px solid var(--border); color: var(--muted); font-size: .85rem; }
+.filter-option span { min-height: 44px; display: flex; align-items: center; padding: .45rem .85rem; border: 1px solid var(--border); border-radius: .4rem; color: var(--muted); font-size: .85rem; }
 .filter-option:hover span { color: var(--text); border-color: var(--muted); }
-.filter-option input:checked + span { color: #15111d; background: var(--accent); border-color: var(--accent); }
-.filter-option input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 4px; }
+.filter-option input:checked + span { color: #f0e9ff; background: #1c1826; border-color: #9470ed; }
+.filter-option input:focus-visible + span { outline: 2px solid #9470ed; outline-offset: 4px; }
 .directory-count { color: var(--muted); margin: 0 0 1rem; }
-.directory-list { margin: 0; padding: 0; list-style: none; }
-.directory-list > li { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; gap: clamp(.8rem, 3vw, 2rem); padding-block: clamp(1.4rem, 3vw, 2.5rem); border-top: 1px solid var(--border); }
-.directory-list > li > .project-icon { margin-top: .25rem; }
-.directory-copy h2 { font-size: clamp(2.1rem, 4vw, 4rem); font-weight: 585; line-height: 1; letter-spacing: -.07em; margin: .45rem 0; }
-.directory-copy > .mono { color: var(--accent); }
-.directory-copy .lead { margin: .55rem 0 1rem; font-size: 1rem; }

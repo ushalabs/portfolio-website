@@ -20,9 +20,9 @@ for (const width of [360, 390, 768, 1024, 1440, 1920]) {
     await page.goto("/");
     await page.getByRole("link", { name: "Explore Projects" }).click();
     await expect(page).toHaveURL(/#work$/);
-    await expect(page.locator("[data-featured] h3")).toHaveText(["Velora", "MeetingMinutes AI", "Downshift", "Sentinel SecOps", "Lumen", "Solvanta", "LeanMate"]);
+    await expect(page.locator("[data-project] h3")).toHaveText(["Velora", "MeetingMinutes AI", "Downshift", "Sentinel SecOps", "Lumen", "Solvanta", "LeanMate"]);
     await expect(page.locator("#work .project-icon img")).toHaveCount(7);
-    await expect(page.locator("#work [data-preview] img")).toHaveCount(7);
+    await expect(page.locator("#work img")).toHaveCount(7);
     if (width <= 830) {
       await page.getByLabel("Open navigation").click();
       await page.getByRole("navigation", { name: "Mobile" }).getByRole("link", { name: "About" }).click();
@@ -56,7 +56,7 @@ test("keyboard filters, quick navigation, and disclosures", async ({ page }) => 
   await page.keyboard.press("Escape");
   await expect(page.getByRole("dialog")).toBeHidden();
   await page.goto("/#stack");
-  await page.getByText("Mobile", { exact: true }).click();
+  await page.locator("#stack").getByText("Mobile", { exact: true }).click();
   await expect(page.getByRole("link", { name: "In practice · Velora" })).toBeVisible();
 });
 
@@ -64,32 +64,15 @@ test("homepage project grid pairs the cards and centers the seventh", async ({ p
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/");
   await expect(page.locator("h1")).toHaveText("Usman Qureshi");
-  await expect(page.locator("#work [data-preview]")).toHaveCount(7);
-  const cards = await page.locator("[data-featured]").evaluateAll(links => links.map(link => {
-    const { x, y, width } = link.getBoundingClientRect();
+  await expect(page.locator("#work .project-card")).toHaveCount(7);
+  const cards = await page.locator("[data-project]").evaluateAll(items => items.map(item => {
+    const { x, y, width } = item.getBoundingClientRect();
     return { x, y, width };
   }));
   expect(cards[0].y).toBe(cards[1].y);
   expect(cards[2].y).toBeGreaterThan(cards[0].y);
   expect(cards[6].x + cards[6].width / 2).toBeCloseTo(720, 0);
   expect(cards[6].width).toBeCloseTo(cards[0].width, 0);
-  const previews = await page.locator(".preview-device").evaluateAll(devices => devices.map(device => {
-    const card = device.closest(".selected-project")!.getBoundingClientRect();
-    const frame = device.getBoundingClientRect();
-    const tilt = new DOMMatrix(getComputedStyle(device).transform);
-    return {
-      center: (frame.x + frame.width / 2 - card.x) / card.width,
-      topEdgeClimbsRight: tilt.m12 < 0,
-      bottomLeansLeft: tilt.m21 < 0,
-    };
-  }));
-  expect(previews.every(preview => preview.center > .66 && preview.topEdgeClimbsRight && preview.bottomLeansLeft)).toBe(true);
-  for (const slug of ["velora", "leanmate", "solvanta"]) {
-    await expect(page.locator(`[data-featured="${slug}"] [data-preview]`)).toHaveAttribute("data-preview", "mobile");
-  }
-  await expect(page.locator('[data-featured="meetingminutes-ai"] .preview-screen img')).toHaveAttribute("src", /dark-preview/);
-  await expect(page.locator('[data-featured="sentinel-secops"] .preview-screen img')).toHaveAttribute("src", /analyst-dark-preview/);
-  await expect(page.locator('[data-featured="solvanta"] .preview-screen img')).toHaveAttribute("src", "/projects/solvanta/solar-phone-preview.webp");
   const scrollControl = await page.locator(".hero-scroll").evaluate(link => {
     const arrow = link.querySelector("svg")!.getBoundingClientRect();
     const control = link.getBoundingClientRect();
@@ -114,6 +97,67 @@ test("touch navigation and static hero on a mobile device", async ({ browser, ba
   }
 });
 
+test("editorial cards use repository icons and expose distinct working destinations", async ({ page, context }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  for (const route of ["/#work", "/projects"]) {
+    await page.goto(route);
+    await expect(page.locator(".project-card img")).toHaveCount(7);
+    await expect(page.locator(".project-card video, .project-card picture, .project-card canvas")).toHaveCount(0);
+    for (const project of projects) {
+      const card = page.locator(`[data-project="${project.slug}"]`);
+      await expect(card.getByRole("link", { name: project.title, exact: true })).toHaveAttribute("href", `/projects/${project.slug}`);
+      await expect(card.getByRole("link", { name: `GitHub for ${project.title}` })).toHaveAttribute("href", project.githubUrl);
+      await expect(card.locator(".project-card-description")).toHaveText(project.shortDescription);
+      await expect(card.getByRole("list", { name: "Technologies" }).locator("li")).toHaveText([...project.tags]);
+      const iconPath = await card.locator("img").evaluate(img => {
+        const url = new URL((img as HTMLImageElement).src);
+        return url.searchParams.get("url") ?? url.pathname;
+      });
+      expect(iconPath).toBe(project.icon?.src);
+    }
+  }
+
+  const velora = page.locator('[data-project="velora"]');
+  await expect(velora.getByRole("link", { name: "Google Play" })).toHaveAttribute("href", projects[0].playStoreUrl!);
+  const github = projects[0].githubUrl;
+  await context.route(github, route => route.fulfill({ body: "Repository destination" }));
+  const detailLink = velora.getByRole("link", { name: "Velora", exact: true });
+  await detailLink.focus();
+  await page.keyboard.press("Tab");
+  const githubLink = velora.getByRole("link", { name: "GitHub for Velora" });
+  await expect(githubLink).toBeFocused();
+  const popupPromise = page.waitForEvent("popup");
+  await page.keyboard.press("Enter");
+  const popup = await popupPromise;
+  await expect(popup).toHaveURL(github);
+  await expect(page).toHaveURL(/\/projects$/);
+  await popup.close();
+
+  const description = velora.locator(".project-card-description");
+  await description.scrollIntoViewIfNeeded();
+  const box = (await description.boundingBox())!;
+  await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
+  await expect(page).toHaveURL(/\/projects\/velora$/);
+});
+
+test("project card tilt responds to the pointer and respects reduced motion", async ({ page }) => {
+  await page.goto("/projects");
+  const slot = page.locator('[data-project="velora"]');
+  await slot.scrollIntoViewIfNeeded();
+  const card = slot.locator(".project-card");
+  const box = (await slot.boundingBox())!;
+  await page.mouse.move(box.x + box.width * .9, box.y + box.height * .15);
+  await expect(card).not.toHaveCSS("transform", "none");
+  const tilt = await slot.evaluate(element => {
+    const style = getComputedStyle(element);
+    return Math.hypot(parseFloat(style.getPropertyValue("--project-tilt-x")), parseFloat(style.getPropertyValue("--project-tilt-y")));
+  });
+  expect(tilt).toBeGreaterThan(2);
+  expect(tilt).toBeLessThan(4);
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await expect(card).toHaveCSS("transform", "none");
+});
+
 test("project routes, media, canonical tags, previews and 404", async ({ page, request }) => {
   for (const project of projects) {
     const route = `/projects/${project.slug}`;
@@ -122,7 +166,7 @@ test("project routes, media, canonical tags, previews and 404", async ({ page, r
     await expect(page.getByRole("link", { name: `GitHub for ${project.title}` })).toHaveAttribute("href", project.githubUrl);
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", new RegExp(`${route}$`));
     await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", new RegExp(`/social/${project.slug}$`));
-    for (const image of [project.icon, ...project.gallery]) {
+    for (const image of (project.icon ? [project.icon, ...project.gallery] : project.gallery)) {
       const response = await request.get(image.src);
       expect(response.status()).toBe(200);
       expect(response.headers()["content-type"]).toMatch(/^image\//);
@@ -226,7 +270,7 @@ test("WebGL unavailable and no JavaScript keep the portfolio usable", async ({ b
     const page = await context.newPage();
     await page.goto(baseURL!);
     await expect(page.getByRole("heading", { name: "Projects", exact: true })).toBeVisible();
-    await page.locator('[data-featured="velora"]').click();
+    await page.getByRole("link", { name: "Velora", exact: true }).click();
     await expect(page).toHaveURL(/\/projects\/velora$/);
   } finally {
     await context.close();

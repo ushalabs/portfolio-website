@@ -12,7 +12,7 @@ GitHub discovery used the GitHub connector’s repository search for `user:ushal
 | Solvanta | [Solvanta-EnergyOS](https://github.com/ushalabs/Solvanta-EnergyOS) | Supplied design reference, labeled as such |
 | LeanMate | [LeanMate-Fitness-App](https://github.com/ushalabs/LeanMate-Fitness-App) | Supplied product artwork |
 
-Homepage and archive marks come from each project’s repository. Sentinel’s favicon is the default Vercel mark, so its shield comes from the repository banner. Solvanta’s nominal icon files are wide design sheets, so its lime mark was isolated from the repository wordmark. Homepage artwork places actual project media inside frames that reflect the software’s platform. The case-study visuals sit after the written content. Exact sources and dimensions are listed in the [media manifest](MEDIA_MANIFEST.md).
+Homepage and archive marks come from each project’s repository. Sentinel’s favicon is the default Vercel mark, so its shield comes from the repository banner. Solvanta’s nominal icon files are wide design sheets, so its lime mark was isolated from the repository wordmark. The homepage and archive use the same editorial cards. Case-study visuals sit after the written content. Exact sources and dimensions are listed in the [media manifest](MEDIA_MANIFEST.md).
 
 The earlier AegisOps, AI Sales Agent, RideGo, IOneXa, and ScrapWorks entries are available in the previous local revision. The current archive, case-study routes, sitemap, and quick navigation list the selected seven projects.
 
