@@ -4,12 +4,12 @@ GitHub discovery used the GitHub connector’s repository search for `user:ushal
 
 | Project | Verified GitHub repository | Detail media |
 | --- | --- | --- |
-| Velora | [Velora-Chat-App](https://github.com/ushalabs/Velora-Chat-App) | Supplied dark- and light-mode chat composition |
+| Velora | [Velora-Chat-App](https://github.com/ushalabs/Velora-Chat-App) | Supplied chat themes, post comments, Stories, and Add Friend captures |
 | MeetingMinutes AI | [MeetingMinutes-AI](https://github.com/ushalabs/MeetingMinutes-AI) | Local copy of the exact screen recording found in Downshift’s download folder |
 | Downshift | [Downshift-Downloader](https://github.com/ushalabs/Downshift-Downloader) | Supplied Windows download queue capture |
 | Sentinel SecOps | [Sentinel-SecOps](https://github.com/ushalabs/Sentinel-SecOps) | Repository’s original animated live demo, with a still preview and play control |
-| Lumen | [Lumen](https://github.com/ushalabs/Lumen) | Repository filename and semantic search captures |
-| Solvanta | [Solvanta-EnergyOS](https://github.com/ushalabs/Solvanta-EnergyOS) | Supplied design reference, labeled as such |
+| Lumen | [Lumen](https://github.com/ushalabs/Lumen) | Seven distinct repository screenshots with workflow captions |
+| Solvanta | [Solvanta-EnergyOS](https://github.com/ushalabs/Solvanta-EnergyOS) | Six individual phone screens from the supplied design board, labeled as design references |
 | LeanMate | [LeanMate-Fitness-App](https://github.com/ushalabs/LeanMate-Fitness-App) | Supplied product artwork |
 
 Homepage and archive marks come from each project’s repository. Sentinel’s favicon is the default Vercel mark, so its shield comes from the repository banner. Solvanta’s nominal icon files are wide design sheets, so its lime mark was isolated from the repository wordmark. The homepage and archive use the same editorial cards. Case-study visuals sit after the written content. Exact sources and dimensions are listed in the [media manifest](MEDIA_MANIFEST.md).

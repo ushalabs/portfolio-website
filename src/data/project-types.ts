@@ -6,6 +6,7 @@ export type ProjectMedia = {
   width: number;
   height: number;
   alt: string;
+  caption?: string;
   kind: "screenshot" | "icon" | "banner" | "reference";
   source: string;
 };

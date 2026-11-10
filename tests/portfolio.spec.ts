@@ -145,6 +145,7 @@ test("project card tilt responds to the pointer and respects reduced motion", as
   const slot = page.locator('[data-project="velora"]');
   await slot.scrollIntoViewIfNeeded();
   const card = slot.locator(".project-card");
+  await expect(card.locator(".project-icon")).toHaveCSS("border-top-width", "0px");
   const box = (await slot.boundingBox())!;
   await page.mouse.move(box.x + box.width * .9, box.y + box.height * .15);
   await expect(card).not.toHaveCSS("transform", "none");
@@ -209,12 +210,15 @@ test("case studies keep the supplied and animated media below the write-up", asy
   await page.goto("/projects/meetingminutes-ai");
   const video = page.getByLabel("MeetingMinutes AI screen recording");
   const dimensions = await page.locator(".detail").evaluate(detail => {
-    const media = detail.querySelector(".case-media-stack")!.getBoundingClientRect();
+    const media = detail.querySelector(".case-media-wide")!.getBoundingClientRect();
     const copy = detail.querySelector(".detail-grid")!.getBoundingClientRect();
-    return { ratio: media.width / detail.getBoundingClientRect().width, belowCopy: media.top > copy.bottom };
+    const back = detail.querySelector(".back-link")!.getBoundingClientRect();
+    const header = document.querySelector(".site-header")!.getBoundingClientRect();
+    return { ratio: media.width / detail.getBoundingClientRect().width, belowCopy: media.top > copy.bottom, topGap: back.top - header.bottom };
   });
-  expect(dimensions.ratio).toBeCloseTo(.4, 2);
+  expect(dimensions.ratio).toBeCloseTo(.7, 2);
   expect(dimensions.belowCopy).toBe(true);
+  expect(dimensions.topGap).toBeLessThan(32);
   await expect(page.getByRole("heading", { name: "Source material" })).toHaveCount(0);
   await expect(video).toHaveAttribute("preload", "none");
   await expect(video.locator("source")).toHaveAttribute("src", "/projects/meetingminutes-ai/demo.mp4");
@@ -236,8 +240,42 @@ test("case studies keep the supplied and animated media below the write-up", asy
   await page.getByRole("button", { name: "Stop GIF" }).click();
   await expect(gif).toHaveAttribute("src", /demo-poster/);
 
-  await page.goto("/projects/solvanta");
-  await expect(page.locator(".case-media figcaption")).toContainText("Design reference");
+  for (const slug of ["sentinel-secops", "leanmate", "downshift"]) {
+    if (slug !== "sentinel-secops") await page.goto(`/projects/${slug}`);
+    const ratio = await page.locator(".case-media-wide").evaluate(media => media.clientWidth / media.closest(".detail")!.clientWidth);
+    expect(ratio).toBeCloseTo(.7, 2);
+  }
+});
+
+test("Velora, Solvanta and Lumen galleries show distinct labeled visuals side by side", async ({ page }) => {
+  for (const { slug, title, count } of [
+    { slug: "velora", title: "Velora", count: 4 },
+    { slug: "solvanta", title: "Solvanta", count: 6 },
+    { slug: "lumen", title: "Lumen", count: 7 },
+  ]) {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto(`/projects/${slug}`);
+    const gallery = page.getByRole("region", { name: `${title} gallery` });
+    const captions = await gallery.locator("figcaption").allTextContents();
+    expect(new Set(captions).size).toBe(count);
+    const images = gallery.getByRole("img");
+    await expect(images).toHaveCount(count);
+    const first = (await images.nth(0).boundingBox())!;
+    const second = (await images.nth(1).boundingBox())!;
+    expect(second.y).toBeCloseTo(first.y, 0);
+    expect(second.x).toBeGreaterThan(first.x + first.width);
+    if (slug === "solvanta") {
+      await expect(page.getByText("Mobile UI design reference")).toBeVisible();
+      await expect(images.first()).toHaveAttribute("height", "1280");
+    }
+
+    await page.setViewportSize({ width: 390, height: 844 });
+    expect(await gallery.evaluate(element => element.scrollWidth > element.clientWidth)).toBe(true);
+    await gallery.focus();
+    await page.keyboard.press("ArrowRight");
+    await expect.poll(() => gallery.evaluate(element => element.scrollLeft)).toBeGreaterThan(0);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390);
+  }
 });
 
 test("direct contact, copy feedback, and the top-bar PDF download", async ({ page, context, request }) => {

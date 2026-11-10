@@ -13,10 +13,8 @@
 .header-actions .command-trigger { display: none; }
 .case-media { border: 1px solid #343042; border-radius: 1rem; overflow: hidden; margin: 0; background: #171620; }
 .case-media img, .case-media video { display: block; width: 100%; height: auto; margin-inline: auto; }
-.case-media-portrait img { width: min(100%, 484px); }
 .case-media video { aspect-ratio: 16 / 9; background: #0b0b11; }
 .case-media figcaption { display: flex; flex-wrap: wrap; align-items: center; gap: .55rem 1rem; color: var(--muted); padding: .85rem 1.2rem; font-size: .85rem; border-top: 1px solid #343042; }
-.case-media figcaption strong { color: var(--text); font-weight: 620; }
 @media (min-width: 831px) { :root { --header-height: 5.25rem; } }
 @media (max-width: 1150px) { .header-inner { width: calc(100% - var(--gutter) * 2); padding-inline-start: 0; } }
 @media (max-width: 480px) {

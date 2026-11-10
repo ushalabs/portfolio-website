@@ -6,7 +6,35 @@
       "height": 600,
       "alt": "Velora conversations, groups, and friend requests in dark and light themes",
       "kind": "screenshot",
-      "source": "User attachment 2, `codex-clipboard-b3700fce-9c27-4dd2-8cb2-56a2f5a66bb4.png`"
+      "source": "User attachment 2, `codex-clipboard-b3700fce-9c27-4dd2-8cb2-56a2f5a66bb4.png`",
+      "caption": "Light and dark chat themes"
+    },
+    {
+      "src": "/projects/velora/post-comments.webp",
+      "width": 361,
+      "height": 659,
+      "alt": "Velora post with the comments sheet open, showing replies and reactions",
+      "caption": "Post comments",
+      "kind": "screenshot",
+      "source": "User attachment, `codex-clipboard-3cdebd21-7af0-48bd-8b2c-bd81b09a782c.png`"
+    },
+    {
+      "src": "/projects/velora/stories.webp",
+      "width": 356,
+      "height": 660,
+      "alt": "Velora Stories screen with personal and friends’ stories and the privacy control",
+      "caption": "Stories and privacy",
+      "kind": "screenshot",
+      "source": "User attachment, `codex-clipboard-d571c6ed-4560-4dbe-bbe3-b7e7ca566ace.png`"
+    },
+    {
+      "src": "/projects/velora/add-friend.webp",
+      "width": 355,
+      "height": 656,
+      "alt": "Velora username search result with Add Friend and Direct Message actions",
+      "caption": "Find and add friends",
+      "kind": "screenshot",
+      "source": "User attachment, `codex-clipboard-7c777db7-c546-43c8-8546-ea7569300610.png`"
     },
     {
       "src": "/projects/velora/icon.webp",
@@ -42,7 +70,8 @@
       "height": 962,
       "alt": "Downshift on Windows with the video download queue and transfer details open",
       "kind": "screenshot",
-      "source": "User attachment 4, `codex-clipboard-bdee12bd-af68-47f7-b9f2-102cd9bc85c1.png`"
+      "source": "User attachment 4, `codex-clipboard-bdee12bd-af68-47f7-b9f2-102cd9bc85c1.png`",
+      "caption": "Windows download queue and transfer details"
     },
     {
       "src": "/projects/downshift/icon.webp",
@@ -55,12 +84,58 @@
   ],
   "solvanta": [
     {
-      "src": "/projects/solvanta/design-reference.webp",
-      "width": 1600,
-      "height": 1200,
-      "alt": "Solvanta design reference showing energy usage, home routines, and climate controls",
+      "src": "/projects/solvanta/energy-overview.webp",
+      "width": 472,
+      "height": 1280,
+      "alt": "Solvanta concept showing home energy flow and daily solar generation",
+      "caption": "Energy overview",
       "kind": "reference",
-      "source": "User attachment 3, `codex-clipboard-19d64e33-6eb8-4cc3-93dd-d7c612482f98.png`"
+      "source": "User design board, `codex-clipboard-844cc163-2809-42a1-80a9-2fd0de16b9c0.png`, crop (x, y, width, height) 9, 72, 201, 545"
+    },
+    {
+      "src": "/projects/solvanta/appliance-digital-twin.webp",
+      "width": 463,
+      "height": 1280,
+      "alt": "Solvanta concept showing appliance categories and individual controls",
+      "caption": "Appliance digital twin",
+      "kind": "reference",
+      "source": "User design board, `codex-clipboard-844cc163-2809-42a1-80a9-2fd0de16b9c0.png`, crop (x, y, width, height) 215, 73, 197, 545"
+    },
+    {
+      "src": "/projects/solvanta/simulation.webp",
+      "width": 456,
+      "height": 1280,
+      "alt": "Solvanta concept showing a six-hour outage scenario and projected battery levels",
+      "caption": "Outage simulation",
+      "kind": "reference",
+      "source": "User design board, `codex-clipboard-844cc163-2809-42a1-80a9-2fd0de16b9c0.png`, crop (x, y, width, height) 416, 74, 194, 544"
+    },
+    {
+      "src": "/projects/solvanta/scheduling.webp",
+      "width": 459,
+      "height": 1280,
+      "alt": "Solvanta concept showing a solar and appliance schedule with a recommended plan",
+      "caption": "Appliance scheduling",
+      "kind": "reference",
+      "source": "User design board, `codex-clipboard-844cc163-2809-42a1-80a9-2fd0de16b9c0.png`, crop (x, y, width, height) 613, 73, 196, 546"
+    },
+    {
+      "src": "/projects/solvanta/rooftop-analysis.webp",
+      "width": 470,
+      "height": 1280,
+      "alt": "Solvanta concept showing a rooftop panel layout and configuration controls",
+      "caption": "Rooftop analysis",
+      "kind": "reference",
+      "source": "User design board, `codex-clipboard-844cc163-2809-42a1-80a9-2fd0de16b9c0.png`, crop (x, y, width, height) 813, 73, 201, 547"
+    },
+    {
+      "src": "/projects/solvanta/ai-operations.webp",
+      "width": 462,
+      "height": 1280,
+      "alt": "Solvanta concept showing the energy assistant running an outage simulation",
+      "caption": "AI operations",
+      "kind": "reference",
+      "source": "User design board, `codex-clipboard-844cc163-2809-42a1-80a9-2fd0de16b9c0.png`, crop (x, y, width, height) 1018, 73, 198, 548"
     },
     {
       "src": "/projects/solvanta/icon.webp",
@@ -91,20 +166,67 @@
   ],
   "lumen": [
     {
+      "src": "/projects/lumen/desktop-search-bar.webp",
+      "width": 575,
+      "height": 65,
+      "alt": "Lumen’s compact desktop search bar at rest with its keyboard shortcut",
+      "caption": "Idle desktop search bar",
+      "kind": "screenshot",
+      "source": "https://github.com/ushalabs/Lumen/blob/05bc8da079f1e72062636824125b901e86f8f31c/docs/screenshots/desktop_search_bar.png"
+    },
+    {
+      "src": "/projects/lumen/expanded-search-bar.webp",
+      "width": 500,
+      "height": 210,
+      "alt": "Early Lumen prototype with the search bar expanded and an index-not-ready message",
+      "caption": "Expanded search bar · early build",
+      "kind": "screenshot",
+      "source": "https://github.com/ushalabs/Lumen/blob/05bc8da079f1e72062636824125b901e86f8f31c/docs/screenshots/phase0_desktop_bar_expanded.png"
+    },
+    {
       "src": "/projects/lumen/filename-search.webp",
       "width": 575,
       "height": 430,
-      "alt": "Lumen desktop overlay showing filename search results",
+      "alt": "Lumen results matching a filename query",
+      "caption": "Filename search",
       "kind": "screenshot",
-      "source": "https://github.com/ushalabs/Lumen/blob/05bc8da/docs/screenshots/filename_search.png"
+      "source": "https://github.com/ushalabs/Lumen/blob/05bc8da079f1e72062636824125b901e86f8f31c/docs/screenshots/filename_search.png"
+    },
+    {
+      "src": "/projects/lumen/document-content-search.webp",
+      "width": 575,
+      "height": 340,
+      "alt": "Lumen results with matched terms highlighted in document snippets",
+      "caption": "Document content search",
+      "kind": "screenshot",
+      "source": "https://github.com/ushalabs/Lumen/blob/05bc8da079f1e72062636824125b901e86f8f31c/docs/screenshots/document_content_search.png"
     },
     {
       "src": "/projects/lumen/semantic-search.webp",
       "width": 575,
       "height": 340,
-      "alt": "Lumen desktop overlay showing semantic search results",
+      "alt": "Lumen results matching a natural-language query using semantic search",
+      "caption": "On-device semantic search",
       "kind": "screenshot",
-      "source": "https://github.com/ushalabs/Lumen/blob/05bc8da/docs/screenshots/semantic_search.png"
+      "source": "https://github.com/ushalabs/Lumen/blob/05bc8da079f1e72062636824125b901e86f8f31c/docs/screenshots/semantic_search.png"
+    },
+    {
+      "src": "/projects/lumen/quick-preview-and-modes.webp",
+      "width": 575,
+      "height": 480,
+      "alt": "Lumen search mode controls with a document snippet open in quick preview",
+      "caption": "Search modes and quick preview",
+      "kind": "screenshot",
+      "source": "https://github.com/ushalabs/Lumen/blob/05bc8da079f1e72062636824125b901e86f8f31c/docs/screenshots/quick_preview_and_modes.png"
+    },
+    {
+      "src": "/projects/lumen/settings-dialog.webp",
+      "width": 639,
+      "height": 738,
+      "alt": "Lumen settings for search indexing, offline semantic embeddings, and desktop bar behavior",
+      "caption": "Indexing and desktop settings",
+      "kind": "screenshot",
+      "source": "https://github.com/ushalabs/Lumen/blob/05bc8da079f1e72062636824125b901e86f8f31c/docs/screenshots/settings_dialog.png"
     },
     {
       "src": "/projects/lumen/icon.svg",
@@ -122,7 +244,8 @@
       "height": 941,
       "alt": "LeanMate product artwork showing nutrition, training, and fitness goal screens",
       "kind": "banner",
-      "source": "User attachment 5, `codex-clipboard-c11e3489-975c-41ca-a874-09366b9eca16.png`"
+      "source": "User attachment 5, `codex-clipboard-c11e3489-975c-41ca-a874-09366b9eca16.png`",
+      "caption": "LeanMate product artwork"
     },
     {
       "src": "/projects/leanmate/icon.webp",

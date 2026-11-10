@@ -10,7 +10,7 @@ The seven-project portfolio was validated locally on Windows with Chrome against
 | Project cards | Seven repository icons, descriptions, technology tags, and separate GitHub links across the homepage and archive. Browser checks cover the full-card click target, keyboard navigation, and reduced-motion tilt. |
 | Visual review | Desktop and mobile screenshots confirm the compact editorial layout. The homepage retains two cards per desktop row and a centered final card. |
 | External links | All seven GitHub repositories, all seven pinned icon sources, and Velora’s Google Play listing returned HTTP 200. |
-| Case-study media | Visuals follow the written content. Desktop media containers use 40% of the content width. The original MeetingMinutes MP4 plays and the Sentinel GIF starts and stops. |
+| Case-study media | Visuals follow the written content. The original MeetingMinutes MP4 plays and the Sentinel GIF starts and stops. |
 | Identity and résumé | The homepage uses Usman Qureshi. The top bar downloads the supplied PDF, and its SHA-256 matches the original. |
 | Accessibility | Keyboard, touch, reduced-motion and no-WebGL checks passed. axe found zero WCAG A/AA violations on the homepage, archive, and Velora case study. |
 | Routes and metadata | Seven case studies, nine social previews, the sitemap, robots, canonical tags, and the custom 404 passed. |
@@ -29,3 +29,9 @@ The original release’s Lighthouse results and Git checkpoints are recorded in 
 | Local motion sampling | Synthetic pointer movement on a project card averaged 59.5 FPS across 120 animation frame intervals in headless Chrome. |
 | Visual review | Reviewed the Projects section at 1440px and 390px and the Experience section at 1440px. |
 | Links | Checked 37 unique internal destinations and anchors across nine pages. All seven repositories, the GitHub profile, and Velora’s Play Store listing returned HTTP 200. LinkedIn rejected the automated check with HTTP 999. |
+
+## Case-study media refresh
+
+- ESLint, strict TypeScript, the production build, and all 21 Chrome tests passed.
+- Verified a gap under 32 CSS pixels below the desktop header, borderless project card icons, and a 70% desktop media width for the MeetingMinutes video, Sentinel GIF, LeanMate banner, and Downshift capture.
+- Reviewed the three galleries in Chrome. Tests cover side-by-side desktop placement, keyboard scrolling at 390px, captions, and page overflow. All 17 gallery images loaded in the production preview.

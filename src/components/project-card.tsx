@@ -6,7 +6,7 @@ import { Tags } from "./project-actions";
 
 function ProjectMark({ icon, title }: Pick<Project, "icon" | "title">) {
   if (icon) {
-    return <span className="project-icon"><Image src={icon.src} width={icon.width} height={icon.height} sizes="38px" alt="" /></span>;
+    return <span className="project-icon"><Image src={icon.src} width={icon.width} height={icon.height} sizes="44px" alt="" /></span>;
   }
 
   const initials = title.split(/\s+/).slice(0, 2).map(word => word[0]).join("").toUpperCase();
