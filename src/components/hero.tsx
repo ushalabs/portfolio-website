@@ -11,10 +11,6 @@ export function Hero() {
     <div className="hero shell">
       <SectionRail />
       <div className="hero-copy">
-        <div className="hero-status">
-          <span className="status-beacon" aria-hidden="true"><span className="beacon-ping" /><span className="beacon-dot" /></span>
-          <span>Available for full-time roles &amp; contracts worldwide</span>
-        </div>
         <p className="hero-roles">Full-Stack &amp; Systems Engineer <span aria-hidden="true">|</span> Applied AI</p>
         <h1 id="hero-title">{site.name.split(" ").map((word, index) => <span key={word} className="hero-title-word" style={{ "--word-index": index } as CSSProperties}>{index > 0 ? " " : ""}{word}</span>)}</h1>
         <p className="lead">I engineer high-performance full-stack applications, native desktop tools, and applied AI automation systems.</p>
@@ -37,7 +33,7 @@ export function Hero() {
       <dl className="hero-facts">
         <div><dt>Projects</dt><dd>{projects.length}</dd></div>
         <div><dt>Expected graduation</dt><dd>June 2027</dd></div>
-        <div><dt>Core focus</dt><dd>Full Stack &amp; AI Automation</dd></div>
+        <div><dt>Availability</dt><dd>Open to job opportunities</dd></div>
       </dl>
     </div>
     <Link href="/#work" className="hero-scroll">Scroll to explore <span className="hero-scroll-mouse" aria-hidden="true" /><ChevronDown size={18} aria-hidden="true" /></Link>
