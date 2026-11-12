@@ -374,7 +374,7 @@ test("the hero uses the authentic animated U mark and honors reduced motion", as
   const before = await visual.screenshot();
   await page.waitForTimeout(200);
   expect((await visual.screenshot()).equals(before)).toBe(false);
-  await expect(page.locator(".hero-facts")).toContainText("Open to job opportunities");
+  await expect(page.locator(".hero-facts")).toContainText("Available for full-time roles & contracts worldwide");
   const depthBefore = await visual.locator(".emblem-depth-back").evaluate(element => getComputedStyle(element).transform);
   await page.mouse.move(box.x + box.width * .12, box.y + box.height * .32);
   await expect.poll(() => visual.evaluate(element => getComputedStyle(element).getPropertyValue("--emblem-x"))).not.toBe("");

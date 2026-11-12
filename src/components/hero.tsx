@@ -33,7 +33,7 @@ export function Hero() {
       <dl className="hero-facts">
         <div><dt>Projects</dt><dd>{projects.length}</dd></div>
         <div><dt>Expected graduation</dt><dd>June 2027</dd></div>
-        <div><dt>Availability</dt><dd>Open to job opportunities</dd></div>
+        <div><dt>Availability</dt><dd>Available for full-time roles &amp; contracts worldwide</dd></div>
       </dl>
     </div>
     <Link href="/#work" className="hero-scroll">Scroll to explore <span className="hero-scroll-mouse" aria-hidden="true" /><ChevronDown size={18} aria-hidden="true" /></Link>
