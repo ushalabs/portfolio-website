@@ -16,13 +16,7 @@ const railItems = [
 
 export function useActiveSection() {
   const pathname = usePathname();
-  const [active, setActive] = useState(() => {
-    if (typeof window !== "undefined" && window.location.hash) {
-      const id = window.location.hash.replace("#", "");
-      if (railItems.some(item => item.href.endsWith(`#${id}`))) return id;
-    }
-    return "home";
-  });
+  const [active, setActive] = useState("home");
 
   useEffect(() => {
     if (pathname !== "/") return;
