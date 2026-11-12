@@ -17,6 +17,7 @@ export const additionalProjects = [
     longDescription: "Lumen provides a persistent desktop search bar and a global shortcut. It indexes local filenames and supported document formats and offers on-device semantic retrieval.",
     category: ["Desktop & Systems", "AI & Automation"], tags: ["C++20", "Qt 6", "SQLite"], techStack: ["C++20", "Qt 6", "Win32", "SQLite FTS5", "ONNX Runtime", "CMake"],
     demoVideo: "/projects/lumen/demo.mp4", status: "Windows desktop utility", featured: false, order: 5,
+    downloadUrl: "https://github.com/ushalabs/Lumen/releases/download/v0.5.1/Lumen-v0.5.1-Setup-x64.exe",
     technicalHighlights: ["Filename and full-text search", "Native document text extraction", "Local MiniLM semantic search", "Keyboard shortcut and desktop overlay"],
     architecture: ["A Qt and Win32 interface queries a local SQLite index with FTS5 support.", "An on-demand ONNX model handles semantic queries on the CPU."],
     challenges: ["Semantic model loading is deferred until needed, with idle unloading to recover memory."], outcomes: [], evidence: ["CMakeLists.txt"],
