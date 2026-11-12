@@ -33,6 +33,7 @@ export const featuredProjects = [
     longDescription: "Downshift brings regular files, supported video downloads, and torrents together in a Windows application. Its dashboard shows transfer state, history, and controls for pausing, resuming, and organizing downloads.",
     category: ["Desktop & Systems"], tags: ["C++20", "Qt 6", "libcurl"], techStack: ["C++20", "Qt 6", "libcurl", "CMake", "Browser Extension APIs"],
     status: "Windows desktop application", featured: true, order: 3,
+    downloadUrl: "https://github.com/ushalabs/Downshift-Downloader/releases/download/v1.0.0/Downshift-1.0.0-Setup-x64.exe",
     technicalHighlights: ["HTTP and HTTPS transfers with pause and resume", "Queue and transfer speed management", "Browser-assisted capture", "Video and torrent workflows"],
     architecture: ["A native C++20 and Qt 6 shell presents transfer state and controls.", "The download engine uses libcurl for HTTP transfers. A browser extension integrates supported capture workflows."],
     challenges: ["Different transfer types share a common queue and history while keeping their individual controls."], outcomes: [], evidence: ["CMakeLists.txt", "docs/ARCHITECTURE.md", "extension/package.json"],

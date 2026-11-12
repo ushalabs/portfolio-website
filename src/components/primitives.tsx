@@ -1,5 +1,5 @@
 import Link from "./transition-link";
-import { ArrowDown, ArrowRight, ArrowUpRight, GitFork } from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUpRight, Download, GitFork } from "lucide-react";
 import { site } from "@/data/site";
 import { BrandSymbol } from "./brand-symbol";
 
@@ -16,9 +16,9 @@ export function InternalAction({ href, children, direction = "right", primary = 
   return <Link className={`button ${primary ? "button-primary" : ""}`} href={href}>{children}<Icon size={17} aria-hidden="true" /></Link>;
 }
 
-export function ExternalAction({ href, children, github = false }: { href: string; children: React.ReactNode; github?: boolean }) {
-  const Icon = github ? GitFork : ArrowUpRight;
-  return <a className="button" href={href} target="_blank" rel="noopener noreferrer">{children}<Icon size={16} aria-hidden="true" /></a>;
+export function ExternalAction({ href, children, github = false, download = false, primary = false }: { href: string; children: React.ReactNode; github?: boolean; download?: boolean; primary?: boolean }) {
+  const Icon = download ? Download : github ? GitFork : ArrowUpRight;
+  return <a className={`button ${primary ? "button-primary" : ""}`} href={href} download={download ? true : undefined} target={download ? undefined : "_blank"} rel={download ? undefined : "noopener noreferrer"}>{children}<Icon size={16} aria-hidden="true" /></a>;
 }
 
 export function Footer() {

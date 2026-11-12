@@ -3,6 +3,7 @@ import { ExternalAction, InternalAction } from "./primitives";
 
 export function ProjectActions({ project }: { project: Project }) {
   return <div className="actions">
+    {project.downloadUrl && <ExternalAction href={project.downloadUrl} download primary>Download (Windows .exe)</ExternalAction>}
     <ExternalAction href={project.githubUrl} github>GitHub<span className="sr-only"> for {project.title}</span></ExternalAction>
     {(project.demoVideo || project.demoAnimation) && <InternalAction href="#project-demo" direction="down">View demo</InternalAction>}
     {project.playStoreUrl && <ExternalAction href={project.playStoreUrl}>Google Play</ExternalAction>}

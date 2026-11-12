@@ -26,6 +26,7 @@ export type Project = {
   githubUrl: string;
   demoUrl: string | null;
   playStoreUrl: string | null;
+  downloadUrl?: string | null;
   status: string;
   featured: boolean;
   order: number;

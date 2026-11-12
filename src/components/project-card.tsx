@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "./transition-link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Download } from "lucide-react";
 import type { Project } from "@/data/project-types";
 import { Tags } from "./project-actions";
 
@@ -32,6 +32,7 @@ export function ProjectCard({ project, heading: Heading = "h2" }: { project: Pro
         <Tags values={project.tags} />
         <div className="project-card-resources">
           <a className="project-card-resource" href={project.githubUrl} target="_blank" rel="noopener noreferrer">GitHub<span className="sr-only"> for {project.title}</span><ArrowUpRight size={13} aria-hidden="true" /></a>
+          {project.downloadUrl && <a className="project-card-resource" href={project.downloadUrl} download>Download<Download size={13} aria-hidden="true" /></a>}
           {project.playStoreUrl && <a className="project-card-resource" href={project.playStoreUrl} target="_blank" rel="noopener noreferrer">Google Play<ArrowUpRight size={13} aria-hidden="true" /></a>}
           {project.demoUrl && <a className="project-card-resource" href={project.demoUrl} target="_blank" rel="noopener noreferrer">{project.demoUrl.includes("loom.com") ? "Watch demo" : "Live demo"}<ArrowUpRight size={13} aria-hidden="true" /></a>}
         </div>
