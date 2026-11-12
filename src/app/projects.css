@@ -82,7 +82,7 @@
 .project-monogram { align-content: center; gap: .11rem; color: var(--muted); font-family: var(--font-geist-mono), monospace; font-weight: 550; }
 .project-monogram small { font-size: .47rem; font-weight: 400; }
 .project-card-category { margin-bottom: .17rem; color: #a8a4b2; font-size: .72rem; line-height: 1.2; }
-.project-card-heading h2, .project-card-heading h3 { font-size: clamp(1.17rem, 1.6vw, 1.5rem); line-height: 1.17; letter-spacing: -.036em; font-weight: 630; }
+.project-card-heading h2, .project-card-heading h3, .project-card-heading h4 { font-size: clamp(1.17rem, 1.6vw, 1.5rem); line-height: 1.17; letter-spacing: -.036em; font-weight: 630; }
 .project-card-link { transition: color .2s ease-out; }
 .project-card:hover .project-card-link, .project-card-link:focus-visible { color: #eee4ff; }
 .project-card-link::after { content: ""; position: absolute; inset: 0; z-index: 1; border-radius: .95rem; }
@@ -120,11 +120,10 @@
 }
 @media (max-width: 400px) { .selected-heading { align-items: flex-start; flex-direction: column; gap: 0; } }
 
-.filters { display: flex; flex-wrap: wrap; gap: .5rem; border: 0; padding: 0; margin: 2.1rem 0 1rem; }
-.filter-option { position: relative; cursor: pointer; }
-.filter-option input { position: absolute; width: 1px; height: 1px; opacity: 0; }
-.filter-option span { min-height: 44px; display: flex; align-items: center; padding: .45rem .85rem; border: 1px solid var(--border); border-radius: .4rem; color: var(--muted); font-size: .85rem; }
-.filter-option:hover span { color: var(--text); border-color: var(--muted); }
-.filter-option input:checked + span { color: #f0e9ff; background: #1c1826; border-color: #9470ed; }
-.filter-option input:focus-visible + span { outline: 2px solid #9470ed; outline-offset: 4px; }
-.directory-count { color: var(--muted); margin: 0 0 1rem; }
+.project-groups { display: grid; gap: clamp(2rem, 3.5vw, 3.25rem); }
+.project-group { min-width: 0; }
+.project-group-heading { display: flex; align-items: center; gap: .75rem; padding: .85rem 0; margin-bottom: 1rem; border-bottom: 1px solid #393440; }
+.project-group-number { color: var(--accent); font-size: .7rem; }
+.project-group-heading h2, .project-group-heading h3 { font-size: clamp(1.2rem, 2vw, 1.65rem); font-weight: 570; letter-spacing: -.035em; line-height: 1.2; }
+.project-group-count { margin-left: auto; color: var(--muted); white-space: nowrap; font-size: .7rem; }
+@media (max-width: 400px) { .project-group-heading { flex-wrap: wrap; } .project-group-count { flex-basis: 100%; padding-left: 1.65rem; } }

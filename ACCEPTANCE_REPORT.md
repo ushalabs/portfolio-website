@@ -46,3 +46,10 @@ The original release’s Lighthouse results and Git checkpoints are recorded in 
 
 - Added three category filters and matching card labels to the homepage and archive. Desktop Apps contains two projects, Mobile Apps contains three, and AI Agents & Automations contains two.
 - Production build, lint, and TypeScript passed. Reviewed the filters at 1440px and 390px. Twenty browser checks passed in the full run. The filter check initially matched the contact section’s status region too. After scoping the count assertion to the project directory, its targeted rerun passed for both pages, including keyboard selection and restoring All.
+
+## Ordered sections and agent additions
+
+- Projects now displays three permanent sections in the requested order on the homepage and archive. Desktop Apps contains two projects, Mobile Apps contains three, and AI Agents & Automations contains four.
+- Added AI Sales Agent and Outbound SDR Agent, including source-pinned content, genuine repository icons, detail routes, social previews, sitemap entries, and quick navigation destinations. Both repository and logo-source URLs returned HTTP 200.
+- ESLint, strict TypeScript, production build, and all 21 Chrome tests passed. Coverage includes section order, all nine project destinations and icons, six viewport sizes, and zero violations in three axe WCAG A/AA scans.
+- Visually reviewed the desktop and mobile Projects composition and the complete four-card AI section. Both new agent pages omit screenshot galleries because their repositories provide no verified application captures.

@@ -200,5 +200,25 @@
       "kind": "icon",
       "source": "https://github.com/ushalabs/LeanMate-Fitness-App/blob/eb468ebd0f792554589c1d3d4f11b68ede13db2f/assets/icon.png"
     }
+  ],
+  "ai-sales-agent": [
+    {
+      "src": "/projects/ai-sales-agent/icon.webp",
+      "width": 192,
+      "height": 192,
+      "alt": "AI Sales Agent repository logo",
+      "kind": "icon",
+      "source": "https://github.com/ushalabs/AI-Sales-Agent/blob/53eed7b92db9365b15db4b87c5700280af467cae/assets/logo.png"
+    }
+  ],
+  "outbound-sdr": [
+    {
+      "src": "/projects/outbound-sdr/icon.svg",
+      "width": 48,
+      "height": 48,
+      "alt": "Outbound SDR Agent repository logo",
+      "kind": "icon",
+      "source": "https://github.com/ushalabs/Outbound-SDR/blob/0b5336944da743c19f1ae046e896d55de32f1862/frontend/public/favicon.svg"
+    }
   ]
 }

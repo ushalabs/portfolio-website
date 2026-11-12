@@ -13,7 +13,7 @@ function ProjectMark({ icon, title }: Pick<Project, "icon" | "title">) {
   return <span className="project-icon project-monogram" aria-hidden="true"><span>{initials}</span><small>Monogram</small></span>;
 }
 
-export function ProjectCard({ project, heading: Heading = "h2" }: { project: Project; heading?: "h2" | "h3" }) {
+export function ProjectCard({ project, heading: Heading = "h2" }: { project: Project; heading?: "h2" | "h3" | "h4" }) {
   return <li className="project-card-slot" data-project={project.slug}>
     <article className="project-card" data-discipline={project.category[0]}>
       <div className="project-card-heading">

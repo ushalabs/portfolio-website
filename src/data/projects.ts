@@ -1,6 +1,7 @@
 import type { Project } from "./project-types";
 import { project } from "./project-entry";
 import { additionalProjects } from "./additional-projects";
+import { agentProjects } from "./agent-projects";
 
 export const featuredProjects = [
   project({
@@ -38,5 +39,5 @@ export const featuredProjects = [
   }),
 ];
 
-export const projects: readonly Project[] = [...featuredProjects, ...additionalProjects];
+export const projects: readonly Project[] = [...featuredProjects, ...additionalProjects, ...agentProjects];
 export function getProject(slug: string) { return projects.find(item => item.slug === slug); }

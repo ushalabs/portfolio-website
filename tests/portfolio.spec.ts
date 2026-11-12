@@ -20,9 +20,10 @@ for (const width of [360, 390, 768, 1024, 1440, 1920]) {
     await page.goto("/");
     await page.getByRole("link", { name: "Explore Projects" }).click();
     await expect(page).toHaveURL(/#work$/);
-    await expect(page.locator("[data-project] h3")).toHaveText(["Velora", "MeetingMinutes AI", "Downshift", "Sentinel SecOps", "Lumen", "Solvanta", "LeanMate"]);
-    await expect(page.locator("#work .project-icon img")).toHaveCount(7);
-    await expect(page.locator("#work img")).toHaveCount(7);
+    await expect(page.locator("#work .project-group-heading h3")).toHaveText([...projectGroups]);
+    await expect(page.locator("#work .project-card-link")).toHaveText(projectGroups.flatMap(group => projects.filter(project => project.group === group).map(project => project.title)));
+    await expect(page.locator("#work .project-icon img")).toHaveCount(projects.length);
+    await expect(page.locator("#work img")).toHaveCount(projects.length);
     if (width <= 830) {
       await page.getByLabel("Open navigation").click();
       await page.getByRole("navigation", { name: "Mobile" }).getByRole("link", { name: "About" }).click();
@@ -36,21 +37,18 @@ for (const width of [360, 390, 768, 1024, 1440, 1920]) {
   });
 }
 
-test("keyboard filters, quick navigation, and disclosures", async ({ page }) => {
+test("ordered project sections, quick navigation, and disclosures", async ({ page }) => {
   for (const route of ["/", "/projects"]) {
     await page.goto(route);
-    await expect(page.locator(".directory-count")).toHaveText(`${projects.length} projects`);
-    await page.getByRole("radio", { name: "All", exact: true }).focus();
+    await expect(page.locator(".project-group")).toHaveCount(3);
+    await expect(page.getByRole("radio")).toHaveCount(0);
     for (const category of projectGroups) {
-      await page.keyboard.press("ArrowRight");
-      await expect(page.getByRole("radio", { name: category, exact: true })).toBeChecked();
       const selected = projects.filter(item => item.group === category);
-      await expect(page.locator(".directory-count")).toHaveText(`${selected.length} projects`);
-      await expect(page.locator(".project-card-link")).toHaveText(selected.map(item => item.title));
-      await expect(page.locator(".project-card-category")).toHaveText(selected.map(() => category));
+      const section = page.getByRole("region", { name: category, exact: true });
+      await expect(section.locator(".project-group-count")).toHaveText(`${selected.length} projects`);
+      await expect(section.locator(".project-card-link")).toHaveText(selected.map(item => item.title));
+      await expect(section.locator(".project-card-category")).toHaveText(selected.map(() => category));
     }
-    await page.getByRole("radio", { name: "All", exact: true }).check();
-    await expect(page.locator(".project-card-link")).toHaveText(projects.map(item => item.title));
   }
   await page.keyboard.press("Control+k");
   await expect(page.getByRole("dialog", { name: "Quick navigation" })).toBeVisible();
@@ -66,20 +64,24 @@ test("keyboard filters, quick navigation, and disclosures", async ({ page }) => 
   await expect(page.getByRole("link", { name: "In practice · Velora" })).toBeVisible();
 });
 
-test("homepage project grid pairs the cards and centers the seventh", async ({ page }) => {
+test("homepage groups pair their cards and center an odd final card", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/");
   await expect(page.locator("h1")).toHaveText("Usman Qureshi");
-  await expect(page.locator("#work .project-card")).toHaveCount(7);
-  const cards = await page.locator("[data-project]").evaluateAll(items => items.map(item => {
-    const { x, y, width } = item.getBoundingClientRect();
-    return { x, y, width };
-  }));
-  expect(cards[0].y).toBe(cards[1].y);
-  expect(cards[2].y).toBeGreaterThan(cards[0].y);
-  expect(cards[6].x + cards[6].width / 2).toBeCloseTo(720, 0);
-  expect(cards[6].width).toBeCloseTo(cards[0].width, 0);
+  await expect(page.locator("#work .project-card")).toHaveCount(projects.length);
+  for (const group of projectGroups) {
+    const cards = await page.getByRole("region", { name: group, exact: true }).locator("[data-project]").evaluateAll(items => items.map(item => {
+      const { x, y, width } = item.getBoundingClientRect();
+      return { x, y, width };
+    }));
+    expect(cards[0].y).toBe(cards[1].y);
+    if (cards.length % 2 === 1) {
+      const last = cards[cards.length - 1];
+      expect(last.x + last.width / 2).toBeCloseTo(720, 0);
+      expect(last.width).toBeCloseTo(cards[0].width, 0);
+    }
+  }
   const scrollControl = await page.locator(".hero-scroll").evaluate(link => {
     const arrow = link.querySelector("svg")!.getBoundingClientRect();
     const control = link.getBoundingClientRect();
@@ -108,7 +110,7 @@ test("editorial cards use repository icons and expose distinct working destinati
   await page.emulateMedia({ reducedMotion: "reduce" });
   for (const route of ["/#work", "/projects"]) {
     await page.goto(route);
-    await expect(page.locator(".project-card img")).toHaveCount(7);
+    await expect(page.locator(".project-card img")).toHaveCount(projects.length);
     await expect(page.locator(".project-card video, .project-card picture, .project-card canvas")).toHaveCount(0);
     for (const project of projects) {
       const card = page.locator(`[data-project="${project.slug}"]`);

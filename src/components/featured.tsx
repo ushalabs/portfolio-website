@@ -10,6 +10,6 @@ export function Featured() {
       <div><p className="selected-label"><span aria-hidden="true">01</span> Selected work</p><h2 id="work-heading">Projects</h2></div>
       <Link href="/projects" className="all-projects">View all projects <ArrowUpRight size={15} aria-hidden="true" /></Link>
     </div>
-    <ProjectDirectory projects={projects} heading="h3" centerLast />
+    <ProjectDirectory projects={projects} heading="h3" />
   </section>;
 }

@@ -61,3 +61,10 @@
 - Added Desktop Apps, Mobile Apps, and AI Agents & Automations as the three visitor-facing categories on the homepage and project archive.
 - Category controls filter the list, and card labels identify each project’s group. The All view retains the existing project order.
 - Downshift and Lumen are desktop apps. Velora, Solvanta, and LeanMate are mobile apps. MeetingMinutes AI and Sentinel SecOps are grouped under AI Agents & Automations.
+
+## Ordered project sections and additional agents
+
+- Replaced category filters with three permanently visible sections, ordered Desktop Apps, Mobile Apps, then AI Agents & Automations. Each section retains the two-column desktop grid and uses semantic subgroup headings.
+- Verified and added AI Sales Agent and Outbound SDR Agent using their actual public repository slugs, pinned source revisions, and repository logos.
+- Added both agent detail pages through the shared registry, including technology, engineering approach, and documented challenges. No public live demo URL was present in either repository.
+- Inspected both repository media inventories. Outbound SDR’s design reference is excluded from the screenshot gallery, and AI Sales Agent has no application captures.

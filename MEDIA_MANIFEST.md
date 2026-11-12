@@ -29,6 +29,10 @@ Project listings display repository-sourced icons and logos. Screenshots, artwor
 | `/projects/leanmate/product-banner.webp` | 1672 × 941 PNG | 1672 × 941 | User attachment 5, `codex-clipboard-c11e3489-975c-41ca-a874-09366b9eca16.png` |
 | `/projects/leanmate/icon.webp` | 1024 × 1024 PNG | 192 × 192 | https://github.com/ushalabs/LeanMate-Fitness-App/blob/eb468ebd0f792554589c1d3d4f11b68ede13db2f/assets/icon.png |
 | `/projects/meetingminutes-ai/demo.mp4` | MP4 | Original recording | User-supplied Downshift download, Loom ID `3eddffe62d8043dda581798a05442c87` |
+| `/projects/ai-sales-agent/icon.webp` | 220 × 220 PNG | 192 × 192 WebP | [Repository logo](https://github.com/ushalabs/AI-Sales-Agent/blob/53eed7b92db9365b15db4b87c5700280af467cae/assets/logo.png) |
+| `/projects/outbound-sdr/icon.svg` | 48 × 48 SVG | Original SVG | [Repository favicon](https://github.com/ushalabs/Outbound-SDR/blob/0b5336944da743c19f1ae046e896d55de32f1862/frontend/public/favicon.svg) |
+
+AI Sales Agent has a repository logo and no application screenshots. Outbound SDR has a repository favicon and a dashboard design reference. The reference is excluded from its gallery because it is not verified as a capture of the application. Both detail pages use verified written content without a screenshot gallery.
 
 Solvanta’s six design references were cropped individually and upscaled to 1280 pixels tall at the original aspect ratios. Lumen’s current case study uses the supplied demo recording and a frame extracted from it.
 

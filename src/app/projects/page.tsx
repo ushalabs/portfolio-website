@@ -10,7 +10,7 @@ export default function ProjectsPage() {
   return <main className="shell page-main" id="main">
     <SectionLabel index="01">Usha Labs / Project archive</SectionLabel>
     <h1 className="section-title page-title">Project archive<span className="accent">.</span></h1>
-    <p className="lead">Browse by engineering discipline. Each project links to its source and documents the implementation.</p>
+    <p className="lead">Desktop apps, mobile products, and AI automation. Explore the work and the engineering behind it.</p>
     <ProjectDirectory projects={projects} />
   </main>;
 }

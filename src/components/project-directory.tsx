@@ -1,19 +1,19 @@
-"use client";
-
-import { useState } from "react";
-import { projectGroups, type Project, type ProjectGroup } from "@/data/project-types";
+import { projectGroups, type Project } from "@/data/project-types";
 import { ProjectCard } from "./project-card";
 import { ProjectGrid } from "./project-grid";
 
-export function ProjectDirectory({ projects, heading = "h2", centerLast = false }: { projects: readonly Project[]; heading?: "h2" | "h3"; centerLast?: boolean }) {
-  const [category, setCategory] = useState<ProjectGroup | "All">("All");
-  const selected = category === "All" ? projects : projects.filter(project => project.group === category);
-  return <>
-    <fieldset className="filters">
-      <legend className="sr-only">Filter by project category</legend>
-      {(["All", ...projectGroups] as const).map(value => <label key={value} className="filter-option"><input type="radio" name="project-filter" value={value} checked={category === value} onChange={() => setCategory(value)} /><span>{value}</span></label>)}
-    </fieldset>
-    <p className="mono directory-count" role="status">{selected.length} {selected.length === 1 ? "project" : "projects"}</p>
-    <ProjectGrid centerLast={centerLast}>{selected.map(project => <ProjectCard key={project.id} project={project} heading={heading} />)}</ProjectGrid>
-  </>;
+export function ProjectDirectory({ projects, heading: Heading = "h2" }: { projects: readonly Project[]; heading?: "h2" | "h3" }) {
+  return <div className="project-groups">{projectGroups.map((group, index) => {
+    const selected = projects.filter(project => project.group === group);
+    if (!selected.length) return null;
+    const id = `project-group-${index + 1}`;
+    return <section className="project-group" aria-labelledby={id} key={group}>
+      <div className="project-group-heading">
+        <span className="mono project-group-number" aria-hidden="true">0{index + 1}</span>
+        <Heading id={id}>{group}</Heading>
+        <span className="mono project-group-count">{selected.length} projects</span>
+      </div>
+      <ProjectGrid centerLast>{selected.map(project => <ProjectCard key={project.id} project={project} heading={Heading === "h2" ? "h3" : "h4"} />)}</ProjectGrid>
+    </section>;
+  })}</div>;
 }
