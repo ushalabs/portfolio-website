@@ -1,30 +1,24 @@
 .hero-section {
   position: relative;
-  min-height: calc(100vh - var(--header-height));
-  min-height: calc(100svh - var(--header-height));
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
 }
 .hero {
   position: relative;
   width: min(1570px, calc(100% - 5.5vw));
-  min-height: calc(100vh - var(--header-height));
-  min-height: calc(100svh - var(--header-height));
+  min-height: 490px;
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(0, 1.05fr) minmax(15rem, .65fr);
-  align-items: start;
+  align-items: center;
   column-gap: clamp(1.5rem, 3.5vw, 4rem);
-  padding: clamp(.75rem, 1.6vh, 1.35rem) 0 clamp(4.5rem, 6vh, 6rem) clamp(8.5rem, 12vw, 12.5rem);
+  padding: 1.85rem 0 3.75rem clamp(8.5rem, 12vw, 12.5rem);
   box-sizing: border-box;
 }
 .hero-copy { position: relative; z-index: 1; }
 .hero h1 {
-  font-size: clamp(3rem, 4.2vw, 4.6rem);
+  font-size: clamp(2.85rem, 3.8vw, 4.2rem);
   font-weight: 650;
   letter-spacing: -.046em;
   line-height: 1.05;
-  margin: 0 0 clamp(1.4rem, 2.5vh, 2.2rem);
+  margin: 0 0 1.35rem;
   max-width: 12.5em;
 }
 .hero-roles {
@@ -35,19 +29,19 @@
   letter-spacing: .12em;
   line-height: 1.4;
   white-space: nowrap;
-  margin: 0 0 clamp(1rem, 2vh, 1.6rem);
+  margin: 0 0 1.25rem;
 }
 .hero-roles span { color: var(--muted); margin-inline: clamp(.35rem, .8vw, .85rem); }
 .hero .lead {
-  margin: 0 0 clamp(2rem, 3.4vh, 3rem);
+  margin: 0 0 1.85rem;
   max-width: 48ch;
-  font-size: clamp(1.05rem, 1.25vw, 1.26rem);
-  line-height: 1.6;
+  font-size: clamp(1.02rem, 1.2vw, 1.22rem);
+  line-height: 1.55;
   color: #c6c2d2;
 }
 .hero-actions {
-  gap: clamp(.9rem, 1.8vw, 1.85rem);
-  margin-bottom: clamp(1.85rem, 3.2vh, 2.85rem);
+  gap: clamp(.85rem, 1.6vw, 1.75rem);
+  margin-bottom: 1.65rem;
 }
 .hero-actions .button {
   min-height: 3.15rem;
@@ -58,23 +52,23 @@
 .hero-actions .button:not(.button-primary) { border-color: #736986; background: #191723bb; }
 .hero-actions .button-primary, .header-actions .header-contact { color: white; background: linear-gradient(130deg, #7333cb, #5429c7 70%, #6c4de7); border-color: #a272f0; }
 .hero-actions .button-primary:hover, .header-actions .header-contact:hover, .hero-actions .button-primary:focus-visible, .hero-actions .button-primary[data-active="true"] { background: #713ed8; border-color: #cea6ff; color: white; box-shadow: 0 0 22px rgba(174, 147, 246, 0.45); }
-.hero-socials { display: flex; gap: 1.2rem; margin-top: 0; }
+.hero-socials { display: flex; gap: 1.15rem; margin-top: 0; }
 .hero-socials a {
   display: grid;
   place-items: center;
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 2.65rem;
+  height: 2.65rem;
   border-radius: .6rem;
   border: 1px solid #444050;
   background: #21202dbb;
 }
 .hero-socials a:hover { border-color: var(--accent); color: var(--accent); }
 .hero-visual {
-  margin: clamp(.5rem, 1.6vh, 1.5rem) 0 0;
+  margin: 0;
   position: relative;
   min-width: 0;
   width: 100%;
-  max-width: 410px;
+  max-width: 390px;
   aspect-ratio: 1.12;
   justify-self: center;
   filter: drop-shadow(0 16px 36px rgba(115, 51, 203, 0.2));
@@ -119,16 +113,16 @@
 @keyframes emblem-shadow { 0%, 100% { transform: scale(1); opacity: .75; } 50% { transform: scale(.8,.65); opacity: .35; } }
 .hero-facts {
   display: grid;
-  gap: clamp(3.5rem, 7vh, 5.5rem);
-  margin: clamp(.2rem, 1vh, .6rem) 0 0;
+  gap: clamp(2rem, 3.5vw, 3.2rem);
+  margin: 0;
   width: 100%;
 }
 .hero-facts div {
   display: flex;
   flex-direction: column-reverse;
-  gap: .55rem;
+  gap: .45rem;
   position: relative;
-  padding-left: 1.45rem;
+  padding-left: 1.35rem;
 }
 .hero-facts div::before {
   content: "";
@@ -154,14 +148,14 @@
 .hero-scroll {
   display: grid;
   justify-items: center;
-  gap: .25rem;
+  gap: .2rem;
   position: absolute;
   left: 50%;
-  bottom: 1.25rem;
+  bottom: .65rem;
   transform: translateX(-50%);
-  padding: .4rem .9rem;
+  padding: .35rem .85rem;
   color: var(--text);
-  font-size: .82rem;
+  font-size: .81rem;
   white-space: nowrap;
   z-index: 3;
 }
@@ -208,7 +202,8 @@
 @keyframes hero-divider-sweep { 0% { transform: translateX(0); opacity: 0; } 12% { opacity: 1; } 88% { opacity: 1; } 100% { transform: translateX(400%); opacity: 0; } }
 .section-rail {
   position: absolute;
-  top: clamp(1.2rem, 2.5vh, 2rem);
+  top: 50%;
+  transform: translateY(-50%);
   left: 0;
 }
 .section-rail ol { margin: 0; padding: 0; list-style: none; }
@@ -228,7 +223,7 @@
   grid-template-columns: 14px 1.25rem auto;
   gap: .55rem;
   align-items: center;
-  min-height: clamp(48px, 5.6vh, 62px);
+  min-height: 46px;
   color: var(--muted);
   font-size: .78rem;
 }
