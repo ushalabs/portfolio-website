@@ -25,7 +25,7 @@ export const siteStructuredData = {
       "@id": `${siteOrigin}/#person`,
       name: site.name,
       url: siteOrigin,
-      jobTitle: ["Software Engineer", "Full-Stack Developer", "AI Automation Engineer"],
+      jobTitle: ["Full-Stack & Systems Engineer", "Software Engineer", "Applied AI Engineer"],
       email: `mailto:${site.email}`,
       sameAs: [site.github, site.linkedin],
       affiliation: { "@type": "EducationalOrganization", name: "Riphah International University" },

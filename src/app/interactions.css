@@ -9,8 +9,9 @@
 @media (prefers-reduced-motion: no-preference) {
   html { scroll-behavior: smooth; }
   .hero-title-word { display: inline-block; white-space: pre; animation: title-arrival .7s cubic-bezier(.16,.8,.3,1) both; animation-delay: calc(.08s + var(--word-index) * .09s); }
-  .hero-roles, .hero-copy > .lead, .hero-actions, .hero-socials, .hero-facts > div { animation: text-arrival .6s cubic-bezier(.2,.7,.3,1) both; }
-  .hero-roles { animation-delay: .05s; }
+  .hero-status, .hero-roles, .hero-copy > .lead, .hero-actions, .hero-socials, .hero-facts > div { animation: text-arrival .6s cubic-bezier(.2,.7,.3,1) both; }
+  .hero-status { animation-delay: .02s; }
+  .hero-roles { animation-delay: .07s; }
   .hero-copy > .lead { animation-delay: .18s; }
   .hero-actions { animation-delay: .25s; }
   .hero-socials { animation-delay: .31s; }

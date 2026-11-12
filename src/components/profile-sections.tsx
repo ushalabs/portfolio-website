@@ -35,6 +35,6 @@ export function Experience() {
 export function About() {
   return <section className="shell section editorial about" id="about" aria-labelledby="about-heading">
     <div><SectionLabel index="04">About</SectionLabel><h2 className="section-title" id="about-heading">Behind<br /> Usha Labs<span className="accent">.</span></h2></div>
-    <div className="about-copy"><p>I’m {site.name}, a final-year Software Engineering student at Riphah International University and the developer behind Usha Labs.</p><p>I build mobile and desktop apps, full-stack systems, and AI automation. I’m interested in how software behaves in practice, from the details of a native application to the point where a workflow hands control back to a person.</p><p>I’m open to relevant engineering opportunities and international collaboration.</p></div>
+    <div className="about-copy"><p>I’m {site.name}, a final-year Software Engineering student at Riphah International University and the engineer behind Usha Labs.</p><p>I specialize in full-stack engineering, native systems, and applied AI automation. I focus on technical rigor and real-world behavior—from low-latency desktop utilities and mobile architectures to multi-agent LLM systems with human-in-the-loop controls.</p><p>I am actively targeting full-time engineering roles and global contracts worldwide, open to international relocation and remote collaboration across all time zones.</p></div>
   </section>;
 }

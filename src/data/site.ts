@@ -7,7 +7,7 @@ export const site = {
   phone: "+92-3192304660",
   telephone: "tel:+923192304660",
   location: "Islamabad / Rawalpindi, Pakistan",
-  description: "Usman Qureshi builds mobile and desktop apps, full-stack systems, and AI automation at Usha Labs.",
+  description: "Usman Qureshi is a Full-Stack & Systems Engineer specializing in Applied AI. Engineering mobile and desktop apps, high-performance systems, and AI automation at Usha Labs.",
 };
 
 export const resumePath = "/resumes/usman-qureshi-resume.pdf";

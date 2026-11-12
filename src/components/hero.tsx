@@ -11,9 +11,13 @@ export function Hero() {
     <div className="hero shell">
       <SectionRail />
       <div className="hero-copy">
-        <p className="hero-roles">Software Engineer <span aria-hidden="true">|</span> AI Automation Engineer</p>
+        <div className="hero-status">
+          <span className="status-beacon" aria-hidden="true"><span className="beacon-ping" /><span className="beacon-dot" /></span>
+          <span>Available for full-time roles &amp; contracts worldwide</span>
+        </div>
+        <p className="hero-roles">Full-Stack &amp; Systems Engineer <span aria-hidden="true">|</span> Applied AI</p>
         <h1 id="hero-title">{site.name.split(" ").map((word, index) => <span key={word} className="hero-title-word" style={{ "--word-index": index } as CSSProperties}>{index > 0 ? " " : ""}{word}</span>)}</h1>
-        <p className="lead">I build software products, AI agents, and automation systems, from mobile apps to native desktop tools.</p>
+        <p className="lead">I engineer high-performance full-stack applications, native desktop tools, and applied AI automation systems.</p>
         <div className="actions hero-actions">
           <Link href="/#work" className="button button-primary">Explore Projects <ArrowUpRight size={18} aria-hidden="true" /></Link>
           <a href={site.github} target="_blank" rel="noopener noreferrer" className="button">
