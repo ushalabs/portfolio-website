@@ -1,4 +1,4 @@
-.site-header { background: #101019f7; border-bottom-color: transparent; }
+.site-header { background: transparent; backdrop-filter: blur(18px); border-bottom-color: transparent; }
 .header-inner { width: min(1440px, 84%); padding-inline-start: clamp(0rem, 3.8vw, 4rem); }
 .wordmark { gap: .8rem; font-size: clamp(1.24rem, 1.55vw, 1.65rem); font-weight: 680; letter-spacing: -.042em; white-space: nowrap; }
 .wordmark svg { flex: 0 0 auto; }

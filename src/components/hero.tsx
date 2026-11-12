@@ -1,4 +1,3 @@
-import Image from "next/image";
 import type { CSSProperties } from "react";
 import Link from "./transition-link";
 import { ArrowUpRight, ChevronDown, Mail, Phone } from "lucide-react";
@@ -9,7 +8,6 @@ import { SectionRail } from "./interaction-layer";
 
 export function Hero() {
   return <section className="hero-section" id="home" aria-labelledby="hero-title">
-    <Image className="hero-landscape" src="/hero/night-shore.webp" alt="" fill sizes="(max-width: 650px) 1500px, 100vw" preload />
     <div className="hero shell">
       <SectionRail />
       <div className="hero-copy">

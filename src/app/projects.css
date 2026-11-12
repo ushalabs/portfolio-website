@@ -1,13 +1,4 @@
 .selected-work { position: relative; isolation: isolate; width: min(1280px, calc(100% - 15.4vw)); padding: clamp(2.5rem, 4.2vw, 4.5rem) 0 clamp(4.5rem, 7.5vw, 7.5rem); }
-.work-atmosphere-light {
-  position: absolute;
-  z-index: -1;
-  inset: 2.4rem 0 auto auto;
-  width: min(76%, 50rem);
-  height: min(35vw, 27rem);
-  background: radial-gradient(ellipse at 63% 42%, #9470ed16, transparent 72%);
-  pointer-events: none;
-}
 .selected-heading {
   display: flex;
   justify-content: space-between;
@@ -113,7 +104,6 @@
 }
 @media (max-width: 700px) {
   .selected-work { width: calc(100% - 2.5rem); }
-  .work-atmosphere-light { height: 15rem; }
   .project-card::before { opacity: .43; }
   .project-grid { grid-template-columns: 1fr; }
   .project-card-slot, .project-grid-centered > .project-card-slot:last-child:nth-child(odd) { grid-column: auto; }

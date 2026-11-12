@@ -25,22 +25,10 @@ body { position: relative; isolation: isolate; }
 }
 @keyframes atmosphere-drift { from { transform: translate3d(-2%, -1%, 0); opacity: .7; } to { transform: translate3d(2%, 2%, 0); opacity: 1; } }
 @keyframes atmosphere-ribbon-drift { from { transform: translate3d(-1%, -1%, 0) rotate(-1deg); } to { transform: translate3d(1%, 1%, 0) rotate(1deg); } }
-.portfolio-atmosphere { position: relative; isolation: isolate; background: linear-gradient(180deg, #17151f00, #16131e22 55%, #1c182633); }
+.portfolio-atmosphere { position: relative; }
 .portfolio-atmosphere > .section {
   position: relative;
   isolation: isolate;
   border-top-color: transparent;
   border-image: linear-gradient(90deg, #8273a544, #63567557 28%, #64567430 74%, #64567412) 1;
 }
-.portfolio-atmosphere > .section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background: radial-gradient(ellipse 64% 82% at var(--atmosphere-origin), #9470ed0c 0%, transparent 86%);
-}
-#stack { --atmosphere-origin: 83% 47%; }
-#experience { --atmosphere-origin: 18% 34%; }
-#about { --atmosphere-origin: 74% 51%; }
-#contact { --atmosphere-origin: 43% 48%; }

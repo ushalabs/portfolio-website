@@ -84,3 +84,10 @@
 - Replaced the technical contour backdrop with brighter, broad illuminated ribbon forms and a quieter grain layer.
 - Integrated native old/new page snapshot transitions through `next-view-transitions`. All internal page links and quick navigation use the transition router. Same-page anchors use smooth scrolling. Browsers without the native API retain the page entrance fallback.
 - Removed the obsolete prism assets and unused Three.js dependencies. Dependency audit returned zero vulnerabilities.
+
+## Continuous background fix
+
+- Removed the separate hero landscape, hero overlay and bottom border, homepage background wash, per-section lighting, and Projects spotlight.
+- The shared site backdrop now continues behind the header, hero, homepage sections, archive, and detail pages. The sticky header uses a transparent blur for readability while scrolling.
+- Removed the unused landscape asset and spotlight animation. Verified the hero-to-Projects boundary on desktop and mobile.
+- Lint, TypeScript, the production build, and all 23 Chrome tests passed. The backdrop check verifies transparent section backgrounds and a single shared backdrop element.

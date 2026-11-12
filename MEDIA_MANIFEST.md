@@ -38,12 +38,6 @@ Solvanta’s six design references were cropped individually and upscaled to 128
 
 The MeetingMinutes AI poster is a frame from the local recording. The case study uses that frame as the local MP4 poster.
 
-The decorative night shoreline was generated with the built-in image tool using the user’s homepage reference. The hero uses the same authored Usha Labs SVG paths as the header mark, defined in `src/components/brand-symbol.tsx`.
+The hero uses the same authored Usha Labs SVG paths as the header mark, defined in `src/components/brand-symbol.tsx`. A single shared backdrop continues behind the hero, homepage sections, and project pages.
 
 `public/atmosphere/ribbons.svg` is an authored SVG composition for the shared decorative background. The hero’s layered mark and moving highlight are implemented in `src/components/hero-visual.tsx` and `src/app/hero.css`.
-
-## Decorative hero asset
-
-The built-in image tool generated the background. The optimized asset is `public/hero/night-shore.webp` at 1920 × 768. Prompt follows.
-
-> Create a wide decorative website hero background using attached image #1 only as visual direction for the environment. A low jagged graphite mountain shoreline at night, dark still water below it with a thin violet reflection beneath the center-right, and dark near-black indigo sky above. Compose as an ultra-wide cinematic panorama: the mountain skyline sits in the lower third, runs primarily across the right two-thirds, with low jagged rocks whose texture is picked out by sparse lavender rim light. Keep the left third and upper 65% nearly black and calm for separate HTML copy and a live 3D sculpture. Blend edges into #101019, realistic stone and dark water, restrained contrast, no stars or large beams. Render only the unoccupied background landscape. Exclude all interface, people, words, logos, buttons, diagrams, cubes, crystals, and orbit lines. Landscape output with roughly 2.5:1 framing.

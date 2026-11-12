@@ -69,3 +69,9 @@ The original release’s Lighthouse results and Git checkpoints are recorded in 
 - Verified both native transition snapshots reach the ready state and run the outgoing and incoming animations on archive/detail navigation. Reduced-motion navigation, browser history, quick navigation, same-page scrolling, and normal links passed.
 - Verified heading and hero-copy hover effects, distinct wordmark and icon responses, keyboard navigation feedback, authentic hero/header path reuse, logo idle and pointer animation, offscreen pausing, and reduced motion. The SVG mark works without WebGL and remains visible without JavaScript.
 - Reviewed hero and detail screenshots at 1440px and the hero at 390px. All six responsive checks passed, and three axe WCAG A/AA scans found zero violations.
+
+## Continuous background fix
+
+- The header, hero, and every homepage section expose one shared site backdrop. The hero landscape, separate section lighting, and Projects spotlight were removed.
+- Visually reviewed the hero-to-Projects boundary at 1440px and 390px. All 23 browser checks passed in 44.6 seconds, including native transitions, six responsive widths, gallery behavior, and three axe scans with zero WCAG A/AA violations.
+- ESLint, strict TypeScript, and the production build passed.

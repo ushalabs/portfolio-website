@@ -173,7 +173,7 @@ test("project card tilt responds to the pointer and respects reduced motion", as
   await expect(card.locator(".project-icon")).toHaveCSS("transform", "none");
 });
 
-test("the homepage backdrop connects sections and its parallax respects reduced motion", async ({ page }) => {
+test("one shared backdrop continues through the hero and every homepage section", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/");
   const sections = page.locator(".portfolio-atmosphere > section");
@@ -181,11 +181,15 @@ test("the homepage backdrop connects sections and its parallax respects reduced 
 
   const patterns = await page.locator("#work .project-card").evaluateAll(cards => cards.map(card => getComputedStyle(card).getPropertyValue("--project-pattern")));
   expect(new Set(patterns).size).toBe(4);
-  const light = page.locator(".work-atmosphere-light");
-  await page.locator("#work").evaluate(section => window.scrollTo(0, section.getBoundingClientRect().top + window.scrollY + 300));
-  await expect.poll(() => light.evaluate(element => new DOMMatrix(getComputedStyle(element).transform).m42)).toBeLessThan(-5);
+  await expect(page.locator(".site-atmosphere")).toHaveCount(1);
+  await expect(page.locator(".site-atmosphere")).toHaveCSS("position", "fixed");
+  for (const selector of [".site-header", "#home", ".portfolio-atmosphere", "#work", "#stack", "#experience", "#about", "#contact"]) {
+    await expect(page.locator(selector)).toHaveCSS("background-color", "rgba(0, 0, 0, 0)");
+    await expect(page.locator(selector)).toHaveCSS("background-image", "none");
+  }
+  await expect(page.locator(".hero-landscape, .work-atmosphere-light")).toHaveCount(0);
   await page.emulateMedia({ reducedMotion: "reduce" });
-  await expect(light).toHaveCSS("transform", "none");
+  await expect(page.locator(".atmosphere-light")).toHaveCSS("animation-name", "none");
   await expect(page.getByRole("link", { name: "Velora", exact: true })).toBeVisible();
 });
 

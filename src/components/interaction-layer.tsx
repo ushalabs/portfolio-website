@@ -79,14 +79,6 @@ export function InteractionLayer() {
       if (version !== animationVersion || !preference.matches) return;
       gsap.registerPlugin(ScrollTrigger);
       const context = gsap.context(() => {
-        if (pathname === "/" && matchMedia("(pointer: fine) and (min-width: 850px)").matches) {
-          gsap.to(".work-atmosphere-light", {
-            y: -26,
-            ease: "none",
-            scrollTrigger: { trigger: "#work", start: "top bottom", end: "bottom top", scrub: .45 },
-          });
-        }
-
         const reveals = gsap.utils.toArray<HTMLElement>([
           ".selected-heading", ".project-group-heading", ".editorial .section-label", ".editorial .section-title", ".editorial .lead",
           ".contact-layout .section-label", ".contact-layout .section-title", ".contact-layout .lead",
