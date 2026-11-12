@@ -14,19 +14,66 @@ const railItems = [
   { label: "Contact", href: "/#contact" },
 ];
 
-function useActiveSection() {
+export function useActiveSection() {
   const pathname = usePathname();
-  const [active, setActive] = useState("home");
+  const [active, setActive] = useState(() => {
+    if (typeof window !== "undefined" && window.location.hash) {
+      const id = window.location.hash.replace("#", "");
+      if (railItems.some(item => item.href.endsWith(`#${id}`))) return id;
+    }
+    return "home";
+  });
+
   useEffect(() => {
     if (pathname !== "/") return;
-    const sections = railItems.map(item => document.getElementById(item.href.split("#")[1]));
-    const observer = new IntersectionObserver(entries => {
-      for (const entry of entries) if (entry.isIntersecting) setActive(entry.target.id);
-    }, { rootMargin: "-25% 0px -52% 0px" });
-    sections.forEach(section => { if (section) observer.observe(section); });
-    function clearAtTop() { if (window.scrollY < 80) setActive("home"); }
-    window.addEventListener("scroll", clearAtTop, { passive: true });
-    return () => { observer.disconnect(); window.removeEventListener("scroll", clearAtTop); };
+
+    function handleHash() {
+      const hash = window.location.hash.replace("#", "");
+      if (hash && railItems.some(item => item.href.endsWith(`#${hash}`))) {
+        setActive(hash);
+      }
+    }
+
+    function handleClick(event: MouseEvent) {
+      const anchor = (event.target as HTMLElement).closest<HTMLAnchorElement>("a[href*='#']");
+      if (!anchor) return;
+      const targetUrl = new URL(anchor.href, window.location.href);
+      if (targetUrl.pathname === "/" && targetUrl.hash) {
+        const id = targetUrl.hash.replace("#", "");
+        if (railItems.some(item => item.href.endsWith(`#${id}`))) {
+          setActive(id);
+        }
+      }
+    }
+
+    function handleScroll() {
+      if (window.scrollY < 80) {
+        setActive("home");
+        return;
+      }
+      const scrollMark = window.scrollY + window.innerHeight * 0.35;
+      let currentSection = "home";
+      for (const item of railItems) {
+        const id = item.href.split("#")[1];
+        const el = document.getElementById(id);
+        if (el && scrollMark >= el.offsetTop) {
+          currentSection = id;
+        }
+      }
+      setActive(currentSection);
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("hashchange", handleHash);
+    document.addEventListener("click", handleClick);
+    handleHash();
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("hashchange", handleHash);
+      document.removeEventListener("click", handleClick);
+    };
   }, [pathname]);
 
   return pathname.startsWith("/projects") ? "/#work" : pathname === "/" ? `/#${active}` : null;
