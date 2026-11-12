@@ -110,3 +110,9 @@
 - Direction follows the engineering portfolio’s precise character with graphite surfaces, faint neutral folds, the U as the main color accent, and one continuous backdrop.
 - Darkened the base to near-black graphite, neutralized the ribbon colors, reduced lighting and grain, and slowed ambient movement.
 - Reviewed desktop and mobile production captures. Build, lint, TypeScript, six responsive checks, the shared-backdrop check, and three axe WCAG A/AA scans passed.
+
+## Large U animation refinement
+
+- Added a four-pose idle turn and float cycle, a synchronized shadow, stronger pointer response, and a more frequent reflection sweep. On hover, the depth layers spread and the face lifts forward.
+- Motion pauses offscreen and in hidden tabs. Reduced-motion settings disable the added animations and hover depth changes.
+- Build, lint, TypeScript, six responsive checks, and the logo interaction/reduced-motion check passed. Reviewed idle and hover captures in production Chrome.

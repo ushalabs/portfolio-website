@@ -375,14 +375,18 @@ test("the hero uses the authentic animated U mark and honors reduced motion", as
   await page.waitForTimeout(200);
   expect((await visual.screenshot()).equals(before)).toBe(false);
   await expect(page.locator(".hero-facts")).toContainText("Full Stack & AI Automation");
+  const depthBefore = await visual.locator(".emblem-depth-back").evaluate(element => getComputedStyle(element).transform);
   await page.mouse.move(box.x + box.width * .12, box.y + box.height * .32);
   await expect.poll(() => visual.evaluate(element => getComputedStyle(element).getPropertyValue("--emblem-x"))).not.toBe("");
+  await expect.poll(() => visual.locator(".emblem-depth-back").evaluate(element => getComputedStyle(element).transform)).not.toBe(depthBefore);
   await page.evaluate(() => window.scrollTo({ top: 1200, behavior: "instant" }));
   await expect(visual).toHaveAttribute("data-active", "false");
   await expect(emblem).toHaveCSS("animation-play-state", "paused");
+  await expect(visual.locator(".emblem-orbit")).toHaveCSS("animation-play-state", "paused");
   await page.emulateMedia({ reducedMotion: "reduce" });
   await expect(visual).toHaveAttribute("data-interactive", "false");
   await expect(emblem).toHaveCSS("animation-name", "none");
+  await expect(visual.locator(".emblem-orbit")).toHaveCSS("animation-name", "none");
   await expect(visual.locator(".emblem-pointer")).toHaveCSS("transform", "none");
   await expect(page.locator(".hero-title-word").first()).toHaveCSS("animation-name", "none");
 });

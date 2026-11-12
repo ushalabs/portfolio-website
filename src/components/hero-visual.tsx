@@ -34,8 +34,8 @@ export function HeroVisual() {
   function move(event: PointerEvent<HTMLElement>) {
     if (!interactive || event.pointerType !== "mouse") return;
     const { left, top, width, height } = event.currentTarget.getBoundingClientRect();
-    const x = ((event.clientX - left) / width - .5) * 12;
-    const y = (.5 - (event.clientY - top) / height) * 10;
+    const x = ((event.clientX - left) / width - .5) * 18;
+    const y = (.5 - (event.clientY - top) / height) * 14;
     cancelAnimationFrame(frame.current);
     frame.current = requestAnimationFrame(() => {
       host.current?.style.setProperty("--emblem-x", x + "deg");
@@ -60,7 +60,7 @@ export function HeroVisual() {
           <svg className="emblem-layer emblem-sheen" viewBox="0 0 40 40" fill="none">
             <defs>
               <clipPath id={clip}><path d={brandSilhouette} /></clipPath>
-              <linearGradient id={light}><stop stopColor="white" stopOpacity="0" /><stop offset=".5" stopColor="white" stopOpacity=".65" /><stop offset="1" stopColor="white" stopOpacity="0" /></linearGradient>
+              <linearGradient id={light}><stop stopColor="white" stopOpacity="0" /><stop offset=".5" stopColor="white" stopOpacity=".85" /><stop offset="1" stopColor="white" stopOpacity="0" /></linearGradient>
             </defs>
             <g clipPath={`url(#${clip})`}><rect className="emblem-highlight" x="-24" y="-20" width="13" height="80" fill={`url(#${light})`} /></g>
           </svg>

@@ -25,13 +25,27 @@
 .emblem-highlight { transform-box: view-box; transform-origin: center; }
 .emblem-orbit { position: absolute; width: 70%; height: 10%; left: 12%; bottom: 8%; background: radial-gradient(ellipse, #b599e733, transparent 70%); }
 @media (prefers-reduced-motion: no-preference) {
-  .emblem-drift { animation: emblem-float 7s ease-in-out infinite alternate; }
-  .emblem-highlight { animation: emblem-sheen 6s ease-in-out infinite; }
-  .hero-visual[data-active="false"] .emblem-drift, .hero-visual[data-active="false"] .emblem-highlight { animation-play-state: paused; }
+  .emblem-drift { animation: emblem-float 8s ease-in-out infinite; }
+  .emblem-highlight { animation: emblem-sheen 4.8s ease-in-out infinite; }
+  .emblem-orbit { animation: emblem-shadow 8s ease-in-out infinite; }
+  .emblem-layer { transition: transform .6s cubic-bezier(.2,.75,.3,1); }
+  .hero-visual[data-active="false"] .emblem-drift, .hero-visual[data-active="false"] .emblem-highlight, .hero-visual[data-active="false"] .emblem-orbit { animation-play-state: paused; }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .hero-visual:hover .emblem-depth-back { transform: translate3d(-20px,22px,-30px); }
+  .hero-visual:hover .emblem-depth-mid { transform: translate3d(-9px,11px,-14px); }
+  .hero-visual:hover .emblem-face { transform: translateZ(12px); }
+  .hero-visual:hover .emblem-sheen { transform: translateZ(13px); }
 }
 @media (prefers-reduced-motion: reduce) { .emblem-pointer { transform: none; } .emblem-sheen { display: none; } }
-@keyframes emblem-float { from { transform: translateY(5px) rotateX(5deg) rotateY(-12deg) rotateZ(-5deg); } to { transform: translateY(-8px) rotateX(-3deg) rotateY(8deg) rotateZ(2deg); } }
-@keyframes emblem-sheen { 0%, 25% { transform: translateX(0) rotate(-15deg); opacity: 0; } 32% { opacity: .7; } 65%, 100% { transform: translateX(85px) rotate(-15deg); opacity: 0; } }
+@keyframes emblem-float {
+  0%, 100% { transform: translateY(5px) rotateX(7deg) rotateY(-22deg) rotateZ(-5deg); }
+  25% { transform: translateY(-10px) rotateX(-5deg) rotateY(-6deg) rotateZ(1deg); }
+  50% { transform: translateY(-14px) rotateX(-8deg) rotateY(20deg) rotateZ(4deg); }
+  75% { transform: translateY(-2px) rotateX(4deg) rotateY(8deg) rotateZ(-1deg); }
+}
+@keyframes emblem-sheen { 0%, 8% { transform: translateX(0) rotate(-15deg); opacity: 0; } 20% { opacity: .65; } 60%, 100% { transform: translateX(85px) rotate(-15deg); opacity: 0; } }
+@keyframes emblem-shadow { 0%, 100% { transform: scale(1); opacity: .75; } 50% { transform: scale(.8,.65); opacity: .35; } }
 .hero-facts { display: grid; gap: clamp(1.6rem, 3vw, 2.7rem); margin: 0; }
 .hero-facts div { display: flex; flex-direction: column-reverse; gap: .25rem; position: relative; padding-left: 1rem; }
 .hero-facts div::before { content: ""; position: absolute; left: 0; inset-block: .2rem; width: 2px; background: linear-gradient(#cf84fc, #6130a8); border-radius: 2px; }
