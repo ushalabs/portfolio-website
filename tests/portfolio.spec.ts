@@ -189,6 +189,34 @@ test("the homepage backdrop connects sections and its parallax respects reduced 
   await expect(page.getByRole("link", { name: "Velora", exact: true })).toBeVisible();
 });
 
+test("route entrances and the shared atmosphere honor motion preferences", async ({ page }) => {
+  await page.goto("/projects");
+  await expect(page.locator(".site-atmosphere")).toHaveCSS("position", "fixed");
+  await expect(page.locator(".atmosphere-light")).toHaveCSS("animation-name", "atmosphere-drift");
+  await page.evaluate(() => {
+    const audit = window as Window & { routeArrivals?: string[] };
+    audit.routeArrivals = [];
+    const content = document.querySelector<HTMLDivElement>(".page-transition")!;
+    const animate = content.animate.bind(content);
+    content.animate = (...args: Parameters<typeof animate>) => {
+      audit.routeArrivals!.push(location.pathname);
+      return animate(...args);
+    };
+  });
+  await page.getByRole("link", { name: "Velora", exact: true }).click();
+  await expect(page.locator("h1")).toHaveText("Velora.");
+  await page.getByRole("link", { name: "Back to projects", exact: true }).click();
+  await page.getByRole("link", { name: "Downshift", exact: true }).click();
+  await expect(page.locator("h1")).toHaveText("Downshift.");
+  await expect.poll(() => page.evaluate(() => (window as Window & { routeArrivals?: string[] }).routeArrivals)).toEqual(["/projects/velora", "/projects", "/projects/downshift"]);
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await expect(page.locator(".atmosphere-light")).toHaveCSS("animation-name", "none");
+  await expect(page.locator(".atmosphere-lines")).toHaveCSS("animation-name", "none");
+  await page.goBack();
+  await expect(page.locator("h1")).toHaveText("Project archive.");
+  expect(await page.locator(".page-transition").evaluate(element => element.getAnimations().length)).toBe(0);
+});
+
 test("project routes, media, canonical tags, previews and 404", async ({ page, request }) => {
   for (const project of projects) {
     const route = `/projects/${project.slug}`;
@@ -215,6 +243,7 @@ test("project routes, media, canonical tags, previews and 404", async ({ page, r
 });
 
 test("case studies keep the supplied and animated media below the write-up", async ({ page, request }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/projects/meetingminutes-ai");
   const video = page.getByLabel("MeetingMinutes AI screen recording");
@@ -327,6 +356,9 @@ test("3D responds to pointer and scroll and honors reduced motion", async ({ pag
   const canvas = visual.locator("canvas");
   const box = (await canvas.boundingBox())!;
   const before = await canvas.screenshot();
+  await page.waitForTimeout(200);
+  expect((await canvas.screenshot()).equals(before)).toBe(false);
+  await expect(page.locator(".hero-facts")).toContainText("Full Stack & AI Automation");
   await page.mouse.move(box.x + box.width * .12, box.y + box.height * .32);
   await expect.poll(async () => (await canvas.screenshot()).equals(before)).toBe(false);
   const tilted = await canvas.screenshot();
@@ -336,6 +368,7 @@ test("3D responds to pointer and scroll and honors reduced motion", async ({ pag
   await expect(visual).toHaveAttribute("data-interactive", "false");
   await expect(canvas).toHaveCount(0);
   await expect(visual.locator(".hero-fallback")).toBeVisible();
+  await expect(page.locator(".hero-title-word").first()).toHaveCSS("animation-name", "none");
 });
 
 test("WebGL unavailable and no JavaScript keep the portfolio usable", async ({ browser, baseURL }) => {

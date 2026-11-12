@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { CSSProperties } from "react";
 import Link from "next/link";
 import { ArrowUpRight, ChevronDown, Mail, Phone } from "lucide-react";
 import { projects } from "@/data/projects";
@@ -13,7 +14,7 @@ export function Hero() {
       <SectionRail />
       <div className="hero-copy">
         <p className="hero-roles">Software Engineer <span aria-hidden="true">|</span> AI Automation Engineer</p>
-        <h1 id="hero-title">{site.name}</h1>
+        <h1 id="hero-title">{site.name.split(" ").map((word, index) => <span key={word} className="hero-title-word" style={{ "--word-index": index } as CSSProperties}>{index > 0 ? " " : ""}{word}</span>)}</h1>
         <p className="lead">I build software products, AI agents, and automation systems, from mobile apps to native desktop tools.</p>
         <div className="actions hero-actions">
           <Link href="/#work" className="button button-primary">Explore Projects <ArrowUpRight size={18} aria-hidden="true" /></Link>
@@ -34,7 +35,7 @@ export function Hero() {
       <dl className="hero-facts">
         <div><dt>Projects</dt><dd>{projects.length}</dd></div>
         <div><dt>Expected graduation</dt><dd>June 2027</dd></div>
-        <div><dt>Core focus</dt><dd>AI, Full-Stack<br /> &amp; Automation</dd></div>
+        <div><dt>Core focus</dt><dd>Full Stack &amp; AI Automation</dd></div>
       </dl>
     </div>
     <Link href="/#work" className="hero-scroll">Scroll to explore <span className="hero-scroll-mouse" aria-hidden="true" /><ChevronDown size={18} aria-hidden="true" /></Link>

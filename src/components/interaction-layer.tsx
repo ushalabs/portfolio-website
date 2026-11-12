@@ -67,8 +67,7 @@ export function InteractionLayer() {
   }, [pathname]);
 
   useEffect(() => {
-    if (pathname !== "/") return;
-    const preference = matchMedia("(prefers-reduced-motion: no-preference) and (pointer: fine) and (min-width: 850px)");
+    const preference = matchMedia("(prefers-reduced-motion: no-preference)");
     let animationVersion = 0;
     let cleanup: (() => void) | undefined;
     async function animate() {
@@ -80,27 +79,38 @@ export function InteractionLayer() {
       if (version !== animationVersion || !preference.matches) return;
       gsap.registerPlugin(ScrollTrigger);
       const context = gsap.context(() => {
-        gsap.from(".hero-copy", { y: 14, duration: .65, ease: "power2.out", clearProps: "transform" });
-        gsap.to(".work-atmosphere-light", {
-          y: -26,
-          ease: "none",
-          scrollTrigger: { trigger: "#work", start: "top bottom", end: "bottom top", scrub: .45 },
-        });
-
-        const cards = gsap.utils.toArray<HTMLElement>("#work .project-card-slot");
-        for (let index = 0; index < cards.length; index += 2) {
-          const row = cards.slice(index, index + 2);
-          gsap.from(row, {
-            y: 8,
-            opacity: .94,
-            duration: .38,
-            stagger: .055,
-            ease: "power2.out",
-            immediateRender: false,
-            clearProps: "transform,opacity",
-            scrollTrigger: { trigger: row[0], start: "top 93%", once: true },
+        if (pathname === "/" && matchMedia("(pointer: fine) and (min-width: 850px)").matches) {
+          gsap.to(".work-atmosphere-light", {
+            y: -26,
+            ease: "none",
+            scrollTrigger: { trigger: "#work", start: "top bottom", end: "bottom top", scrub: .45 },
           });
         }
+
+        const reveals = gsap.utils.toArray<HTMLElement>([
+          ".selected-heading", ".project-group-heading", ".editorial .section-label", ".editorial .section-title", ".editorial .lead",
+          ".contact-layout .section-label", ".contact-layout .section-title", ".contact-layout .lead",
+          ".toolkit details", ".timeline li", ".about-copy p", ".contact-links > a", ".detail-heading > *",
+          ".page-main > .section-label", ".page-main > .page-title", ".page-main > .lead", ".back-link",
+          ".detail-block > h2", ".detail-block > h3", ".detail-block > p", ".detail-block > ul", ".related > a", ".case-media-wide",
+        ].join(","));
+        reveals.forEach(element => {
+          gsap.from(element, {
+            y: 12, opacity: .75, duration: .48, ease: "power2.out", immediateRender: false,
+            clearProps: "transform,opacity", scrollTrigger: { trigger: element, start: "top 95%", once: true },
+          });
+        });
+
+        document.querySelectorAll(".project-grid").forEach(grid => {
+          const cards = Array.from(grid.querySelectorAll<HTMLElement>(".project-card-slot"));
+          for (let index = 0; index < cards.length; index += 2) {
+            const row = cards.slice(index, index + 2);
+            gsap.from(row, {
+              y: 8, opacity: .88, duration: .4, stagger: .055, ease: "power2.out", immediateRender: false,
+              clearProps: "transform,opacity", scrollTrigger: { trigger: row[0], start: "top 93%", once: true },
+            });
+          }
+        });
       });
       cleanup = () => context.revert();
     }

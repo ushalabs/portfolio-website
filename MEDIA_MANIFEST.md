@@ -40,6 +40,8 @@ The MeetingMinutes AI poster is a frame from the local recording. The case study
 
 The decorative night shoreline was generated with the built-in image tool using the user’s homepage reference. The interactive prism and its static SVG fallback are implemented in the portfolio.
 
+`public/atmosphere/contours.svg` is an authored SVG line pattern for the shared decorative background. The prism’s animated internal frames, rings, core, and shaders are implemented directly in `src/components/mechanical-scene.tsx`.
+
 ## Decorative hero asset
 
 The built-in image tool generated the background. The optimized asset is `public/hero/night-shore.webp` at 1920 × 768. Prompt follows.

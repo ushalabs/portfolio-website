@@ -1,11 +1,47 @@
+.site-atmosphere {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 90% 5%, #26203488, transparent 62%), linear-gradient(150deg, #101019, #12111b 55%, #0e0f17);
+}
+body { position: relative; isolation: isolate; }
+.atmosphere-light {
+  position: absolute;
+  inset: -12%;
+  background:
+    radial-gradient(ellipse 46% 50% at 85% 30%, #8062bd24, transparent 80%),
+    radial-gradient(ellipse 40% 55% at 13% 80%, #5b699e15, transparent 78%);
+}
+.atmosphere-lines {
+  position: absolute;
+  inset: -4%;
+  background:
+    url("/atmosphere/contours.svg") center / cover no-repeat,
+    linear-gradient(90deg, #b8a7da0c 1px, transparent 1px),
+    linear-gradient(#b8a7da09 1px, transparent 1px);
+  background-size: cover, 88px 88px, 88px 88px;
+  opacity: .38;
+  mask-image: linear-gradient(115deg, #000b, #0002 44%, #000 85%);
+}
+.atmosphere-grain { position: absolute; inset: 0; background: url("/atmosphere/grain.svg"); opacity: .035; }
+.page-transition { min-width: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .atmosphere-light { animation: atmosphere-drift 26s ease-in-out infinite alternate; }
+  .atmosphere-lines { animation: atmosphere-line-drift 34s ease-in-out infinite alternate; }
+}
+@keyframes atmosphere-drift { from { transform: translate3d(-2%, -1%, 0); opacity: .65; } to { transform: translate3d(3%, 3%, 0); opacity: 1; } }
+@keyframes atmosphere-line-drift { from { transform: translate3d(0, -1%, 0); } to { transform: translate3d(-1%, 1%, 0); } }
+
 .portfolio-atmosphere {
   position: relative;
   isolation: isolate;
   background:
-    radial-gradient(ellipse 64% 25% at 90% 7%, #1d1829 0%, transparent 80%),
-    radial-gradient(ellipse 64% 24% at 8% 53%, #1b1725 0%, transparent 80%),
-    radial-gradient(ellipse 62% 21% at 95% 77%, #1c1829 0%, transparent 80%),
-    linear-gradient(180deg, #101019, #13131c 28%, #101019 58%, #13121c 82%, #101019);
+    radial-gradient(ellipse 64% 25% at 90% 7%, #31263f44 0%, transparent 80%),
+    radial-gradient(ellipse 64% 24% at 8% 53%, #27223755 0%, transparent 80%),
+    radial-gradient(ellipse 62% 21% at 95% 77%, #29213944 0%, transparent 80%),
+    linear-gradient(180deg, #10101900, #13131c55 28%, #10101944 58%, #13121c55 82%, #10101944);
 }
 .portfolio-atmosphere::before,
 .portfolio-atmosphere::after {
@@ -52,6 +88,7 @@
 #contact { --atmosphere-origin: 43% 48%; }
 
 @media (max-width: 700px) {
+  .atmosphere-lines { opacity: .26; }
   .portfolio-atmosphere::before { background-size: 52px 52px; opacity: .33; }
   .portfolio-atmosphere::after { opacity: .036; }
 }

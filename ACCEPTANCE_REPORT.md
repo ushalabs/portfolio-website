@@ -53,3 +53,11 @@ The original release’s Lighthouse results and Git checkpoints are recorded in 
 - Added AI Sales Agent and Outbound SDR Agent, including source-pinned content, genuine repository icons, detail routes, social previews, sitemap entries, and quick navigation destinations. Both repository and logo-source URLs returned HTTP 200.
 - ESLint, strict TypeScript, production build, and all 21 Chrome tests passed. Coverage includes section order, all nine project destinations and icons, six viewport sizes, and zero violations in three axe WCAG A/AA scans.
 - Visually reviewed the desktop and mobile Projects composition and the complete four-card AI section. Both new agent pages omit screenshot galleries because their repositories provide no verified application captures.
+
+## Shared backgrounds, route entrances, and cube animation
+
+- Production build, ESLint, and strict TypeScript passed. Browser coverage now includes 22 checks. The full run passed 21 checks. The media layout check was adjusted to measure static spacing with reduced motion and passed its targeted rerun.
+- Verified route entrances for archive-to-detail and return navigation, browser history, ambient background animation, and reduced-motion cancellation. The cube changes at rest, responds to pointer and scroll input, and switches to its static fallback with reduced motion.
+- Screenshot-gallery items are excluded from scroll transforms to keep their native keyboard scrolling and scroll snapping stable. Gallery keyboard checks passed after that adjustment.
+- All six viewport widths passed without horizontal overflow. Three axe WCAG A/AA scans found zero violations. Production Chrome reported no page or shader errors during the live hero review.
+- Reviewed desktop hero and detail-page captures and a 390px detail page. Sampling 120 animation frame intervals with the live cube and backdrop in headless Chrome averaged 60.0 FPS, with a 17.2ms 95th-percentile interval. This is a local sample.

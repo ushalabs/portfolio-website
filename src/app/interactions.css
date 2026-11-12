@@ -5,6 +5,22 @@
 @media (prefers-reduced-motion: no-preference) and (pointer: fine) {
   .button-primary > svg { transition: transform .22s ease-out; }
   .button-primary:hover > svg { transform: translate(var(--magnet-x, 0), var(--magnet-y, 0)); }
-  .page-main { animation: page-arrival .27s ease-out both; }
 }
-@keyframes page-arrival { from { opacity: .83; } to { opacity: 1; } }
+@media (prefers-reduced-motion: no-preference) {
+  .hero-title-word { display: inline-block; white-space: pre; animation: title-arrival .7s cubic-bezier(.16,.8,.3,1) both; animation-delay: calc(.08s + var(--word-index) * .09s); }
+  .hero-roles, .hero-copy > .lead, .hero-actions, .hero-socials, .hero-facts > div { animation: text-arrival .6s cubic-bezier(.2,.7,.3,1) both; }
+  .hero-roles { animation-delay: .05s; }
+  .hero-copy > .lead { animation-delay: .18s; }
+  .hero-actions { animation-delay: .25s; }
+  .hero-socials { animation-delay: .31s; }
+  .hero-facts > div:nth-child(1) { animation-delay: .22s; }
+  .hero-facts > div:nth-child(2) { animation-delay: .29s; }
+  .hero-facts > div:nth-child(3) { animation-delay: .36s; }
+  .hero-scroll-mouse::before { animation: scroll-cue 2.4s ease-in-out 1s infinite; }
+  .toolkit details[open] .toolkit-content { animation: text-arrival .28s ease-out both; }
+  .contact-links > a svg, .related a svg, .all-projects svg { transition: transform .25s ease-out; }
+  .contact-links > a:hover svg, .related a:hover svg, .all-projects:hover svg { transform: translate(2px,-2px); }
+}
+@keyframes title-arrival { from { opacity: 0; transform: translateY(20px) rotateX(8deg); } to { opacity: 1; transform: none; } }
+@keyframes text-arrival { from { opacity: .35; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes scroll-cue { 0%, 100% { transform: translateY(0); opacity: .65; } 50% { transform: translateY(5px); opacity: 1; } }

@@ -36,9 +36,13 @@ export function HeroVisual() {
     }
     update();
     preference.addEventListener("change", update);
-    const observer = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting));
+    let intersects = true;
+    function updateVisibility() { setVisible(intersects && !document.hidden); }
+    const observer = new IntersectionObserver(([entry]) => { intersects = entry.isIntersecting; updateVisibility(); });
     if (host.current) observer.observe(host.current);
-    return () => { window.clearTimeout(timer); preference.removeEventListener("change", update); observer.disconnect(); };
+    document.addEventListener("visibilitychange", updateVisibility);
+    updateVisibility();
+    return () => { window.clearTimeout(timer); preference.removeEventListener("change", update); observer.disconnect(); document.removeEventListener("visibilitychange", updateVisibility); };
   }, []);
 
   const live = enabled && !failed;
@@ -47,6 +51,6 @@ export function HeroVisual() {
       <Image className="hero-fallback" src="/hero/prism.svg" alt="" fill sizes="(max-width: 650px) 92vw, 37vw" />
       {live && <Scene visible={visible} onReady={() => setReady(true)} onError={() => setFailed(true)} />}
     </div>
-    <figcaption className="sr-only">A violet glass prism with an orbital ring</figcaption>
+    <figcaption className="sr-only">A glass prism with a rotating internal mechanism and a moving orbital highlight</figcaption>
   </figure>;
 }

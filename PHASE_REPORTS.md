@@ -68,3 +68,11 @@
 - Verified and added AI Sales Agent and Outbound SDR Agent using their actual public repository slugs, pinned source revisions, and repository logos.
 - Added both agent detail pages through the shared registry, including technology, engineering approach, and documented challenges. No public live demo URL was present in either repository.
 - Inspected both repository media inventories. Outbound SDR’s design reference is excluded from the screenshot gallery, and AI Sales Agent has no application captures.
+
+## Shared atmosphere and motion
+
+- Added a shared CSS/SVG backdrop behind the homepage sections, archive, detail pages, and 404. Its light and contour layers move slowly, and the homepage’s local lighting blends with it.
+- Added short page entrance transitions for pathname navigation, including browser history and quick navigation. The header remains stable while the new content arrives.
+- Staggered the hero’s title, supporting copy, actions, and facts. Added scroll reveals for headings, section copy, timeline entries, toolkit rows, and project cards.
+- Updated Core focus to Full Stack & AI Automation. Added a rotating internal cube mechanism, animated glass reflections, and an orbital highlight. Rendering pauses outside the viewport and in hidden tabs.
+- Reduced-motion preferences disable the ambient drift, page entrances, title animations, and scroll reveals and select the existing static cube fallback.
