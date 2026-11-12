@@ -103,3 +103,10 @@
 
 - Slightly darkened the shared base, ambient lighting, and ribbon opacity. Enlarged the header U mark to 50px on desktop and 40px on small screens.
 - Production build, lint, TypeScript, and all six responsive layout/navigation checks passed. Reviewed the 1440px production capture.
+
+## Dark graphite background polish
+
+- Applied the unslop workflow by Damir Sokolovsky, CC BY 4.0, in background polish mode. The audit identified broad violet washes and bright ribbon highlights competing with the brand mark.
+- Direction follows the engineering portfolio’s precise character with graphite surfaces, faint neutral folds, the U as the main color accent, and one continuous backdrop.
+- Darkened the base to near-black graphite, neutralized the ribbon colors, reduced lighting and grain, and slowed ambient movement.
+- Reviewed desktop and mobile production captures. Build, lint, TypeScript, six responsive checks, the shared-backdrop check, and three axe WCAG A/AA scans passed.

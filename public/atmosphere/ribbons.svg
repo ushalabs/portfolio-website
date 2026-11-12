@@ -1,21 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" fill="none">
   <defs>
     <linearGradient id="fold" x1="820" y1="100" x2="1530" y2="800" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#b48aff" stop-opacity=".07"/>
-      <stop offset=".36" stop-color="#8f68c4" stop-opacity=".2"/>
-      <stop offset=".58" stop-color="#d2b3ff" stop-opacity=".32"/>
-      <stop offset=".64" stop-color="#7460a8" stop-opacity=".15"/>
+      <stop stop-color="#72717d" stop-opacity=".04"/>
+      <stop offset=".36" stop-color="#62606e" stop-opacity=".08"/>
+      <stop offset=".58" stop-color="#aca9b9" stop-opacity=".16"/>
+      <stop offset=".64" stop-color="#5b5967" stop-opacity=".06"/>
       <stop offset="1" stop-color="#1b1724" stop-opacity="0"/>
     </linearGradient>
     <linearGradient id="edge" x1="940" y1="90" x2="1430" y2="950" gradientUnits="userSpaceOnUse">
       <stop stop-color="#e1d4f1" stop-opacity="0"/>
-      <stop offset=".5" stop-color="#e9d6ff" stop-opacity=".46"/>
+      <stop offset=".5" stop-color="#d6d3df" stop-opacity=".22"/>
       <stop offset="1" stop-color="#bda6df" stop-opacity="0"/>
     </linearGradient>
     <linearGradient id="return" x1="0" y1="680" x2="700" y2="1060" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#8c9ed2" stop-opacity=".04"/>
-      <stop offset=".53" stop-color="#899fe2" stop-opacity=".2"/>
-      <stop offset=".6" stop-color="#cec7ff" stop-opacity=".28"/>
+      <stop stop-color="#737886" stop-opacity=".025"/>
+      <stop offset=".53" stop-color="#626774" stop-opacity=".08"/>
+      <stop offset=".6" stop-color="#9da1b1" stop-opacity=".13"/>
       <stop offset="1" stop-color="#201d2b" stop-opacity="0"/>
     </linearGradient>
   </defs>
