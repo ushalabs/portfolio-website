@@ -40,7 +40,6 @@
     scroll-snap-type: inline proximity;
     padding-bottom: .65rem;
   }
-  .case-gallery-grid[data-gallery="lumen"] { grid-auto-columns: min(91%, 32rem); }
   .case-gallery-grid .case-media { scroll-snap-align: start; }
 }
 @media (max-width: 690px) { .detail-grid { grid-template-columns: 1fr; } }

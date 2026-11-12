@@ -166,67 +166,12 @@
   ],
   "lumen": [
     {
-      "src": "/projects/lumen/desktop-search-bar.webp",
-      "width": 575,
-      "height": 65,
-      "alt": "Lumen’s compact desktop search bar at rest with its keyboard shortcut",
-      "caption": "Idle desktop search bar",
+      "src": "/projects/lumen/demo-poster.webp",
+      "width": 1280,
+      "height": 720,
+      "alt": "Lumen desktop search captured from the supplied product walkthrough",
       "kind": "screenshot",
-      "source": "https://github.com/ushalabs/Lumen/blob/05bc8da079f1e72062636824125b901e86f8f31c/docs/screenshots/desktop_search_bar.png"
-    },
-    {
-      "src": "/projects/lumen/expanded-search-bar.webp",
-      "width": 500,
-      "height": 210,
-      "alt": "Early Lumen prototype with the search bar expanded and an index-not-ready message",
-      "caption": "Expanded search bar · early build",
-      "kind": "screenshot",
-      "source": "https://github.com/ushalabs/Lumen/blob/05bc8da079f1e72062636824125b901e86f8f31c/docs/screenshots/phase0_desktop_bar_expanded.png"
-    },
-    {
-      "src": "/projects/lumen/filename-search.webp",
-      "width": 575,
-      "height": 430,
-      "alt": "Lumen results matching a filename query",
-      "caption": "Filename search",
-      "kind": "screenshot",
-      "source": "https://github.com/ushalabs/Lumen/blob/05bc8da079f1e72062636824125b901e86f8f31c/docs/screenshots/filename_search.png"
-    },
-    {
-      "src": "/projects/lumen/document-content-search.webp",
-      "width": 575,
-      "height": 340,
-      "alt": "Lumen results with matched terms highlighted in document snippets",
-      "caption": "Document content search",
-      "kind": "screenshot",
-      "source": "https://github.com/ushalabs/Lumen/blob/05bc8da079f1e72062636824125b901e86f8f31c/docs/screenshots/document_content_search.png"
-    },
-    {
-      "src": "/projects/lumen/semantic-search.webp",
-      "width": 575,
-      "height": 340,
-      "alt": "Lumen results matching a natural-language query using semantic search",
-      "caption": "On-device semantic search",
-      "kind": "screenshot",
-      "source": "https://github.com/ushalabs/Lumen/blob/05bc8da079f1e72062636824125b901e86f8f31c/docs/screenshots/semantic_search.png"
-    },
-    {
-      "src": "/projects/lumen/quick-preview-and-modes.webp",
-      "width": 575,
-      "height": 480,
-      "alt": "Lumen search mode controls with a document snippet open in quick preview",
-      "caption": "Search modes and quick preview",
-      "kind": "screenshot",
-      "source": "https://github.com/ushalabs/Lumen/blob/05bc8da079f1e72062636824125b901e86f8f31c/docs/screenshots/quick_preview_and_modes.png"
-    },
-    {
-      "src": "/projects/lumen/settings-dialog.webp",
-      "width": 639,
-      "height": 738,
-      "alt": "Lumen settings for search indexing, offline semantic embeddings, and desktop bar behavior",
-      "caption": "Indexing and desktop settings",
-      "kind": "screenshot",
-      "source": "https://github.com/ushalabs/Lumen/blob/05bc8da079f1e72062636824125b901e86f8f31c/docs/screenshots/settings_dialog.png"
+      "source": "Frame at 00:15 from C:/Users/HP/Downloads/Videos/Lume Demo.mp4"
     },
     {
       "src": "/projects/lumen/icon.svg",

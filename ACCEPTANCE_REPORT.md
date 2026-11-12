@@ -35,3 +35,9 @@ The original release’s Lighthouse results and Git checkpoints are recorded in 
 - ESLint, strict TypeScript, the production build, and all 21 Chrome tests passed.
 - Verified a gap under 32 CSS pixels below the desktop header, borderless project card icons, and a 70% desktop media width for the MeetingMinutes video, Sentinel GIF, LeanMate banner, and Downshift capture.
 - Reviewed the three galleries in Chrome. Tests cover side-by-side desktop placement, keyboard scrolling at 390px, captions, and page overflow. All 17 gallery images loaded in the production preview.
+
+## Lumen demo update
+
+- Replaced the Lumen gallery with the supplied 69.5-second, 1920 × 1080 recording. SHA-256 matches the original in Downloads. The preview frame comes from 00:15 in that recording.
+- ESLint, TypeScript and the production build passed. Browser checks verified native playback, seeking to 15 seconds, HTTP 206 byte-range delivery, and 70% desktop player width.
+- The browser run passed 20 checks. The remaining grid geometry check sampled an active entrance animation. It now measures the reduced-motion layout and passed its targeted rerun.

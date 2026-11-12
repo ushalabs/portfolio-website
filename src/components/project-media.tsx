@@ -15,11 +15,11 @@ export function ProjectVisual({ project }: { project: Project }) {
   if (!media) return null;
 
   if (project.demoVideo) return <figure className="case-media case-media-wide">
-    <video controls playsInline preload="none" poster={media.src} width={1920} height={1080} aria-label={`${project.title} screen recording`}>
+    <video controls playsInline preload="none" poster={media.src} width={media.width} height={media.height} aria-label={`${project.title} screen recording`}>
       <source src={project.demoVideo} type="video/mp4" />
       <a href={project.demoVideo}>Open the demo video</a>
     </video>
-    <figcaption>MeetingMinutes AI product walkthrough</figcaption>
+    <figcaption>{project.title} product walkthrough</figcaption>
   </figure>;
 
   if (project.demoAnimation) return <ProjectAnimation source={project.demoAnimation} poster={media} />;
@@ -32,7 +32,7 @@ export function ProjectVisual({ project }: { project: Project }) {
     {media.kind === "reference" && <p className="case-gallery-label">Mobile UI design reference</p>}
     <p className="case-gallery-hint" id="case-gallery-hint">On narrow screens, scroll sideways to see all visuals.</p>
     <div className="case-gallery-grid" data-gallery={project.slug} role="region" aria-label={`${project.title} gallery`} aria-describedby="case-gallery-hint" tabIndex={0}>
-      {project.gallery.map(item => <MediaFigure key={item.src} media={item} sizes={project.slug === "lumen" ? "(max-width: 759px) 83vw, 45vw" : "(max-width: 759px) 76vw, 33vw"} />)}
+      {project.gallery.map(item => <MediaFigure key={item.src} media={item} sizes="(max-width: 759px) 76vw, 33vw" />)}
     </div>
   </>;
 }

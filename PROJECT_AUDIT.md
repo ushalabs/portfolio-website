@@ -8,7 +8,7 @@ GitHub discovery used the GitHub connector’s repository search for `user:ushal
 | MeetingMinutes AI | [MeetingMinutes-AI](https://github.com/ushalabs/MeetingMinutes-AI) | Local copy of the exact screen recording found in Downshift’s download folder |
 | Downshift | [Downshift-Downloader](https://github.com/ushalabs/Downshift-Downloader) | Supplied Windows download queue capture |
 | Sentinel SecOps | [Sentinel-SecOps](https://github.com/ushalabs/Sentinel-SecOps) | Repository’s original animated live demo, with a still preview and play control |
-| Lumen | [Lumen](https://github.com/ushalabs/Lumen) | Seven distinct repository screenshots with workflow captions |
+| Lumen | [Lumen](https://github.com/ushalabs/Lumen) | Supplied 1080p product walkthrough from Downloads |
 | Solvanta | [Solvanta-EnergyOS](https://github.com/ushalabs/Solvanta-EnergyOS) | Six individual phone screens from the supplied design board, labeled as design references |
 | LeanMate | [LeanMate-Fitness-App](https://github.com/ushalabs/LeanMate-Fitness-App) | Supplied product artwork |
 

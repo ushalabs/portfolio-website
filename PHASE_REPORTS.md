@@ -49,3 +49,9 @@
 3. Added section and card numbering, editorial rules, and adjusted spacing while preserving the grid, featured order, and separate project actions.
 4. Used ScrollTrigger for a small Projects lighting shift and short card reveals. Fine-pointer and motion preferences gate the spatial effects.
 5. Passed the production checks and all 20 Chrome tests. Reviewed desktop and mobile screenshots and verified project destinations. [Acceptance report](ACCEPTANCE_REPORT.md)
+
+## Lumen recording
+
+- Replaced Lumen’s screenshot gallery with the supplied 1080p MP4 from Downloads and a preview frame extracted at 00:15.
+- Kept the player at 70% desktop width with native controls and deferred video loading. The copied recording’s SHA-256 matches the supplied file.
+- Updated the browser checks to cover Lumen’s player, byte-range delivery, and seeking.

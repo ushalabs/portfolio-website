@@ -61,6 +61,7 @@ test("keyboard filters, quick navigation, and disclosures", async ({ page }) => 
 });
 
 test("homepage project grid pairs the cards and centers the seventh", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/");
   await expect(page.locator("h1")).toHaveText("Usman Qureshi");
@@ -240,18 +241,34 @@ test("case studies keep the supplied and animated media below the write-up", asy
   await page.getByRole("button", { name: "Stop GIF" }).click();
   await expect(gif).toHaveAttribute("src", /demo-poster/);
 
-  for (const slug of ["sentinel-secops", "leanmate", "downshift"]) {
+  for (const slug of ["sentinel-secops", "leanmate", "downshift", "lumen"]) {
     if (slug !== "sentinel-secops") await page.goto(`/projects/${slug}`);
     const ratio = await page.locator(".case-media-wide").evaluate(media => media.clientWidth / media.closest(".detail")!.clientWidth);
     expect(ratio).toBeCloseTo(.7, 2);
   }
+
+  const lumenVideo = page.getByLabel("Lumen screen recording");
+  await expect(page.getByRole("region", { name: "Lumen gallery" })).toHaveCount(0);
+  await expect(page.getByText("Lumen product walkthrough")).toBeVisible();
+  await expect(lumenVideo).toHaveAttribute("preload", "none");
+  await expect(lumenVideo.locator("source")).toHaveAttribute("src", "/projects/lumen/demo.mp4");
+  expect((await request.get("/projects/lumen/demo.mp4", { headers: { Range: "bytes=0-1023" } })).status()).toBe(206);
+  const playback = await lumenVideo.evaluate(async element => {
+    const player = element as HTMLVideoElement;
+    player.muted = true;
+    await player.play();
+    await new Promise<void>(resolve => { player.onseeked = () => resolve(); player.currentTime = 15; });
+    player.pause();
+    return { position: player.currentTime, duration: player.duration };
+  });
+  expect(playback.position).toBeCloseTo(15, 0);
+  expect(playback.duration).toBeGreaterThan(60);
 });
 
-test("Velora, Solvanta and Lumen galleries show distinct labeled visuals side by side", async ({ page }) => {
+test("Velora and Solvanta galleries show distinct labeled visuals side by side", async ({ page }) => {
   for (const { slug, title, count } of [
     { slug: "velora", title: "Velora", count: 4 },
     { slug: "solvanta", title: "Solvanta", count: 6 },
-    { slug: "lumen", title: "Lumen", count: 7 },
   ]) {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto(`/projects/${slug}`);

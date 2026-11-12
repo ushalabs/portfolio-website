@@ -23,19 +23,14 @@ Project listings display repository-sourced icons and logos. Screenshots, artwor
 | `/projects/sentinel-secops/demo-poster.webp` | 1200 × 472 GIF | 1200 × 472 | https://github.com/ushalabs/Sentinel-SecOps/blob/086568d/docs/assets/readme/live_demo.gif |
 | `/projects/sentinel-secops/live-demo.gif` | 1200 × 472 GIF | Original GIF | https://github.com/ushalabs/Sentinel-SecOps/blob/086568d/docs/assets/readme/live_demo.gif |
 | `/projects/sentinel-secops/icon.webp` | 2172 × 724 PNG | 171 × 171 crop (63, 67, 234, 238) | https://github.com/ushalabs/Sentinel-SecOps/blob/086568d/docs/assets/readme/banner.png |
-| `/projects/lumen/desktop-search-bar.webp` | 575 × 65 PNG | 575 × 65 WebP | https://github.com/ushalabs/Lumen/blob/05bc8da079f1e72062636824125b901e86f8f31c/docs/screenshots/desktop_search_bar.png |
-| `/projects/lumen/expanded-search-bar.webp` | 500 × 210 PNG | 500 × 210 WebP | https://github.com/ushalabs/Lumen/blob/05bc8da079f1e72062636824125b901e86f8f31c/docs/screenshots/phase0_desktop_bar_expanded.png |
-| `/projects/lumen/filename-search.webp` | 575 × 430 PNG | 575 × 430 WebP | https://github.com/ushalabs/Lumen/blob/05bc8da079f1e72062636824125b901e86f8f31c/docs/screenshots/filename_search.png |
-| `/projects/lumen/document-content-search.webp` | 575 × 340 PNG | 575 × 340 WebP | https://github.com/ushalabs/Lumen/blob/05bc8da079f1e72062636824125b901e86f8f31c/docs/screenshots/document_content_search.png |
-| `/projects/lumen/semantic-search.webp` | 575 × 340 PNG | 575 × 340 WebP | https://github.com/ushalabs/Lumen/blob/05bc8da079f1e72062636824125b901e86f8f31c/docs/screenshots/semantic_search.png |
-| `/projects/lumen/quick-preview-and-modes.webp` | 575 × 480 PNG | 575 × 480 WebP | https://github.com/ushalabs/Lumen/blob/05bc8da079f1e72062636824125b901e86f8f31c/docs/screenshots/quick_preview_and_modes.png |
-| `/projects/lumen/settings-dialog.webp` | 639 × 738 PNG | 639 × 738 WebP | https://github.com/ushalabs/Lumen/blob/05bc8da079f1e72062636824125b901e86f8f31c/docs/screenshots/settings_dialog.png |
+| `/projects/lumen/demo.mp4` | 1920 × 1080 MP4, 69.5 seconds | Original 10,843,209-byte recording | User-supplied `C:/Users/HP/Downloads/Videos/Lume Demo.mp4` |
+| `/projects/lumen/demo-poster.webp` | Frame at 00:15 from the supplied MP4 | 1280 × 720 WebP | Same recording |
 | `/projects/lumen/icon.svg` | 128 × 128 SVG | 128 × 128 | https://github.com/ushalabs/Lumen/blob/05bc8da/assets/branding/lumen_logo.svg |
 | `/projects/leanmate/product-banner.webp` | 1672 × 941 PNG | 1672 × 941 | User attachment 5, `codex-clipboard-c11e3489-975c-41ca-a874-09366b9eca16.png` |
 | `/projects/leanmate/icon.webp` | 1024 × 1024 PNG | 192 × 192 | https://github.com/ushalabs/LeanMate-Fitness-App/blob/eb468ebd0f792554589c1d3d4f11b68ede13db2f/assets/icon.png |
 | `/projects/meetingminutes-ai/demo.mp4` | MP4 | Original recording | User-supplied Downshift download, Loom ID `3eddffe62d8043dda581798a05442c87` |
 
-Solvanta’s six design references were cropped individually and upscaled to 1280 pixels tall at the original aspect ratios. Lumen’s gallery includes all seven distinct repository screenshots. Six additional repository filenames are byte-identical aliases.
+Solvanta’s six design references were cropped individually and upscaled to 1280 pixels tall at the original aspect ratios. Lumen’s current case study uses the supplied demo recording and a frame extracted from it.
 
 The MeetingMinutes AI poster is a frame from the local recording. The case study uses that frame as the local MP4 poster.
 
