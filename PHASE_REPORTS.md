@@ -55,3 +55,9 @@
 - Replaced Lumen’s screenshot gallery with the supplied 1080p MP4 from Downloads and a preview frame extracted at 00:15.
 - Kept the player at 70% desktop width with native controls and deferred video loading. The copied recording’s SHA-256 matches the supplied file.
 - Updated the browser checks to cover Lumen’s player, byte-range delivery, and seeking.
+
+## Project categories
+
+- Added Desktop Apps, Mobile Apps, and AI Agents & Automations as the three visitor-facing categories on the homepage and project archive.
+- Category controls filter the list, and card labels identify each project’s group. The All view retains the existing project order.
+- Downshift and Lumen are desktop apps. Velora, Solvanta, and LeanMate are mobile apps. MeetingMinutes AI and Sentinel SecOps are grouped under AI Agents & Automations.

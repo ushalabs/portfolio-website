@@ -1,5 +1,7 @@
 export const categories = ["Full-Stack", "AI & Automation", "Mobile", "Desktop & Systems", "DevOps & Security"] as const;
 export type Category = (typeof categories)[number];
+export const projectGroups = ["Desktop Apps", "Mobile Apps", "AI Agents & Automations"] as const;
+export type ProjectGroup = (typeof projectGroups)[number];
 
 export type ProjectMedia = {
   src: string;
@@ -18,6 +20,7 @@ export type Project = {
   shortDescription: string;
   longDescription: string;
   category: readonly Category[];
+  group: ProjectGroup;
   tags: readonly string[];
   techStack: readonly string[];
   githubUrl: string;

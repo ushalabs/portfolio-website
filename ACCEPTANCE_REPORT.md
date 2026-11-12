@@ -41,3 +41,8 @@ The original release’s Lighthouse results and Git checkpoints are recorded in 
 - Replaced the Lumen gallery with the supplied 69.5-second, 1920 × 1080 recording. SHA-256 matches the original in Downloads. The preview frame comes from 00:15 in that recording.
 - ESLint, TypeScript and the production build passed. Browser checks verified native playback, seeking to 15 seconds, HTTP 206 byte-range delivery, and 70% desktop player width.
 - The browser run passed 20 checks. The remaining grid geometry check sampled an active entrance animation. It now measures the reduced-motion layout and passed its targeted rerun.
+
+## Project categories
+
+- Added three category filters and matching card labels to the homepage and archive. Desktop Apps contains two projects, Mobile Apps contains three, and AI Agents & Automations contains two.
+- Production build, lint, and TypeScript passed. Reviewed the filters at 1440px and 390px. Twenty browser checks passed in the full run. The filter check initially matched the contact section’s status region too. After scoping the count assertion to the project directory, its targeted rerun passed for both pages, including keyboard selection and restoring All.

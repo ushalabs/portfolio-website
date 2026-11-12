@@ -1,7 +1,7 @@
 import { chromium, expect, test } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import { projects } from "../src/data/projects";
-import { categories } from "../src/data/project-types";
+import { projectGroups } from "../src/data/project-types";
 import { resumePath, site } from "../src/data/site";
 
 for (const width of [360, 390, 768, 1024, 1440, 1920]) {
@@ -37,14 +37,20 @@ for (const width of [360, 390, 768, 1024, 1440, 1920]) {
 }
 
 test("keyboard filters, quick navigation, and disclosures", async ({ page }) => {
-  await page.goto("/projects");
-  await expect(page.getByRole("status")).toHaveText(`${projects.length} projects`);
-  await page.getByRole("radio", { name: "All", exact: true }).focus();
-  for (const category of categories) {
-    await page.keyboard.press("ArrowRight");
-    await expect(page.getByRole("radio", { name: category, exact: true })).toBeChecked();
-    const count = projects.filter(item => item.category.includes(category)).length;
-    await expect(page.getByRole("status")).toHaveText(count === 1 ? "1 project" : `${count} projects`);
+  for (const route of ["/", "/projects"]) {
+    await page.goto(route);
+    await expect(page.locator(".directory-count")).toHaveText(`${projects.length} projects`);
+    await page.getByRole("radio", { name: "All", exact: true }).focus();
+    for (const category of projectGroups) {
+      await page.keyboard.press("ArrowRight");
+      await expect(page.getByRole("radio", { name: category, exact: true })).toBeChecked();
+      const selected = projects.filter(item => item.group === category);
+      await expect(page.locator(".directory-count")).toHaveText(`${selected.length} projects`);
+      await expect(page.locator(".project-card-link")).toHaveText(selected.map(item => item.title));
+      await expect(page.locator(".project-card-category")).toHaveText(selected.map(() => category));
+    }
+    await page.getByRole("radio", { name: "All", exact: true }).check();
+    await expect(page.locator(".project-card-link")).toHaveText(projects.map(item => item.title));
   }
   await page.keyboard.press("Control+k");
   await expect(page.getByRole("dialog", { name: "Quick navigation" })).toBeVisible();

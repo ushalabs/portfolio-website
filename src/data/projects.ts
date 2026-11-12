@@ -4,7 +4,7 @@ import { additionalProjects } from "./additional-projects";
 
 export const featuredProjects = [
   project({
-    slug: "velora", title: "Velora", repo: "Velora-Chat-App", revision: "81e88e9e887f4ada0a5751da97b793c569515b66",
+    slug: "velora", title: "Velora", repo: "Velora-Chat-App", revision: "81e88e9e887f4ada0a5751da97b793c569515b66", group: "Mobile Apps",
     shortDescription: "A real-time Android social app for conversations, groups, and the moments in between.",
     longDescription: "Velora puts private conversations and a social feed in one Expo app. People can connect with friends, exchange messages and media, react to messages, and share posts or stories from their profiles.",
     category: ["Mobile", "Full-Stack"], tags: ["React Native", "Expo", "Firebase"], techStack: ["React Native", "Expo", "Firestore", "Firebase Cloud Messaging", "Cloudinary"],
@@ -15,7 +15,7 @@ export const featuredProjects = [
     challenges: [], outcomes: ["Published Android application on Google Play."], evidence: ["app.json", "package.json"],
   }),
   project({
-    slug: "meetingminutes-ai", title: "MeetingMinutes AI", repo: "MeetingMinutes-AI", revision: "3f18910",
+    slug: "meetingminutes-ai", title: "MeetingMinutes AI", repo: "MeetingMinutes-AI", revision: "3f18910", group: "AI Agents & Automations",
     shortDescription: "From meeting recordings to editable decisions, action items, and approved email recaps.",
     longDescription: "A single-user workspace for the follow-up work that happens after a meeting. Upload a recording or paste a transcript, review the structured minutes and action owners, then choose whether to send an email recap.",
     category: ["AI & Automation", "Full-Stack"], tags: ["FastAPI", "Whisper", "Gemini"], techStack: ["React", "TypeScript", "Vite", "Tailwind CSS", "FastAPI", "Supabase", "PostgreSQL", "Groq Whisper", "Gemini", "Resend"],
@@ -27,7 +27,7 @@ export const featuredProjects = [
     evidence: ["docs/ARCHITECTURE.md", "frontend/package.json", "backend/pyproject.toml"],
   }),
   project({
-    slug: "downshift", title: "Downshift", repo: "Downshift-Downloader", revision: "c568eff",
+    slug: "downshift", title: "Downshift", repo: "Downshift-Downloader", revision: "c568eff", group: "Desktop Apps",
     shortDescription: "A native Windows download manager with browser capture, resumable transfers, and a unified queue.",
     longDescription: "Downshift brings regular files, supported video downloads, and torrents together in a Windows application. Its dashboard shows transfer state, history, and controls for pausing, resuming, and organizing downloads.",
     category: ["Desktop & Systems"], tags: ["C++20", "Qt 6", "libcurl"], techStack: ["C++20", "Qt 6", "libcurl", "CMake", "Browser Extension APIs"],

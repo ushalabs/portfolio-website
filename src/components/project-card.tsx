@@ -19,7 +19,7 @@ export function ProjectCard({ project, heading: Heading = "h2" }: { project: Pro
       <div className="project-card-heading">
         <ProjectMark icon={project.icon} title={project.title} />
         <div>
-          <p className="project-card-category">{project.category[0]}</p>
+          <p className="project-card-category">{project.group}</p>
           <Heading><Link href={`/projects/${project.slug}`} prefetch={false} className="project-card-link">{project.title}</Link></Heading>
         </div>
         <div className="project-card-corner" aria-hidden="true">

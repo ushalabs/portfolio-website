@@ -1,10 +1,2 @@
 .page-main { padding-block: clamp(3.75rem, 8vw, 8rem); }
 .page-title { margin: 1.1rem 0 1.4rem; }
-.filters { display: flex; flex-wrap: wrap; gap: .5rem; border: 0; padding: 0; margin: 2.1rem 0 1rem; }
-.filter-option { position: relative; cursor: pointer; }
-.filter-option input { position: absolute; width: 1px; height: 1px; opacity: 0; }
-.filter-option span { min-height: 44px; display: flex; align-items: center; padding: .45rem .85rem; border: 1px solid var(--border); border-radius: .4rem; color: var(--muted); font-size: .85rem; }
-.filter-option:hover span { color: var(--text); border-color: var(--muted); }
-.filter-option input:checked + span { color: #f0e9ff; background: #1c1826; border-color: #9470ed; }
-.filter-option input:focus-visible + span { outline: 2px solid #9470ed; outline-offset: 4px; }
-.directory-count { color: var(--muted); margin: 0 0 1rem; }

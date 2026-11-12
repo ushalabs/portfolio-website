@@ -2,7 +2,7 @@ import { project } from "./project-entry";
 
 export const additionalProjects = [
   project({
-    slug: "sentinel-secops", title: "Sentinel SecOps", repo: "Sentinel-SecOps", revision: "086568d",
+    slug: "sentinel-secops", title: "Sentinel SecOps", repo: "Sentinel-SecOps", revision: "086568d", group: "AI Agents & Automations",
     shortDescription: "Live network intrusion detection with ML classification, enrichment, and an analyst review queue.",
     longDescription: "Sentinel turns network traffic into flow features and scores those flows for intrusion detection. Suspicious flows enter an enrichment and review workflow, where analysts can inspect the resulting evidence and make a decision.",
     category: ["DevOps & Security", "AI & Automation", "Full-Stack"], tags: ["XGBoost", "FastAPI", "n8n"], techStack: ["Python", "XGBoost", "Scapy", "Npcap", "FastAPI", "PostgreSQL", "n8n", "Gemini", "Next.js", "WebSockets"],
@@ -12,7 +12,7 @@ export const additionalProjects = [
     challenges: ["Benign flows remain available for monitoring while attack flows follow a separate enrichment path."], outcomes: [], evidence: ["dashboard/package.json"],
   }),
   project({
-    slug: "lumen", title: "Lumen", repo: "Lumen", revision: "05bc8da",
+    slug: "lumen", title: "Lumen", repo: "Lumen", revision: "05bc8da", group: "Desktop Apps",
     shortDescription: "Offline Windows search for filenames, document text, and semantic matches.",
     longDescription: "Lumen provides a persistent desktop search bar and a global shortcut. It indexes local filenames and supported document formats and offers on-device semantic retrieval.",
     category: ["Desktop & Systems", "AI & Automation"], tags: ["C++20", "Qt 6", "SQLite"], techStack: ["C++20", "Qt 6", "Win32", "SQLite FTS5", "ONNX Runtime", "CMake"],
@@ -22,7 +22,7 @@ export const additionalProjects = [
     challenges: ["Semantic model loading is deferred until needed, with idle unloading to recover memory."], outcomes: [], evidence: ["CMakeLists.txt"],
   }),
   project({
-    slug: "solvanta", title: "Solvanta", repo: "Solvanta-EnergyOS", revision: "cf8f913",
+    slug: "solvanta", title: "Solvanta", repo: "Solvanta-EnergyOS", revision: "cf8f913", group: "Mobile Apps",
     shortDescription: "An Android-first energy digital twin for solar planning, appliance priorities, and outage simulations.",
     longDescription: "Solvanta models a building’s loads, solar array, inverter, battery, and grid connection. Users can compare backup strategies, review a plan, then replay the simulation against the saved scenario.",
     category: ["Mobile", "Full-Stack", "AI & Automation"], tags: ["Expo", "FastAPI", "OR-Tools"], techStack: ["React Native", "Expo", "TypeScript", "Python", "FastAPI", "PostgreSQL", "OR-Tools", "Docker", "n8n", "MCP"],
@@ -33,7 +33,7 @@ export const additionalProjects = [
     outcomes: ["The core simulation workflow is implemented in the prototype."], evidence: ["docs/STATUS.md", "docs/ARCHITECTURE.md", "mobile/package.json"],
   }),
   project({
-    slug: "leanmate", title: "LeanMate", repo: "LeanMate-Fitness-App", revision: "eb468ebd0f792554589c1d3d4f11b68ede13db2f",
+    slug: "leanmate", title: "LeanMate", repo: "LeanMate-Fitness-App", revision: "eb468ebd0f792554589c1d3d4f11b68ede13db2f", group: "Mobile Apps",
     shortDescription: "A cross-platform fitness journal for nutrition, training, and goal periods.",
     longDescription: "LeanMate connects workout and nutrition logs with goal periods, progress trends, and weekly muscle coverage. It preserves historical logs when users change their goals.",
     category: ["Mobile", "Full-Stack"], tags: ["Expo", "TypeScript", "Firebase"], techStack: ["React Native", "Expo", "TypeScript", "Zustand", "Firebase Auth", "Firestore", "Firebase Storage", "Zod"],
