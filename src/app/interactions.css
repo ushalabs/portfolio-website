@@ -24,7 +24,6 @@
 }
 
 .brand-name { position: relative; display: inline-block; }
-.brand-name::after { content: ""; position: absolute; left: 0; right: 0; bottom: -.2rem; height: 1px; background: #c4a0fb; transform: scaleX(0); transform-origin: left; }
 .site-header { view-transition-name: site-header; }
 .site-atmosphere { view-transition-name: site-background; }
 ::view-transition-group(root) { animation-duration: .5s; }
@@ -36,19 +35,19 @@
 @keyframes route-enter { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
 
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  :where(h1, h2, h3, h4) { transition: color .25s ease-out, translate .35s cubic-bezier(.2,.7,.3,1), background-size .4s ease-out; background-image: linear-gradient(90deg, #b89bea, #b89bea00); background-repeat: no-repeat; background-position: left bottom; background-size: 0% 1px; }
-  :where(h1, h2, h3, h4):hover, :where(h1, h2, h3, h4):focus-within { color: #d7c2ff; translate: 3px 0; background-size: 38% 1px; }
-  .desktop-nav a, .section-rail a, .mobile-navigation nav a { transition: color .25s, translate .3s ease-out, background-size .3s; background-image: linear-gradient(#bb9bef, #bb9bef); background-repeat: no-repeat; background-size: 0% 1px; background-position: left calc(100% - 5px); }
-  .desktop-nav a:hover, .desktop-nav a:focus-visible, .section-rail a:hover { translate: 0 -2px; background-size: 100% 1px; color: #d7c2ff; }
+  :where(h1, h2, h3, h4) { transform-origin: left center; transition: color .25s ease-out, translate .35s cubic-bezier(.2,.7,.3,1), scale .35s cubic-bezier(.2,.7,.3,1); }
+  :where(h1, h2, h3, h4):hover, :where(h1, h2, h3, h4):focus-within { color: #dfd0fb; translate: 0 -2px; scale: 1.012; }
+  .desktop-nav a { transition: color .25s, translate .3s ease-out, background-size .3s; background-image: linear-gradient(#bb9bef, #bb9bef); background-repeat: no-repeat; background-size: 0% 1px; background-position: left calc(100% - 5px); }
+  .desktop-nav a:hover, .desktop-nav a:focus-visible { translate: 0 -2px; background-size: 100% 1px; color: #d7c2ff; }
+  .section-rail a { transition: color .25s, translate .3s ease-out; }
+  .section-rail a:hover { translate: 2px 0; color: #d7c2ff; }
   .brand-symbol { transition: transform .45s cubic-bezier(.2,.8,.3,1); }
   .brand-symbol path { transform-box: fill-box; transform-origin: center; transition: transform .45s cubic-bezier(.2,.8,.3,1); }
   .wordmark:hover .brand-symbol, a:focus-visible .brand-symbol { transform: translateY(-2px) rotate(-9deg); }
   .wordmark:hover .brand-symbol path:nth-child(2), a:focus-visible .brand-symbol path:nth-child(2) { transform: translate(-1px,1px); }
   .wordmark:hover .brand-symbol path:nth-child(3), a:focus-visible .brand-symbol path:nth-child(3) { transform: translate(1px,-1px); }
-  .brand-name { transition: color .25s, translate .35s; }
-  .brand-name::after { transition: transform .4s cubic-bezier(.2,.7,.3,1); }
-  .wordmark:hover .brand-name, a:focus-visible .brand-name { translate: 2px 0; color: #decaff; }
-  .wordmark:hover .brand-name::after, a:focus-visible .brand-name::after { transform: scaleX(1); }
+  .brand-name { transform-origin: left center; transition: color .25s, translate .35s, scale .35s; }
+  .wordmark:hover .brand-name, a:focus-visible .brand-name { translate: 0 -2px; scale: 1.025; color: #decaff; }
   .hero-roles, .hero-copy > .lead, .hero-facts dt, .hero-facts dd { transition: color .3s, translate .35s cubic-bezier(.2,.7,.3,1); }
   .hero-roles:hover, .hero-copy > .lead:hover, .hero-facts div:hover dt, .hero-facts div:hover dd { color: #e0d1f6; translate: 3px 0; }
 }

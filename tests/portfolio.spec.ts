@@ -69,6 +69,9 @@ test("homepage groups pair their cards and center an odd final card", async ({ p
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/");
   await expect(page.locator("h1")).toHaveText("Usman Qureshi");
+  await expect(page.getByRole("navigation", { name: "Primary" }).getByRole("link")).toHaveText(["Home", "Projects", "Stack", "Experience", "About"]);
+  expect((await page.locator(".hero").boundingBox())!.height).toBeLessThan(500);
+  expect((await page.locator(".site-header .wordmark").boundingBox())!.x).toBeLessThan(60);
   await expect(page.locator("#work .project-card")).toHaveCount(projects.length);
   for (const group of projectGroups) {
     const cards = await page.getByRole("region", { name: group, exact: true }).locator("[data-project]").evaluateAll(items => items.map(item => {
@@ -390,13 +393,15 @@ test("titles, navigation, hero copy, and the brand have distinct hover responses
   const title = page.locator("h1");
   await title.hover();
   await expect.poll(() => title.evaluate(element => getComputedStyle(element).translate)).not.toBe("none");
+  await expect(title).toHaveCSS("background-image", "none");
   const copy = page.locator(".hero-copy > .lead");
   await copy.hover();
   await expect.poll(() => copy.evaluate(element => getComputedStyle(element).translate)).not.toBe("none");
   const brand = page.locator(".site-header .wordmark");
   await brand.hover();
   await expect(brand.locator(".brand-symbol")).not.toHaveCSS("transform", "none");
-  await expect.poll(() => brand.locator(".brand-name").evaluate(element => getComputedStyle(element, "::after").transform)).not.toBe("matrix(0, 0, 0, 1, 0, 0)");
+  await expect.poll(() => brand.locator(".brand-name").evaluate(element => getComputedStyle(element).scale)).not.toBe("none");
+  await expect(brand.locator(".brand-name")).toHaveCSS("background-image", "none");
   const nav = page.getByRole("navigation", { name: "Primary" }).getByRole("link", { name: "Projects", exact: true });
   await nav.focus();
   await expect.poll(() => nav.evaluate(element => getComputedStyle(element).translate)).not.toBe("none");

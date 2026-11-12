@@ -5,26 +5,26 @@
   z-index: -1;
   overflow: hidden;
   pointer-events: none;
-  background: linear-gradient(145deg, #17151f, #15131e 52%, #1c1826);
+  background: linear-gradient(145deg, #14121e, #19152a 52%, #19152a);
 }
 body { position: relative; isolation: isolate; }
 .atmosphere-light {
   position: absolute;
   inset: -12%;
   background:
-    radial-gradient(ellipse 58% 66% at 88% 24%, #a58ac02b, transparent 75%),
-    radial-gradient(ellipse 48% 48% at 12% 78%, #8980ab21, transparent 78%),
-    radial-gradient(ellipse 56% 32% at 40% 7%, #c0accc0d, transparent 80%);
+    radial-gradient(ellipse 58% 66% at 88% 24%, #9b70ee46, transparent 75%),
+    radial-gradient(ellipse 48% 48% at 12% 78%, #779be62b, transparent 78%),
+    radial-gradient(ellipse 56% 38% at 40% 7%, #c295d320, transparent 80%);
 }
 .atmosphere-ribbons { position: absolute; inset: -5%; background: url("/atmosphere/ribbons.svg") center / cover no-repeat; opacity: .9; }
 .atmosphere-grain { position: absolute; inset: 0; background: url("/atmosphere/grain.svg"); opacity: .022; }
 .page-transition { min-width: 0; }
 @media (prefers-reduced-motion: no-preference) {
-  .atmosphere-light { animation: atmosphere-drift 24s ease-in-out infinite alternate; }
-  .atmosphere-ribbons { animation: atmosphere-ribbon-drift 30s ease-in-out infinite alternate; }
+  .atmosphere-light { animation: atmosphere-drift 18s ease-in-out infinite alternate; }
+  .atmosphere-ribbons { animation: atmosphere-ribbon-drift 22s ease-in-out infinite alternate; }
 }
-@keyframes atmosphere-drift { from { transform: translate3d(-2%, -1%, 0); opacity: .7; } to { transform: translate3d(2%, 2%, 0); opacity: 1; } }
-@keyframes atmosphere-ribbon-drift { from { transform: translate3d(-1%, -1%, 0) rotate(-1deg); } to { transform: translate3d(1%, 1%, 0) rotate(1deg); } }
+@keyframes atmosphere-drift { from { transform: translate3d(-3%, -2%, 0); opacity: .7; } to { transform: translate3d(3%, 3%, 0); opacity: 1; } }
+@keyframes atmosphere-ribbon-drift { from { transform: translate3d(-2%, -1%, 0) rotate(-1deg); } to { transform: translate3d(2%, 1%, 0) rotate(1deg); } }
 .portfolio-atmosphere { position: relative; }
 .portfolio-atmosphere > .section {
   position: relative;

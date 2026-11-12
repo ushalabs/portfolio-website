@@ -75,3 +75,9 @@ The original release’s Lighthouse results and Git checkpoints are recorded in 
 - The header, hero, and every homepage section expose one shared site backdrop. The hero landscape, separate section lighting, and Projects spotlight were removed.
 - Visually reviewed the hero-to-Projects boundary at 1440px and 390px. All 23 browser checks passed in 44.6 seconds, including native transitions, six responsive widths, gallery behavior, and three axe scans with zero WCAG A/AA violations.
 - ESLint, strict TypeScript, and the production build passed.
+
+## Title hover and spacing refinement
+
+- Verified the top navigation order is Home, Projects, Stack, Experience, About. Headings and the wordmark use lift/scale effects, with no underline background on titles.
+- Reviewed the more colorful shared backdrop and tighter header/hero/Projects spacing at 1440px, 1920px, and 390px. The desktop geometry check confirms a hero under 500px high and header branding within 60px of the left edge at 1440px.
+- Production build, ESLint, TypeScript, and all 23 Chrome tests passed in the current run. Three axe WCAG A/AA scans found zero violations.

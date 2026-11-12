@@ -91,3 +91,10 @@
 - The shared site backdrop now continues behind the header, hero, homepage sections, archive, and detail pages. The sticky header uses a transparent blur for readability while scrolling.
 - Removed the unused landscape asset and spotlight animation. Verified the hero-to-Projects boundary on desktop and mobile.
 - Lint, TypeScript, the production build, and all 23 Chrome tests passed. The backdrop check verifies transparent section backgrounds and a single shared backdrop element.
+
+## Background color, title hover, and spacing refinement
+
+- Strengthened the shared backdrop’s violet and cool-blue lighting, brightened the ribbon highlights, and increased the slow ambient movement.
+- Replaced heading and wordmark underlines with a small lift, scale, and color response. Animated underlines remain on the five primary navigation links. Stack now precedes Experience.
+- Widened the header content area, removed its extra left inset, shortened the desktop hero, and reduced the Projects section’s padding.
+- Reviewed 1440px, 1920px, and 390px captures. Production build, lint, TypeScript, and all 23 browser checks passed.

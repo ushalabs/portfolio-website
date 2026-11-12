@@ -15,7 +15,7 @@ export const resumePath = "/resumes/usman-qureshi-resume.pdf";
 export const navigation = [
   { label: "Home", href: "/#home" },
   { label: "Projects", href: "/#work" },
-  { label: "Experience", href: "/#experience" },
   { label: "Stack", href: "/#stack" },
+  { label: "Experience", href: "/#experience" },
   { label: "About", href: "/#about" },
 ];

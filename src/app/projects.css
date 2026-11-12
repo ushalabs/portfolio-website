@@ -1,4 +1,4 @@
-.selected-work { position: relative; isolation: isolate; width: min(1280px, calc(100% - 15.4vw)); padding: clamp(2.5rem, 4.2vw, 4.5rem) 0 clamp(4.5rem, 7.5vw, 7.5rem); }
+.selected-work { position: relative; isolation: isolate; width: min(1280px, calc(100% - 15.4vw)); padding: clamp(1.6rem, 2.6vw, 2.75rem) 0 clamp(3rem, 5vw, 5rem); }
 .selected-heading {
   display: flex;
   justify-content: space-between;

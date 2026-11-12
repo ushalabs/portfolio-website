@@ -1,5 +1,5 @@
 .site-header { background: transparent; backdrop-filter: blur(18px); border-bottom-color: transparent; }
-.header-inner { width: min(1440px, 84%); padding-inline-start: clamp(0rem, 3.8vw, 4rem); }
+.header-inner { width: min(1760px, calc(100% - 5.5vw)); padding-inline-start: 0; }
 .wordmark { gap: .8rem; font-size: clamp(1.24rem, 1.55vw, 1.65rem); font-weight: 680; letter-spacing: -.042em; white-space: nowrap; }
 .wordmark svg { flex: 0 0 auto; }
 .desktop-nav { gap: clamp(.75rem, 2.3vw, 2.6rem); }
