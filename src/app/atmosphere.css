@@ -5,18 +5,18 @@
   z-index: -1;
   overflow: hidden;
   pointer-events: none;
-  background: linear-gradient(145deg, #14121e, #19152a 52%, #19152a);
+  background: linear-gradient(145deg, #12101b, #161224 52%, #161224);
 }
 body { position: relative; isolation: isolate; }
 .atmosphere-light {
   position: absolute;
   inset: -12%;
   background:
-    radial-gradient(ellipse 58% 66% at 88% 24%, #9b70ee46, transparent 75%),
-    radial-gradient(ellipse 48% 48% at 12% 78%, #779be62b, transparent 78%),
-    radial-gradient(ellipse 56% 38% at 40% 7%, #c295d320, transparent 80%);
+    radial-gradient(ellipse 58% 66% at 88% 24%, #9b70ee3a, transparent 75%),
+    radial-gradient(ellipse 48% 48% at 12% 78%, #779be624, transparent 78%),
+    radial-gradient(ellipse 56% 38% at 40% 7%, #c295d31b, transparent 80%);
 }
-.atmosphere-ribbons { position: absolute; inset: -5%; background: url("/atmosphere/ribbons.svg") center / cover no-repeat; opacity: .9; }
+.atmosphere-ribbons { position: absolute; inset: -5%; background: url("/atmosphere/ribbons.svg") center / cover no-repeat; opacity: .82; }
 .atmosphere-grain { position: absolute; inset: 0; background: url("/atmosphere/grain.svg"); opacity: .022; }
 .page-transition { min-width: 0; }
 @media (prefers-reduced-motion: no-preference) {

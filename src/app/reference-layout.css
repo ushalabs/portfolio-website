@@ -2,6 +2,7 @@
 .header-inner { width: min(1760px, calc(100% - 5.5vw)); padding-inline-start: 0; }
 .wordmark { gap: .8rem; font-size: clamp(1.24rem, 1.55vw, 1.65rem); font-weight: 680; letter-spacing: -.042em; white-space: nowrap; }
 .wordmark svg { flex: 0 0 auto; }
+.site-header .brand-symbol { width: 50px; height: 50px; }
 .desktop-nav { gap: clamp(.75rem, 2.3vw, 2.6rem); }
 .desktop-nav a { color: var(--text); }
 .desktop-nav a[aria-current] { color: #df9bff; }
@@ -20,6 +21,7 @@
 @media (max-width: 480px) {
   .wordmark { gap: .55rem; }
   .wordmark svg { width: 31px; height: 31px; }
+  .site-header .brand-symbol { width: 40px; height: 40px; }
   .header-actions .resume-nav, .header-actions .header-contact { justify-content: center; min-width: 44px; padding-inline: .6rem; }
   .header-action-label { display: none; }
 }

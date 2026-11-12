@@ -98,3 +98,8 @@
 - Replaced heading and wordmark underlines with a small lift, scale, and color response. Animated underlines remain on the five primary navigation links. Stack now precedes Experience.
 - Widened the header content area, removed its extra left inset, shortened the desktop hero, and reduced the Projects section’s padding.
 - Reviewed 1440px, 1920px, and 390px captures. Production build, lint, TypeScript, and all 23 browser checks passed.
+
+## Background darkness and header mark
+
+- Slightly darkened the shared base, ambient lighting, and ribbon opacity. Enlarged the header U mark to 50px on desktop and 40px on small screens.
+- Production build, lint, TypeScript, and all six responsive layout/navigation checks passed. Reviewed the 1440px production capture.
