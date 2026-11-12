@@ -4,7 +4,7 @@
   min-height: calc(100svh - var(--header-height));
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 .hero {
   position: relative;
@@ -12,10 +12,10 @@
   min-height: calc(100vh - var(--header-height));
   min-height: calc(100svh - var(--header-height));
   display: grid;
-  grid-template-columns: minmax(0, 1.18fr) minmax(0, 1.12fr) minmax(15rem, .65fr);
-  align-items: center;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1.05fr) minmax(15rem, .65fr);
+  align-items: start;
   column-gap: clamp(1.5rem, 3.5vw, 4rem);
-  padding: clamp(1.5rem, 3vh, 3rem) 0 clamp(4.5rem, 6vh, 6rem) clamp(8.5rem, 12vw, 12.5rem);
+  padding: clamp(.75rem, 1.6vh, 1.35rem) 0 clamp(4.5rem, 6vh, 6rem) clamp(8.5rem, 12vw, 12.5rem);
   box-sizing: border-box;
 }
 .hero-copy { position: relative; z-index: 1; }
@@ -29,14 +29,15 @@
 }
 .hero-roles {
   color: #d293ff;
-  font-size: clamp(.7rem, .88vw, .86rem);
+  font-size: clamp(.64rem, .76vw, .78rem);
   text-transform: uppercase;
   font-weight: 670;
-  letter-spacing: .2em;
-  line-height: 1.55;
-  margin: 0 0 clamp(1.2rem, 2.2vh, 1.85rem);
+  letter-spacing: .12em;
+  line-height: 1.4;
+  white-space: nowrap;
+  margin: 0 0 clamp(1rem, 2vh, 1.6rem);
 }
-.hero-roles span { color: var(--muted); margin-inline: clamp(.25rem, 1.4vw, 1.35rem); }
+.hero-roles span { color: var(--muted); margin-inline: clamp(.35rem, .8vw, .85rem); }
 .hero .lead {
   margin: 0 0 clamp(2rem, 3.4vh, 3rem);
   max-width: 48ch;
@@ -69,7 +70,7 @@
 }
 .hero-socials a:hover { border-color: var(--accent); color: var(--accent); }
 .hero-visual {
-  margin: 0;
+  margin: clamp(.5rem, 1.6vh, 1.5rem) 0 0;
   position: relative;
   min-width: 0;
   width: 100%;
@@ -119,7 +120,7 @@
 .hero-facts {
   display: grid;
   gap: clamp(3.5rem, 7vh, 5.5rem);
-  margin: 0;
+  margin: clamp(.2rem, 1vh, .6rem) 0 0;
   width: 100%;
 }
 .hero-facts div {
@@ -207,8 +208,7 @@
 @keyframes hero-divider-sweep { 0% { transform: translateX(0); opacity: 0; } 12% { opacity: 1; } 88% { opacity: 1; } 100% { transform: translateX(400%); opacity: 0; } }
 .section-rail {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  top: clamp(1.2rem, 2.5vh, 2rem);
   left: 0;
 }
 .section-rail ol { margin: 0; padding: 0; list-style: none; }
@@ -228,7 +228,7 @@
   grid-template-columns: 14px 1.25rem auto;
   gap: .55rem;
   align-items: center;
-  min-height: clamp(52px, 6.2vh, 68px);
+  min-height: clamp(48px, 5.6vh, 62px);
   color: var(--muted);
   font-size: .78rem;
 }
