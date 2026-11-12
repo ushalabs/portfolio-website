@@ -70,7 +70,7 @@ test("homepage groups pair their cards and center an odd final card", async ({ p
   await page.goto("/");
   await expect(page.locator("h1")).toHaveText("Usman Qureshi");
   await expect(page.getByRole("navigation", { name: "Primary" }).getByRole("link")).toHaveText(["Home", "Projects", "Stack", "Experience", "About"]);
-  expect((await page.locator(".hero").boundingBox())!.height).toBeLessThan(500);
+  expect((await page.locator(".hero").boundingBox())!.height).toBeGreaterThan(480);
   expect((await page.locator(".site-header .wordmark").boundingBox())!.x).toBeLessThan(60);
   await expect(page.locator("#work .project-card")).toHaveCount(projects.length);
   for (const group of projectGroups) {
