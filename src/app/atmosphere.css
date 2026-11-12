@@ -1,73 +1,31 @@
+
 .site-atmosphere {
   position: fixed;
   inset: 0;
   z-index: -1;
   overflow: hidden;
   pointer-events: none;
-  background: radial-gradient(ellipse at 90% 5%, #26203488, transparent 62%), linear-gradient(150deg, #101019, #12111b 55%, #0e0f17);
+  background: linear-gradient(145deg, #17151f, #15131e 52%, #1c1826);
 }
 body { position: relative; isolation: isolate; }
 .atmosphere-light {
   position: absolute;
   inset: -12%;
   background:
-    radial-gradient(ellipse 46% 50% at 85% 30%, #8062bd24, transparent 80%),
-    radial-gradient(ellipse 40% 55% at 13% 80%, #5b699e15, transparent 78%);
+    radial-gradient(ellipse 58% 66% at 88% 24%, #a58ac02b, transparent 75%),
+    radial-gradient(ellipse 48% 48% at 12% 78%, #8980ab21, transparent 78%),
+    radial-gradient(ellipse 56% 32% at 40% 7%, #c0accc0d, transparent 80%);
 }
-.atmosphere-lines {
-  position: absolute;
-  inset: -4%;
-  background:
-    url("/atmosphere/contours.svg") center / cover no-repeat,
-    linear-gradient(90deg, #b8a7da0c 1px, transparent 1px),
-    linear-gradient(#b8a7da09 1px, transparent 1px);
-  background-size: cover, 88px 88px, 88px 88px;
-  opacity: .38;
-  mask-image: linear-gradient(115deg, #000b, #0002 44%, #000 85%);
-}
-.atmosphere-grain { position: absolute; inset: 0; background: url("/atmosphere/grain.svg"); opacity: .035; }
+.atmosphere-ribbons { position: absolute; inset: -5%; background: url("/atmosphere/ribbons.svg") center / cover no-repeat; opacity: .9; }
+.atmosphere-grain { position: absolute; inset: 0; background: url("/atmosphere/grain.svg"); opacity: .022; }
 .page-transition { min-width: 0; }
 @media (prefers-reduced-motion: no-preference) {
-  .atmosphere-light { animation: atmosphere-drift 26s ease-in-out infinite alternate; }
-  .atmosphere-lines { animation: atmosphere-line-drift 34s ease-in-out infinite alternate; }
+  .atmosphere-light { animation: atmosphere-drift 24s ease-in-out infinite alternate; }
+  .atmosphere-ribbons { animation: atmosphere-ribbon-drift 30s ease-in-out infinite alternate; }
 }
-@keyframes atmosphere-drift { from { transform: translate3d(-2%, -1%, 0); opacity: .65; } to { transform: translate3d(3%, 3%, 0); opacity: 1; } }
-@keyframes atmosphere-line-drift { from { transform: translate3d(0, -1%, 0); } to { transform: translate3d(-1%, 1%, 0); } }
-
-.portfolio-atmosphere {
-  position: relative;
-  isolation: isolate;
-  background:
-    radial-gradient(ellipse 64% 25% at 90% 7%, #31263f44 0%, transparent 80%),
-    radial-gradient(ellipse 64% 24% at 8% 53%, #27223755 0%, transparent 80%),
-    radial-gradient(ellipse 62% 21% at 95% 77%, #29213944 0%, transparent 80%),
-    linear-gradient(180deg, #10101900, #13131c55 28%, #10101944 58%, #13121c55 82%, #10101944);
-}
-.portfolio-atmosphere::before,
-.portfolio-atmosphere::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-}
-.portfolio-atmosphere::before {
-  background:
-    linear-gradient(90deg, #c3b2e912 1px, transparent 1px),
-    linear-gradient(#c3b2e90d 1px, transparent 1px);
-  background-size: 64px 64px;
-  background-position: center top;
-  opacity: .48;
-  mask-image:
-    radial-gradient(ellipse 75% 24% at 88% 14%, #000 0%, transparent 95%),
-    radial-gradient(ellipse 72% 22% at 7% 54%, #000 0%, transparent 95%),
-    radial-gradient(ellipse 74% 21% at 88% 83%, #000 0%, transparent 95%);
-}
-.portfolio-atmosphere::after {
-  background: url("/atmosphere/grain.svg") repeat;
-  opacity: .047;
-  mask-image: linear-gradient(transparent, #000 5%, #000 91%, transparent);
-}
+@keyframes atmosphere-drift { from { transform: translate3d(-2%, -1%, 0); opacity: .7; } to { transform: translate3d(2%, 2%, 0); opacity: 1; } }
+@keyframes atmosphere-ribbon-drift { from { transform: translate3d(-1%, -1%, 0) rotate(-1deg); } to { transform: translate3d(1%, 1%, 0) rotate(1deg); } }
+.portfolio-atmosphere { position: relative; isolation: isolate; background: linear-gradient(180deg, #17151f00, #16131e22 55%, #1c182633); }
 .portfolio-atmosphere > .section {
   position: relative;
   isolation: isolate;
@@ -86,9 +44,3 @@ body { position: relative; isolation: isolate; }
 #experience { --atmosphere-origin: 18% 34%; }
 #about { --atmosphere-origin: 74% 51%; }
 #contact { --atmosphere-origin: 43% 48%; }
-
-@media (max-width: 700px) {
-  .atmosphere-lines { opacity: .26; }
-  .portfolio-atmosphere::before { background-size: 52px 52px; opacity: .33; }
-  .portfolio-atmosphere::after { opacity: .036; }
-}

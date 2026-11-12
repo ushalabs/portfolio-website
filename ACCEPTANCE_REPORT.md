@@ -61,3 +61,11 @@ The original release’s Lighthouse results and Git checkpoints are recorded in 
 - Screenshot-gallery items are excluded from scroll transforms to keep their native keyboard scrolling and scroll snapping stable. Gallery keyboard checks passed after that adjustment.
 - All six viewport widths passed without horizontal overflow. Three axe WCAG A/AA scans found zero violations. Production Chrome reported no page or shader errors during the live hero review.
 - Reviewed desktop hero and detail-page captures and a 390px detail page. Sampling 120 animation frame intervals with the live cube and backdrop in headless Chrome averaged 60.0 FPS, with a 17.2ms 95th-percentile interval. This is a local sample.
+
+## Brand mark, hover effects, and native page transitions
+
+- Production build, lint, TypeScript and dependency audit passed. npm reported zero vulnerabilities.
+- The browser suite covers 23 checks. Twenty-two passed in the full run. The logo screenshot check initially waited for the moving SVG itself to become stationary. After targeting its stationary container, the animation check passed its targeted rerun.
+- Verified both native transition snapshots reach the ready state and run the outgoing and incoming animations on archive/detail navigation. Reduced-motion navigation, browser history, quick navigation, same-page scrolling, and normal links passed.
+- Verified heading and hero-copy hover effects, distinct wordmark and icon responses, keyboard navigation feedback, authentic hero/header path reuse, logo idle and pointer animation, offscreen pausing, and reduced motion. The SVG mark works without WebGL and remains visible without JavaScript.
+- Reviewed hero and detail screenshots at 1440px and the hero at 390px. All six responsive checks passed, and three axe WCAG A/AA scans found zero violations.

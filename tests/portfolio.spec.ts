@@ -189,18 +189,22 @@ test("the homepage backdrop connects sections and its parallax respects reduced 
   await expect(page.getByRole("link", { name: "Velora", exact: true })).toBeVisible();
 });
 
-test("route entrances and the shared atmosphere honor motion preferences", async ({ page }) => {
+test("native page transitions crossfade both snapshots and honor reduced motion", async ({ page }) => {
   await page.goto("/projects");
   await expect(page.locator(".site-atmosphere")).toHaveCSS("position", "fixed");
   await expect(page.locator(".atmosphere-light")).toHaveCSS("animation-name", "atmosphere-drift");
   await page.evaluate(() => {
-    const audit = window as Window & { routeArrivals?: string[] };
-    audit.routeArrivals = [];
-    const content = document.querySelector<HTMLDivElement>(".page-transition")!;
-    const animate = content.animate.bind(content);
-    content.animate = (...args: Parameters<typeof animate>) => {
-      audit.routeArrivals!.push(location.pathname);
-      return animate(...args);
+    const audit = window as Window & { transitionAudit?: { started: number; ready: number; animations: string[] } };
+    audit.transitionAudit = { started: 0, ready: 0, animations: [] };
+    const start = document.startViewTransition.bind(document);
+    document.startViewTransition = (...args: Parameters<typeof start>) => {
+      audit.transitionAudit!.started++;
+      const transition = start(...args);
+      void transition.ready.then(() => {
+        audit.transitionAudit!.ready++;
+        audit.transitionAudit!.animations.push(...document.getAnimations().filter(animation => animation instanceof CSSAnimation).map(animation => (animation as CSSAnimation).animationName));
+      }).catch(() => {});
+      return transition;
     };
   });
   await page.getByRole("link", { name: "Velora", exact: true }).click();
@@ -208,10 +212,13 @@ test("route entrances and the shared atmosphere honor motion preferences", async
   await page.getByRole("link", { name: "Back to projects", exact: true }).click();
   await page.getByRole("link", { name: "Downshift", exact: true }).click();
   await expect(page.locator("h1")).toHaveText("Downshift.");
-  await expect.poll(() => page.evaluate(() => (window as Window & { routeArrivals?: string[] }).routeArrivals)).toEqual(["/projects/velora", "/projects", "/projects/downshift"]);
+  await expect.poll(() => page.evaluate(() => (window as Window & { transitionAudit?: { ready: number } }).transitionAudit?.ready)).toBe(3);
+  const names = await page.evaluate(() => (window as Window & { transitionAudit?: { animations: string[] } }).transitionAudit!.animations);
+  expect(names).toContain("route-enter");
+  expect(names).toContain("route-leave");
   await page.emulateMedia({ reducedMotion: "reduce" });
   await expect(page.locator(".atmosphere-light")).toHaveCSS("animation-name", "none");
-  await expect(page.locator(".atmosphere-lines")).toHaveCSS("animation-name", "none");
+  await expect(page.locator(".atmosphere-ribbons")).toHaveCSS("animation-name", "none");
   await page.goBack();
   await expect(page.locator("h1")).toHaveText("Project archive.");
   expect(await page.locator(".page-transition").evaluate(element => element.getAnimations().length)).toBe(0);
@@ -348,36 +355,62 @@ test("direct contact, copy feedback, and the top-bar PDF download", async ({ pag
   await expect(page.locator("#resumes")).toHaveCount(0);
 });
 
-test("3D responds to pointer and scroll and honors reduced motion", async ({ page }) => {
+test("the hero uses the authentic animated U mark and honors reduced motion", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 960 });
   await page.goto("/");
   const visual = page.locator(".hero-visual");
   await expect(visual).toHaveAttribute("data-interactive", "true", { timeout: 18_000 });
-  const canvas = visual.locator("canvas");
-  const box = (await canvas.boundingBox())!;
-  const before = await canvas.screenshot();
+  const emblem = visual.locator(".emblem-drift");
+  await expect(visual.locator("canvas")).toHaveCount(0);
+  expect(await visual.locator(".emblem-face path").first().getAttribute("d")).toBe(await page.locator(".site-header .brand-symbol path").first().getAttribute("d"));
+  const box = (await visual.boundingBox())!;
+  const before = await visual.screenshot();
   await page.waitForTimeout(200);
-  expect((await canvas.screenshot()).equals(before)).toBe(false);
+  expect((await visual.screenshot()).equals(before)).toBe(false);
   await expect(page.locator(".hero-facts")).toContainText("Full Stack & AI Automation");
   await page.mouse.move(box.x + box.width * .12, box.y + box.height * .32);
-  await expect.poll(async () => (await canvas.screenshot()).equals(before)).toBe(false);
-  const tilted = await canvas.screenshot();
-  await page.evaluate(() => window.scrollTo(0, 175));
-  await expect.poll(async () => (await canvas.screenshot()).equals(tilted)).toBe(false);
+  await expect.poll(() => visual.evaluate(element => getComputedStyle(element).getPropertyValue("--emblem-x"))).not.toBe("");
+  await page.evaluate(() => window.scrollTo({ top: 1200, behavior: "instant" }));
+  await expect(visual).toHaveAttribute("data-active", "false");
+  await expect(emblem).toHaveCSS("animation-play-state", "paused");
   await page.emulateMedia({ reducedMotion: "reduce" });
   await expect(visual).toHaveAttribute("data-interactive", "false");
-  await expect(canvas).toHaveCount(0);
-  await expect(visual.locator(".hero-fallback")).toBeVisible();
+  await expect(emblem).toHaveCSS("animation-name", "none");
+  await expect(visual.locator(".emblem-pointer")).toHaveCSS("transform", "none");
   await expect(page.locator(".hero-title-word").first()).toHaveCSS("animation-name", "none");
 });
 
-test("WebGL unavailable and no JavaScript keep the portfolio usable", async ({ browser, baseURL }) => {
+test("titles, navigation, hero copy, and the brand have distinct hover responses", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 940 });
+  await page.goto("/");
+  const title = page.locator("h1");
+  await title.hover();
+  await expect.poll(() => title.evaluate(element => getComputedStyle(element).translate)).not.toBe("none");
+  const copy = page.locator(".hero-copy > .lead");
+  await copy.hover();
+  await expect.poll(() => copy.evaluate(element => getComputedStyle(element).translate)).not.toBe("none");
+  const brand = page.locator(".site-header .wordmark");
+  await brand.hover();
+  await expect(brand.locator(".brand-symbol")).not.toHaveCSS("transform", "none");
+  await expect.poll(() => brand.locator(".brand-name").evaluate(element => getComputedStyle(element, "::after").transform)).not.toBe("matrix(0, 0, 0, 1, 0, 0)");
+  const nav = page.getByRole("navigation", { name: "Primary" }).getByRole("link", { name: "Projects", exact: true });
+  await nav.focus();
+  await expect.poll(() => nav.evaluate(element => getComputedStyle(element).translate)).not.toBe("none");
+  await page.getByRole("link", { name: "Explore Projects", exact: true }).click();
+  await expect.poll(() => page.locator("#work").evaluate(element => element.getBoundingClientRect().top)).toBeLessThan(130);
+  const category = page.getByRole("heading", { name: "Desktop Apps", exact: true });
+  await category.hover();
+  await expect.poll(() => category.evaluate(element => getComputedStyle(element).translate)).not.toBe("none");
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await expect(category).toHaveCSS("translate", "none");
+});
+
+test("the SVG hero and portfolio work without WebGL or JavaScript", async ({ browser, baseURL }) => {
   const noGl = await chromium.launch({ channel: process.env.PLAYWRIGHT_CHANNEL || undefined, args: ["--disable-webgl"] });
   try {
     const fallback = await noGl.newPage({ viewport: { width: 1440, height: 900 } });
     await fallback.goto(baseURL!);
-    await expect(fallback.locator(".hero-fallback")).toBeVisible();
-    await fallback.waitForTimeout(850);
+    await expect(fallback.locator(".emblem-face")).toBeVisible();
     await expect(fallback.locator(".hero-visual canvas")).toHaveCount(0);
   } finally {
     await noGl.close();

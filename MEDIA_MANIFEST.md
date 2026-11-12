@@ -38,9 +38,9 @@ Solvanta’s six design references were cropped individually and upscaled to 128
 
 The MeetingMinutes AI poster is a frame from the local recording. The case study uses that frame as the local MP4 poster.
 
-The decorative night shoreline was generated with the built-in image tool using the user’s homepage reference. The interactive prism and its static SVG fallback are implemented in the portfolio.
+The decorative night shoreline was generated with the built-in image tool using the user’s homepage reference. The hero uses the same authored Usha Labs SVG paths as the header mark, defined in `src/components/brand-symbol.tsx`.
 
-`public/atmosphere/contours.svg` is an authored SVG line pattern for the shared decorative background. The prism’s animated internal frames, rings, core, and shaders are implemented directly in `src/components/mechanical-scene.tsx`.
+`public/atmosphere/ribbons.svg` is an authored SVG composition for the shared decorative background. The hero’s layered mark and moving highlight are implemented in `src/components/hero-visual.tsx` and `src/app/hero.css`.
 
 ## Decorative hero asset
 

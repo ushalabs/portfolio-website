@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "./transition-link";
 import { ArrowUpRight } from "lucide-react";
 import type { Project } from "@/data/project-types";
 import { Tags } from "./project-actions";

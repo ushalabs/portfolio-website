@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
-import Link from "next/link";
+import Link from "./transition-link";
 import { ArrowUpRight, ChevronDown, Mail, Phone } from "lucide-react";
 import { projects } from "@/data/projects";
 import { site } from "@/data/site";

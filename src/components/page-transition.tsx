@@ -9,7 +9,7 @@ export function PageTransition({ children }: { children: ReactNode }) {
 
   useLayoutEffect(() => {
     const preference = matchMedia("(prefers-reduced-motion: no-preference)");
-    if (!preference.matches || !content.current) return;
+    if (!preference.matches || !content.current || "startViewTransition" in document) return;
     const arrival = content.current.animate([
       { opacity: .72, transform: "translateY(8px)" },
       { opacity: 1, transform: "translateY(0)" },

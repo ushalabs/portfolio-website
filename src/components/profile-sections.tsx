@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "./transition-link";
 import { ArrowUpRight, Plus } from "lucide-react";
 import { site } from "@/data/site";
 import { SectionLabel } from "./primitives";

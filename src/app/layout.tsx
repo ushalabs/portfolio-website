@@ -7,6 +7,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/primitives";
 import { InteractionLayer } from "@/components/interaction-layer";
 import { PageTransition } from "@/components/page-transition";
+import { ViewTransitions } from "next-view-transitions";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -17,9 +18,9 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}><body id="top">
-    <div className="site-atmosphere" aria-hidden="true"><div className="atmosphere-light" /><div className="atmosphere-lines" /><div className="atmosphere-grain" /></div>
+  return <ViewTransitions><html lang="en" data-scroll-behavior="smooth" className={`${GeistSans.variable} ${GeistMono.variable}`}><body id="top">
+    <div className="site-atmosphere" aria-hidden="true"><div className="atmosphere-light" /><div className="atmosphere-ribbons" /><div className="atmosphere-grain" /></div>
     <a className="skip-link" href="#main">Skip to content</a>
     <Header /><PageTransition>{children}</PageTransition><Footer /><InteractionLayer />
-  </body></html>;
+  </body></html></ViewTransitions>;
 }

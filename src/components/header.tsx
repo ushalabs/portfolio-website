@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "./transition-link";
 import { ArrowDownToLine, ArrowUpRight } from "lucide-react";
 import { projects } from "@/data/projects";
 import { resumePath } from "@/data/site";

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" fill="none">
+  <defs>
+    <linearGradient id="fold" x1="820" y1="100" x2="1530" y2="800" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#bba8e0" stop-opacity=".04"/>
+      <stop offset=".36" stop-color="#72618f" stop-opacity=".14"/>
+      <stop offset=".58" stop-color="#d2c2ee" stop-opacity=".23"/>
+      <stop offset=".64" stop-color="#746187" stop-opacity=".1"/>
+      <stop offset="1" stop-color="#1b1724" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="940" y1="90" x2="1430" y2="950" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#e1d4f1" stop-opacity="0"/>
+      <stop offset=".5" stop-color="#e1d4f1" stop-opacity=".36"/>
+      <stop offset="1" stop-color="#bda6df" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="return" x1="0" y1="680" x2="700" y2="1060" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#a99abc" stop-opacity=".02"/>
+      <stop offset=".53" stop-color="#a99abc" stop-opacity=".14"/>
+      <stop offset=".6" stop-color="#d8cde8" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#201d2b" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M1180-180C860 90 870 350 1120 550c240 192 350 350 270 610h350c100-310-5-540-290-765C1230 222 1170 76 1450-180Z" fill="url(#fold)"/>
+  <path d="M1180-180C860 90 870 350 1120 550c240 192 350 350 270 610" stroke="url(#edge)" stroke-width="1.2"/>
+  <path d="M-220 620C110 390 390 580 540 850c95 170 220 260 440 270H550C280 1080 250 790 100 770c-110-15-220 70-320 140Z" fill="url(#return)"/>
+  <path d="M-220 620C110 390 390 580 540 850c95 170 220 260 440 270" stroke="url(#edge)" stroke-width=".7"/>
+</svg>

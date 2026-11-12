@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
+import Link from "./transition-link";
 import { ArrowRight, Command, Menu, Search, X } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useAnimatedRouter } from "./transition-link";
 import { useEffect, useRef, useState } from "react";
 import { navigation } from "@/data/site";
 
@@ -33,7 +33,7 @@ export function MobileNavigation() {
 export function CommandPalette({ projectLinks }: { projectLinks: Destination[] }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const search = useRef<HTMLInputElement>(null);
-  const router = useRouter();
+  const router = useAnimatedRouter();
   const [query, setQuery] = useState("");
   const results = [...sections, ...projectLinks].filter(item => item.label.toLowerCase().includes(query.trim().toLowerCase()));
 

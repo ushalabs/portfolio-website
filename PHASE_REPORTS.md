@@ -76,3 +76,11 @@
 - Staggered the hero’s title, supporting copy, actions, and facts. Added scroll reveals for headings, section copy, timeline entries, toolkit rows, and project cards.
 - Updated Core focus to Full Stack & AI Automation. Added a rotating internal cube mechanism, animated glass reflections, and an orbital highlight. Rendering pauses outside the viewport and in hidden tabs.
 - Reduced-motion preferences disable the ambient drift, page entrances, title animations, and scroll reveals and select the existing static cube fallback.
+
+## Brand animation and navigation refinement
+
+- Replaced the cube with the authentic Usha Labs mark, rendered as layered SVG with idle movement, pointer response, and a moving light reflection. Header and footer marks reuse the same paths.
+- Added separate icon and wordmark hover effects, title underline and translation effects, navigation feedback, and hover responses for hero copy and facts. Keyboard and reduced-motion behavior remain supported.
+- Replaced the technical contour backdrop with brighter, broad illuminated ribbon forms and a quieter grain layer.
+- Integrated native old/new page snapshot transitions through `next-view-transitions`. All internal page links and quick navigation use the transition router. Same-page anchors use smooth scrolling. Browsers without the native API retain the page entrance fallback.
+- Removed the obsolete prism assets and unused Three.js dependencies. Dependency audit returned zero vulnerabilities.
