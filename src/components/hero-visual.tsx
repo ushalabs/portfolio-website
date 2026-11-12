@@ -57,7 +57,7 @@ export function HeroVisual() {
           <BrandSymbol className="emblem-layer emblem-depth-back" />
           <BrandSymbol className="emblem-layer emblem-depth-mid" />
           <BrandSymbol className="emblem-layer emblem-face" />
-          <svg className="emblem-layer emblem-sheen" viewBox="0 0 40 40" fill="none">
+          <svg className="emblem-layer emblem-sheen" viewBox="0 0 40 40" fill="none" width="100%" height="100%" shapeRendering="geometricPrecision">
             <defs>
               <clipPath id={clip}><path d={brandSilhouette} /></clipPath>
               <linearGradient id={light}><stop stopColor="white" stopOpacity="0" /><stop offset=".5" stopColor="white" stopOpacity=".85" /><stop offset="1" stopColor="white" stopOpacity="0" /></linearGradient>
