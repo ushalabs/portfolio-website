@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "@/components/transition-link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { ProjectActions, Tags } from "@/components/project-actions";
 import { ProjectVisual } from "@/components/project-media";
 import { SectionLabel } from "@/components/primitives";
@@ -40,7 +40,6 @@ export default async function ProjectPage({ params }: Props) {
   const related = projects.filter(item => item.id !== project.id && item.category.some(category => project.category.includes(category))).slice(0, 3);
 
   return <main className="shell page-main detail" id="main">
-    <Link className="back-link" href="/projects"><ArrowLeft size={17} aria-hidden="true" /> Back to projects</Link>
     <div className="detail-heading">
       <div className="detail-heading-copy">
         <SectionLabel index={String(project.order).padStart(2, "0")}>{project.status}</SectionLabel>
@@ -52,8 +51,8 @@ export default async function ProjectPage({ params }: Props) {
         <Image
           src={project.icon.src}
           alt={`${project.title} icon`}
-          width={168}
-          height={168}
+          width={196}
+          height={196}
           className="detail-icon"
           priority
         />

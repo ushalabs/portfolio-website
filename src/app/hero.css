@@ -278,9 +278,11 @@
   }
 }
 @media (max-width: 650px) {
+  .hero-visual { display: none !important; }
+  .hero-actions .button-primary svg { display: none; }
   .hero {
     width: calc(100% - 2.5rem);
-    padding: 1.25rem 0 2rem;
+    padding: clamp(2.4rem, 6vh, 3.25rem) 0 2rem;
     grid-template-columns: 1fr;
     min-height: auto;
     gap: 1.25rem;
@@ -289,15 +291,32 @@
   .hero h1 { font-size: clamp(2.35rem, 8.2vw, 3.2rem); max-width: 11em; margin-block: .65rem; }
   .hero-roles { letter-spacing: .12em; margin-bottom: .6rem; }
   .hero .lead { margin-bottom: 1.35rem; }
-  .hero-visual {
-    width: clamp(150px, 44vw, 190px);
-    justify-self: center;
-    margin: .5rem auto;
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .85rem;
+    margin-bottom: 1.4rem;
+  }
+  .hero-actions .button {
+    min-height: 3.15rem;
+    border-radius: .8rem;
+    padding-inline: 1.45rem;
+    font-size: .92rem;
+  }
+  .hero-socials {
+    display: flex;
+    gap: 1.2rem;
+    margin-top: 0;
+  }
+  .hero-socials a {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: .6rem;
   }
   .hero-facts {
     grid-template-columns: 1fr;
     gap: .85rem;
-    margin-top: .5rem;
+    margin-top: 1rem;
   }
   .hero-facts div {
     padding: .85rem 1.1rem;

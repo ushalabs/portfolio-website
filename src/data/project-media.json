@@ -1,40 +1,49 @@
 {
   "velora": [
     {
-      "src": "/projects/velora/chat-themes.webp",
-      "width": 484,
-      "height": 600,
+      "src": "/projects/velora/velora-themes.webp",
+      "width": 576,
+      "height": 1024,
       "alt": "Velora conversations, groups, and friend requests in dark and light themes",
+      "caption": "Light and dark themes",
       "kind": "screenshot",
-      "source": "User attachment 2, `codex-clipboard-b3700fce-9c27-4dd2-8cb2-56a2f5a66bb4.png`",
-      "caption": "Light and dark chat themes"
+      "source": "User attachment, `media_1794588810269_ab3e981b.jpg`"
     },
     {
-      "src": "/projects/velora/post-comments.webp",
-      "width": 361,
-      "height": 659,
-      "alt": "Velora post with the comments sheet open, showing replies and reactions",
-      "caption": "Post comments",
+      "src": "/projects/velora/velora-search.webp",
+      "width": 576,
+      "height": 1024,
+      "alt": "Velora user search and friend requests",
+      "caption": "Find people fast",
       "kind": "screenshot",
-      "source": "User attachment, `codex-clipboard-3cdebd21-7af0-48bd-8b2c-bd81b09a782c.png`"
+      "source": "User attachment, `media_1794588816953_5167da44.png`"
     },
     {
-      "src": "/projects/velora/stories.webp",
-      "width": 356,
-      "height": 660,
-      "alt": "Velora Stories screen with personal and friends’ stories and the privacy control",
+      "src": "/projects/velora/velora-stories.webp",
+      "width": 576,
+      "height": 1024,
+      "alt": "Velora stories and privacy controls",
       "caption": "Stories and privacy",
       "kind": "screenshot",
-      "source": "User attachment, `codex-clipboard-d571c6ed-4560-4dbe-bbe3-b7e7ca566ace.png`"
+      "source": "User attachment, `media_1794588823056_57541808.jpg`"
     },
     {
-      "src": "/projects/velora/add-friend.webp",
-      "width": 355,
-      "height": 656,
-      "alt": "Velora username search result with Add Friend and Direct Message actions",
-      "caption": "Find and add friends",
+      "src": "/projects/velora/velora-profile.webp",
+      "width": 576,
+      "height": 1024,
+      "alt": "Velora user profile and social timeline",
+      "caption": "Profile and social timeline",
       "kind": "screenshot",
-      "source": "User attachment, `codex-clipboard-7c777db7-c546-43c8-8546-ea7569300610.png`"
+      "source": "User attachment, `media_1794588829270_40bacd52.jpg`"
+    },
+    {
+      "src": "/projects/velora/velora-comments.webp",
+      "width": 576,
+      "height": 1024,
+      "alt": "Velora post comments sheet and replies",
+      "caption": "Interactive post comments",
+      "kind": "screenshot",
+      "source": "User attachment, `media_1794588836768_7a7f46b1.jpg`"
     },
     {
       "src": "/projects/velora/icon.webp",
@@ -92,58 +101,13 @@
   ],
   "solvanta": [
     {
-      "src": "/projects/solvanta/energy-overview.webp",
-      "width": 472,
-      "height": 1280,
-      "alt": "Solvanta concept showing home energy flow and daily solar generation",
-      "caption": "Energy overview",
+      "src": "/projects/solvanta/solvanta-showcase.webp",
+      "width": 1024,
+      "height": 768,
+      "alt": "Solvanta energy digital twin neon smart home interface across three devices",
+      "caption": "Neon smart home interface",
       "kind": "reference",
-      "source": "User design board, `codex-clipboard-844cc163-2809-42a1-80a9-2fd0de16b9c0.png`, crop (x, y, width, height) 9, 72, 201, 545"
-    },
-    {
-      "src": "/projects/solvanta/appliance-digital-twin.webp",
-      "width": 463,
-      "height": 1280,
-      "alt": "Solvanta concept showing appliance categories and individual controls",
-      "caption": "Appliance digital twin",
-      "kind": "reference",
-      "source": "User design board, `codex-clipboard-844cc163-2809-42a1-80a9-2fd0de16b9c0.png`, crop (x, y, width, height) 215, 73, 197, 545"
-    },
-    {
-      "src": "/projects/solvanta/simulation.webp",
-      "width": 456,
-      "height": 1280,
-      "alt": "Solvanta concept showing a six-hour outage scenario and projected battery levels",
-      "caption": "Outage simulation",
-      "kind": "reference",
-      "source": "User design board, `codex-clipboard-844cc163-2809-42a1-80a9-2fd0de16b9c0.png`, crop (x, y, width, height) 416, 74, 194, 544"
-    },
-    {
-      "src": "/projects/solvanta/scheduling.webp",
-      "width": 459,
-      "height": 1280,
-      "alt": "Solvanta concept showing a solar and appliance schedule with a recommended plan",
-      "caption": "Appliance scheduling",
-      "kind": "reference",
-      "source": "User design board, `codex-clipboard-844cc163-2809-42a1-80a9-2fd0de16b9c0.png`, crop (x, y, width, height) 613, 73, 196, 546"
-    },
-    {
-      "src": "/projects/solvanta/rooftop-analysis.webp",
-      "width": 470,
-      "height": 1280,
-      "alt": "Solvanta concept showing a rooftop panel layout and configuration controls",
-      "caption": "Rooftop analysis",
-      "kind": "reference",
-      "source": "User design board, `codex-clipboard-844cc163-2809-42a1-80a9-2fd0de16b9c0.png`, crop (x, y, width, height) 813, 73, 201, 547"
-    },
-    {
-      "src": "/projects/solvanta/ai-operations.webp",
-      "width": 462,
-      "height": 1280,
-      "alt": "Solvanta concept showing the energy assistant running an outage simulation",
-      "caption": "AI operations",
-      "kind": "reference",
-      "source": "User design board, `codex-clipboard-844cc163-2809-42a1-80a9-2fd0de16b9c0.png`, crop (x, y, width, height) 1018, 73, 198, 548"
+      "source": "User attachment, `media_1794588676147_3a434ee8.jpg`"
     },
     {
       "src": "/projects/solvanta/icon.webp",
