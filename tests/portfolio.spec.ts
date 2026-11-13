@@ -271,6 +271,7 @@ test("case studies keep the supplied and animated media below the write-up", asy
   expect(dimensions.ratio).toBeCloseTo(.7, 2);
   expect(dimensions.belowCopy).toBe(true);
   expect(dimensions.topGap).toBeLessThan(32);
+  await expect(page.getByRole("heading", { name: "Project Demo", exact: true })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Source material" })).toHaveCount(0);
   await expect(video).toHaveAttribute("preload", "none");
   await expect(video.locator("source")).toHaveAttribute("src", "/projects/meetingminutes-ai/demo.mp4");
@@ -286,6 +287,7 @@ test("case studies keep the supplied and animated media below the write-up", asy
   });
 
   await page.goto("/projects/sentinel-secops");
+  await expect(page.getByRole("heading", { name: "Project Demo", exact: true })).toBeVisible();
   const gif = page.getByRole("img", { name: "Sentinel SecOps dashboard demonstrating live threat detection" });
   await page.getByRole("button", { name: "Play GIF" }).click();
   await expect(gif).toHaveAttribute("src", "/projects/sentinel-secops/live-demo.gif");
@@ -298,6 +300,8 @@ test("case studies keep the supplied and animated media below the write-up", asy
     expect(ratio).toBeCloseTo(.7, 2);
   }
 
+  await page.goto("/projects/lumen");
+  await expect(page.getByRole("heading", { name: "Product Demo", exact: true })).toBeVisible();
   const lumenVideo = page.getByLabel("Lumen screen recording");
   await expect(page.getByRole("region", { name: "Lumen gallery" })).toHaveCount(0);
   await expect(page.getByText("Lumen product walkthrough")).toBeVisible();
@@ -314,15 +318,24 @@ test("case studies keep the supplied and animated media below the write-up", asy
   });
   expect(playback.position).toBeCloseTo(15, 0);
   expect(playback.duration).toBeGreaterThan(60);
+
+  await page.goto("/projects/downshift");
+  await expect(page.getByRole("heading", { name: "Product Demo", exact: true })).toBeVisible();
+  const downshiftVideo = page.getByLabel("Downshift screen recording");
+  await expect(page.getByText("Downshift product walkthrough")).toBeVisible();
+  await expect(downshiftVideo).toHaveAttribute("preload", "none");
+  await expect(downshiftVideo.locator("source")).toHaveAttribute("src", "/projects/downshift/demo.mp4");
+  expect((await request.get("/projects/downshift/demo.mp4", { headers: { Range: "bytes=0-1023" } })).status()).toBe(206);
 });
 
 test("Velora and Solvanta galleries show distinct labeled visuals side by side", async ({ page }) => {
-  for (const { slug, title, count } of [
-    { slug: "velora", title: "Velora", count: 4 },
-    { slug: "solvanta", title: "Solvanta", count: 6 },
+  for (const { slug, title, heading, count } of [
+    { slug: "velora", title: "Velora", heading: "Visuals from Product", count: 4 },
+    { slug: "solvanta", title: "Solvanta", heading: "Project visuals", count: 6 },
   ]) {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto(`/projects/${slug}`);
+    await expect(page.getByRole("heading", { name: heading, exact: true })).toBeVisible();
     const gallery = page.getByRole("region", { name: `${title} gallery` });
     const captions = await gallery.locator("figcaption").allTextContents();
     expect(new Set(captions).size).toBe(count);

@@ -5,11 +5,19 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { ProjectActions, Tags } from "@/components/project-actions";
 import { ProjectVisual } from "@/components/project-media";
 import { SectionLabel } from "@/components/primitives";
+import type { Project } from "@/data/project-types";
 import { getProject, projects } from "@/data/projects";
 import { pageMetadata } from "@/data/seo";
 import "./detail.css";
 
 type Props = { params: Promise<{ slug: string }> };
+
+function getVisualsHeading(project: Project): string {
+  if (project.slug === "velora") return "Visuals from Product";
+  if (project.slug === "downshift" || project.slug === "lumen") return "Product Demo";
+  if (project.demoVideo || project.demoAnimation) return "Project Demo";
+  return "Project visuals";
+}
 
 export function generateStaticParams() {
   return projects.map(({ slug }) => ({ slug }));
@@ -46,8 +54,8 @@ export default async function ProjectPage({ params }: Props) {
       <DetailList title="Project status and outcomes" entries={project.outcomes} />
     </div>
     <section className="detail-block related"><h2>Related projects</h2>{related.map(item => <Link key={item.id} href={`/projects/${item.slug}`}><span>{item.title}</span><ArrowUpRight size={20} aria-hidden="true" /></Link>)}</section>
-    {project.gallery.length > 0 && <section className="detail-block detail-gallery" id="project-demo" aria-labelledby="project-visuals-heading">
-      <h2 id="project-visuals-heading">Project visuals</h2>
+    {(project.gallery.length > 0 || project.demoVideo || project.demoAnimation) && <section className="detail-block detail-gallery" id="project-demo" aria-labelledby="project-visuals-heading">
+      <h2 id="project-visuals-heading">{getVisualsHeading(project)}</h2>
       <ProjectVisual project={project} />
     </section>}
   </main>;
