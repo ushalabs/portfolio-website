@@ -336,7 +336,7 @@ test("Velora and Solvanta galleries show distinct labeled visuals side by side",
   ]) {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto(`/projects/${slug}`);
-    await expect(page.locator(".detail-icon-wrap img")).toBeVisible();
+    await expect(page.locator(".detail-icon")).toBeVisible();
     await expect(page.getByRole("heading", { name: heading, exact: true })).toBeVisible();
     const gallery = page.getByRole("region", { name: `${title} gallery` });
     const captions = await gallery.locator("figcaption").allTextContents();
@@ -380,6 +380,10 @@ test("direct contact, copy feedback, and the top-bar PDF download", async ({ pag
   const event = page.waitForEvent("download");
   await page.getByRole("banner").getByRole("link", { name: "Resume" }).click();
   expect((await event).suggestedFilename()).toBe("usman-qureshi-resume.pdf");
+  const headerSymbol = await page.locator(".site-header .brand-symbol").boundingBox();
+  const footerSymbol = await page.locator(".footer .brand-symbol").boundingBox();
+  expect(footerSymbol!.width).toBeCloseTo(headerSymbol!.width, 0);
+  expect(footerSymbol!.height).toBeCloseTo(headerSymbol!.height, 0);
   await expect(page.locator("#resumes")).toHaveCount(0);
 });
 
