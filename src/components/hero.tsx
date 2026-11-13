@@ -2,7 +2,7 @@
 
 import type { CSSProperties } from "react";
 import Link from "./transition-link";
-import { ArrowUpRight, ChevronDown, Mail, Phone } from "lucide-react";
+import { ChevronDown, Mail, Phone } from "lucide-react";
 import { site } from "@/data/site";
 import { HeroVisual } from "./hero-visual";
 import { SectionRail, useActiveSection } from "./interaction-layer";
@@ -20,11 +20,16 @@ export function Hero() {
         <p className="lead">I engineer high-performance full-stack applications, native desktop tools, and applied AI automation systems.</p>
         <div className="hero-actions-container">
           <div className="actions hero-actions">
-            <Link href="/#work" className="button button-primary" data-active={isWork ? "true" : undefined} aria-current={isWork ? "location" : undefined}>Explore Projects <ArrowUpRight size={18} aria-hidden="true" /></Link>
-            <a href={site.github} target="_blank" rel="noopener noreferrer" className="button">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 .75a11.25 11.25 0 0 0-3.56 21.92c.56.1.77-.24.77-.54v-2.09c-3.13.68-3.79-1.33-3.79-1.33-.51-1.3-1.25-1.64-1.25-1.64-1.02-.7.08-.69.08-.69 1.13.08 1.72 1.16 1.72 1.16 1.72 1.16 1 1.72 2.63 1.22 3.27.93.1-.72.39-1.22.71-1.5-2.5-.28-5.13-1.25-5.13-5.56 0-1.23.44-2.23 1.16-3.02-.12-.28-.5-1.43.11-2.98 0 0 .94-.3 3.1 1.15a10.8 10.8 0 0 1 5.64 0c2.15-1.45 3.09-1.15 3.09-1.15.61 1.55.23 2.7.12 2.98.72.79 1.15 1.79 1.15 3.02 0 4.32-2.63 5.27-5.14 5.55.4.35.76 1.03.76 2.08v3.09c0 .3.2.65.77.54A11.25 11.25 0 0 0 12 .75Z"/></svg>
-              GitHub
-            </a>
+            <Link href="/#work" className="button button-primary" data-active={isWork ? "true" : undefined} aria-current={isWork ? "location" : undefined}>Explore Projects</Link>
+            <div className="hero-github-group">
+              <a href={site.github} target="_blank" rel="noopener noreferrer" className="button">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 .75a11.25 11.25 0 0 0-3.56 21.92c.56.1.77-.24.77-.54v-2.09c-3.13.68-3.79-1.33-3.79-1.33-.51-1.3-1.25-1.64-1.25-1.64-1.02-.7.08-.69.08-.69 1.13.08 1.72 1.16 1.72 1.16 1.72 1.16 1 1.72 2.63 1.22 3.27.93.1-.72.39-1.22.71-1.5-2.5-.28-5.13-1.25-5.13-5.56 0-1.23.44-2.23 1.16-3.02-.12-.28-.5-1.43.11-2.98 0 0 .94-.3 3.1 1.15a10.8 10.8 0 0 1 5.64 0c2.15-1.45 3.09-1.15 3.09-1.15.61 1.55.23 2.7.12 2.98.72.79 1.15 1.79 1.15 3.02 0 4.32-2.63 5.27-5.14 5.55.4.35.76 1.03.76 2.08v3.09c0 .3.2.65.77.54A11.25 11.25 0 0 0 12 .75Z"/></svg>
+                GitHub
+              </a>
+              <div className="hero-visual-mobile" aria-hidden="true">
+                <HeroVisual />
+              </div>
+            </div>
           </div>
           <div className="hero-socials">
             <a href={site.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
@@ -32,9 +37,6 @@ export function Hero() {
             </a>
             <a href={`mailto:${site.email}`} aria-label="Email Usman"><Mail size={17} aria-hidden="true" /></a>
             <a href={site.telephone} aria-label="Call Usman"><Phone size={16} aria-hidden="true" /></a>
-          </div>
-          <div className="hero-visual-mobile" aria-hidden="true">
-            <HeroVisual />
           </div>
         </div>
       </div>
