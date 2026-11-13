@@ -52,8 +52,8 @@ export default async function ProjectPage({ params }: Props) {
         <Image
           src={project.icon.src}
           alt={`${project.title} icon`}
-          width={108}
-          height={108}
+          width={168}
+          height={168}
           className="detail-icon"
           priority
         />
