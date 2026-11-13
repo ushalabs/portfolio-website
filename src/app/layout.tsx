@@ -7,7 +7,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/primitives";
 import { InteractionLayer } from "@/components/interaction-layer";
 import { PageTransition } from "@/components/page-transition";
-import { ViewTransitions } from "next-view-transitions";
+import { ViewTransitions } from "@/components/transition-provider";
 import "./globals.css";
 
 export const metadata: Metadata = {

@@ -37,6 +37,7 @@
   color: #f2f0ed;
   box-shadow: inset 0 1px 0 #ffffff07, 0 7px 18px #08070e4d, 0 2px 5px #08070e38;
   transition: border-color .24s ease-out, transform .34s cubic-bezier(.18, .8, .32, 1), box-shadow .3s ease-out;
+  cursor: pointer;
 }
 .project-card[data-discipline="Mobile"] { --project-pattern: url("/atmosphere/mobile.svg"); }
 .project-card[data-discipline="AI & Automation"] { --project-pattern: url("/atmosphere/ai.svg"); }
@@ -76,12 +77,11 @@
 .project-card-heading h2, .project-card-heading h3, .project-card-heading h4 { font-size: clamp(1.17rem, 1.6vw, 1.5rem); line-height: 1.17; letter-spacing: -.036em; font-weight: 630; }
 .project-card-link { transition: color .2s ease-out; }
 .project-card:hover .project-card-link, .project-card-link:focus-visible { color: #eee4ff; }
-.project-card-link::after { content: ""; position: absolute; inset: 0; z-index: 1; border-radius: .95rem; }
+.project-card-link::after { content: ""; position: absolute; inset: 0; z-index: 1; border-radius: .95rem; pointer-events: none; }
 .project-card-link:focus-visible { outline: none; }
 .project-card-link:focus-visible::after { outline: 2px solid var(--project-accent); outline-offset: 3px; }
 .project-card-corner { display: grid; justify-items: end; gap: .35rem; align-self: start; }
 .project-card-corner span { color: #a6a0b2; font-family: var(--font-geist-mono), monospace; font-size: .66rem; font-variant-numeric: tabular-nums; }
-.project-card-arrow { color: var(--project-accent); transition: transform .25s ease-out, color .2s ease-out; }
 .project-card-description { color: #b9b5c2; font-size: .91rem; line-height: 1.55; }
 .project-card-footer { margin-top: auto; border-top: 1px solid #393440; padding-top: .58rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .3rem .9rem; }
 .project-card-footer .tags { margin: 0; }
@@ -100,7 +100,6 @@
   }
   .project-card-slot:hover > .project-card::after { opacity: 1; }
   .project-card-slot:hover .project-icon { transform: perspective(300px) translate3d(0, -2px, 8px); }
-  .project-card-slot:hover .project-card-arrow { transform: translate(2px, -2px); color: #c5adef; }
 }
 @media (max-width: 700px) {
   .selected-work { width: calc(100% - 2.5rem); }

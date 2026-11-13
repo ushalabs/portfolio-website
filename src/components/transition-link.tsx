@@ -2,7 +2,7 @@
 
 import NextLink from "next/link";
 import { useRouter } from "next/navigation";
-import { useTransitionRouter } from "next-view-transitions";
+import { useTransitionRouter } from "./transition-provider";
 import type { ComponentProps } from "react";
 
 function useAnimatedRouter() {

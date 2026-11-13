@@ -1,5 +1,7 @@
+"use client";
+
 import Image from "next/image";
-import Link from "./transition-link";
+import Link, { useAnimatedRouter } from "./transition-link";
 import { ArrowUpRight, Download } from "lucide-react";
 import type { Project } from "@/data/project-types";
 import { Tags } from "./project-actions";
@@ -14,8 +16,16 @@ function ProjectMark({ icon, title }: Pick<Project, "icon" | "title">) {
 }
 
 export function ProjectCard({ project, heading: Heading = "h2" }: { project: Project; heading?: "h2" | "h3" | "h4" }) {
+  const router = useAnimatedRouter();
+
+  const handleCardClick = (event: React.MouseEvent<HTMLElement>) => {
+    const target = event.target as HTMLElement | null;
+    if (target?.closest("a, button")) return;
+    router.push(`/projects/${project.slug}`);
+  };
+
   return <li className="project-card-slot" data-project={project.slug}>
-    <article className="project-card" data-discipline={project.category[0]}>
+    <article className="project-card" data-discipline={project.category[0]} onClick={handleCardClick}>
       <div className="project-card-heading">
         <ProjectMark icon={project.icon} title={project.title} />
         <div>
@@ -24,7 +34,6 @@ export function ProjectCard({ project, heading: Heading = "h2" }: { project: Pro
         </div>
         <div className="project-card-corner" aria-hidden="true">
           <span>{String(project.order).padStart(2, "0")}</span>
-          <ArrowUpRight className="project-card-arrow" size={17} />
         </div>
       </div>
       <p className="project-card-description">{project.shortDescription}</p>
