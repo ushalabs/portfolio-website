@@ -1,17 +1,23 @@
 .detail.page-main { padding-block: clamp(.75rem, 1.6vw, 1.5rem) clamp(2rem, 4vw, 3.5rem); }
 .detail-heading {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: flex-start;
-  gap: clamp(1.25rem, 3.5vw, 3.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: .85rem;
   padding-block: clamp(.85rem, 1.7vw, 1.5rem) 1.5rem;
 }
-.detail-heading-copy {
-  min-width: 0;
+.detail-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  width: 100%;
 }
 .detail .page-title {
-  margin: .65rem 0 .95rem;
+  margin: 0;
   line-height: 1.05;
+}
+.detail-heading-copy {
+  max-width: 58ch;
 }
 .detail-icon {
   width: clamp(150px, 14vw, 196px);
@@ -115,23 +121,30 @@
 }
 @media (max-width: 690px) {
   .detail.page-main {
-    padding-top: clamp(2rem, 5vh, 3rem);
+    padding-top: clamp(2.5rem, 6.5vh, 3.8rem);
   }
   .detail-grid { grid-template-columns: 1fr; }
   .detail-heading {
+    gap: .75rem;
+    padding-top: 0;
+  }
+  .detail-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 1rem;
-    padding-top: .5rem;
+    width: 100%;
   }
   .detail .page-title {
-    font-size: clamp(2.2rem, 8vw, 3rem);
-    margin: .5rem 0 .75rem;
+    font-size: clamp(2rem, 7.8vw, 2.75rem);
+    margin: 0;
     line-height: 1.05;
   }
   .detail-icon {
-    width: clamp(60px, 16vw, 68px);
-    height: clamp(60px, 16vw, 68px);
-    border-radius: 14px;
-    margin-top: .2rem;
+    width: clamp(82px, 22vw, 92px);
+    height: clamp(82px, 22vw, 92px);
+    border-radius: clamp(16px, 4.5vw, 20px);
+    margin: 0;
     margin-right: 0;
     flex-shrink: 0;
   }

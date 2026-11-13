@@ -41,22 +41,24 @@ export default async function ProjectPage({ params }: Props) {
 
   return <main className="shell page-main detail" id="main">
     <div className="detail-heading">
-      <div className="detail-heading-copy">
-        <SectionLabel index={String(project.order).padStart(2, "0")}>{project.status}</SectionLabel>
+      <SectionLabel index={String(project.order).padStart(2, "0")}>{project.status}</SectionLabel>
+      <div className="detail-header-row">
         <h1 className="section-title page-title">{project.title}<span className="accent">.</span></h1>
+        {project.icon && (
+          <Image
+            src={project.icon.src}
+            alt={`${project.title} icon`}
+            width={196}
+            height={196}
+            className="detail-icon"
+            priority
+          />
+        )}
+      </div>
+      <div className="detail-heading-copy">
         <p className="lead">{project.shortDescription}</p>
         <ProjectActions project={project} />
       </div>
-      {project.icon && (
-        <Image
-          src={project.icon.src}
-          alt={`${project.title} icon`}
-          width={196}
-          height={196}
-          className="detail-icon"
-          priority
-        />
-      )}
     </div>
     <div className="detail-grid">
       <section className="detail-block detail-overview"><h2>Overview</h2><p>{project.longDescription}</p><h3>Technology</h3><Tags values={project.techStack} /></section>
