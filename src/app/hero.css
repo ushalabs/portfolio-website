@@ -46,7 +46,7 @@
 }
 .hero-visual-mobile { display: none !important; }
 .hero-visual-desktop { display: contents; }
-.hero-interactive-zone, .hero-interactive-actions { display: contents; }
+.hero-actions-container { display: contents; }
 
 .hero-actions {
   gap: clamp(.85rem, 1.6vw, 1.75rem);
@@ -286,12 +286,13 @@
   .hero-visual-mobile {
     display: block !important;
     position: absolute;
-    right: -10px;
-    top: -12px;
-    width: clamp(108px, 29vw, 124px);
+    right: clamp(-10px, -1.8vw, -4px);
+    top: 3.45rem;
+    transform: translateY(-50%);
+    width: clamp(66px, 18vw, 76px);
     aspect-ratio: 1;
     pointer-events: none;
-    z-index: 2;
+    z-index: 1;
   }
   .hero-visual-mobile .hero-visual {
     display: block !important;
@@ -301,49 +302,51 @@
   }
   .hero {
     width: calc(100% - 2.5rem);
-    padding: clamp(5.4rem, 12vh, 6.6rem) 0 2rem;
+    padding: clamp(3.8rem, 8vh, 4.4rem) 0 2rem;
     grid-template-columns: 1fr;
     min-height: auto;
     gap: 1.25rem;
   }
   .hero-section { min-height: auto; }
-  .hero h1 { font-size: clamp(2.35rem, 8.2vw, 3.2rem); max-width: 11em; margin-block: .65rem; }
+  .hero h1 {
+    font-size: clamp(2.35rem, 8.2vw, 3.2rem);
+    max-width: 11em;
+    margin-top: .65rem;
+    margin-bottom: 1.55rem;
+  }
   .hero-roles { letter-spacing: .12em; margin-bottom: .6rem; }
-  .hero .lead { margin-bottom: 1.35rem; }
-  .hero-interactive-zone {
+  .hero .lead { margin-bottom: 1.6rem; }
+  .hero-actions-container {
     display: block;
     position: relative;
     width: 100%;
-    margin-bottom: 1.25rem;
-  }
-  .hero-interactive-actions {
-    display: flex;
-    flex-direction: column;
-    gap: .85rem;
-    width: 100%;
+    margin-bottom: 1.4rem;
   }
   .hero-actions {
+    position: relative;
+    z-index: 2;
     display: flex;
-    flex-wrap: nowrap;
-    gap: .45rem;
-    margin-bottom: 0;
+    flex-wrap: wrap;
+    gap: .85rem;
+    margin-bottom: 1.4rem;
   }
   .hero-actions .button {
-    min-height: 2.75rem;
-    border-radius: .7rem;
-    padding-inline: .95rem;
-    font-size: .83rem;
-    white-space: nowrap;
+    min-height: 3.15rem;
+    border-radius: .8rem;
+    padding-inline: 1.45rem;
+    font-size: .92rem;
   }
   .hero-actions .button-primary svg { display: none; }
   .hero-socials {
+    position: relative;
+    z-index: 2;
     display: flex;
-    gap: .75rem;
+    gap: 1.2rem;
     margin-top: 0;
   }
   .hero-socials a {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.75rem;
+    height: 2.75rem;
     border-radius: .6rem;
   }
   .hero-facts {
