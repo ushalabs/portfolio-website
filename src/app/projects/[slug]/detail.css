@@ -86,12 +86,15 @@
 @media (max-width: 690px) {
   .detail-grid { grid-template-columns: 1fr; }
   .detail-heading {
-    gap: 1rem;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    padding-top: .75rem;
   }
   .detail-icon {
     width: 84px;
     height: 84px;
     border-radius: 18px;
-    margin-right: 0;
+    margin: 0;
+    order: -1;
   }
 }
