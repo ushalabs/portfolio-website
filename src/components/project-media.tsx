@@ -19,7 +19,6 @@ export function ProjectVisual({ project }: { project: Project }) {
       <source src={project.demoVideo} type="video/mp4" />
       <a href={project.demoVideo}>Open the demo video</a>
     </video>
-    <figcaption>{project.title} product walkthrough</figcaption>
   </figure>;
 
   if (project.demoAnimation) return <ProjectAnimation source={project.demoAnimation} poster={media} />;

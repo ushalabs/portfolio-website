@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "@/components/transition-link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
@@ -41,10 +42,24 @@ export default async function ProjectPage({ params }: Props) {
   return <main className="shell page-main detail" id="main">
     <Link className="back-link" href="/projects"><ArrowLeft size={17} aria-hidden="true" /> Back to projects</Link>
     <div className="detail-heading">
-      <SectionLabel index={String(project.order).padStart(2, "0")}>{project.status}</SectionLabel>
-      <h1 className="section-title page-title">{project.title}<span className="accent">.</span></h1>
-      <p className="lead">{project.shortDescription}</p>
-      <ProjectActions project={project} />
+      <div className="detail-heading-main">
+        <SectionLabel index={String(project.order).padStart(2, "0")}>{project.status}</SectionLabel>
+        <h1 className="section-title page-title">{project.title}<span className="accent">.</span></h1>
+        <p className="lead">{project.shortDescription}</p>
+        <ProjectActions project={project} />
+      </div>
+      {project.icon && (
+        <div className="detail-icon-wrap" aria-hidden="true">
+          <Image
+            src={project.icon.src}
+            alt={`${project.title} icon`}
+            width={project.icon.width || 128}
+            height={project.icon.height || 128}
+            className="detail-icon"
+            priority
+          />
+        </div>
+      )}
     </div>
     <div className="detail-grid">
       <section className="detail-block detail-overview"><h2>Overview</h2><p>{project.longDescription}</p><h3>Technology</h3><Tags values={project.techStack} /></section>

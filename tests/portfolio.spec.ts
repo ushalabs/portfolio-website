@@ -274,6 +274,7 @@ test("case studies keep the supplied and animated media below the write-up", asy
   await expect(page.getByRole("heading", { name: "Project Demo", exact: true })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Source material" })).toHaveCount(0);
   await expect(video).toHaveAttribute("preload", "none");
+  await expect(video).toHaveAttribute("poster", "/projects/meetingminutes-ai/demo-poster.webp");
   await expect(video.locator("source")).toHaveAttribute("src", "/projects/meetingminutes-ai/demo.mp4");
   await expect(page.locator('a[href*="loom.com"]')).toHaveCount(0);
   const response = await request.get("/projects/meetingminutes-ai/demo.mp4", { headers: { Range: "bytes=0-1023" } });
@@ -304,8 +305,8 @@ test("case studies keep the supplied and animated media below the write-up", asy
   await expect(page.getByRole("heading", { name: "Product Demo", exact: true })).toBeVisible();
   const lumenVideo = page.getByLabel("Lumen screen recording");
   await expect(page.getByRole("region", { name: "Lumen gallery" })).toHaveCount(0);
-  await expect(page.getByText("Lumen product walkthrough")).toBeVisible();
   await expect(lumenVideo).toHaveAttribute("preload", "none");
+  await expect(lumenVideo).toHaveAttribute("poster", "/projects/lumen/demo-poster.webp");
   await expect(lumenVideo.locator("source")).toHaveAttribute("src", "/projects/lumen/demo.mp4");
   expect((await request.get("/projects/lumen/demo.mp4", { headers: { Range: "bytes=0-1023" } })).status()).toBe(206);
   const playback = await lumenVideo.evaluate(async element => {
@@ -322,8 +323,8 @@ test("case studies keep the supplied and animated media below the write-up", asy
   await page.goto("/projects/downshift");
   await expect(page.getByRole("heading", { name: "Product Demo", exact: true })).toBeVisible();
   const downshiftVideo = page.getByLabel("Downshift screen recording");
-  await expect(page.getByText("Downshift product walkthrough")).toBeVisible();
   await expect(downshiftVideo).toHaveAttribute("preload", "none");
+  await expect(downshiftVideo).toHaveAttribute("poster", "/projects/downshift/demo-poster.webp");
   await expect(downshiftVideo.locator("source")).toHaveAttribute("src", "/projects/downshift/demo.mp4");
   expect((await request.get("/projects/downshift/demo.mp4", { headers: { Range: "bytes=0-1023" } })).status()).toBe(206);
 });
@@ -335,6 +336,7 @@ test("Velora and Solvanta galleries show distinct labeled visuals side by side",
   ]) {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto(`/projects/${slug}`);
+    await expect(page.locator(".detail-icon-wrap img")).toBeVisible();
     await expect(page.getByRole("heading", { name: heading, exact: true })).toBeVisible();
     const gallery = page.getByRole("region", { name: `${title} gallery` });
     const captions = await gallery.locator("figcaption").allTextContents();
@@ -345,6 +347,12 @@ test("Velora and Solvanta galleries show distinct labeled visuals side by side",
     const second = (await images.nth(1).boundingBox())!;
     expect(second.y).toBeCloseTo(first.y, 0);
     expect(second.x).toBeGreaterThan(first.x + first.width);
+    if (slug === "velora") {
+      const boxes = await Promise.all([images.nth(0).boundingBox(), images.nth(1).boundingBox(), images.nth(2).boundingBox(), images.nth(3).boundingBox()]);
+      expect(boxes[1]!.height).toBeCloseTo(boxes[0]!.height, 1);
+      expect(boxes[2]!.height).toBeCloseTo(boxes[0]!.height, 1);
+      expect(boxes[3]!.height).toBeCloseTo(boxes[0]!.height, 1);
+    }
     if (slug === "solvanta") {
       await expect(page.getByText("Mobile UI design reference")).toBeVisible();
       await expect(images.first()).toHaveAttribute("height", "1280");

@@ -55,8 +55,18 @@
   font-size: .92rem;
 }
 .hero-actions .button:not(.button-primary) { border-color: #736986; background: #191723bb; }
-.hero-actions .button-primary, .header-actions .header-contact { color: white; background: linear-gradient(130deg, #7333cb, #5429c7 70%, #6c4de7); border-color: #a272f0; }
-.hero-actions .button-primary:hover, .header-actions .header-contact:hover, .hero-actions .button-primary:focus-visible, .hero-actions .button-primary[data-active="true"] { background: #713ed8; border-color: #cea6ff; color: white; box-shadow: 0 0 22px rgba(174, 147, 246, 0.45); }
+.hero-actions .button-primary, .header-actions .header-contact {
+  color: white;
+  background: linear-gradient(130deg, #7333cb, #5429c7 70%, #6c4de7);
+  border-color: #a272f0;
+  transition: border-color .2s ease, box-shadow .2s ease, filter .2s ease, color .2s ease;
+}
+.hero-actions .button-primary:hover, .header-actions .header-contact:hover, .hero-actions .button-primary:focus-visible, .hero-actions .button-primary[data-active="true"] {
+  border-color: #cea6ff;
+  color: white;
+  filter: brightness(1.18);
+  box-shadow: 0 0 24px rgba(174, 147, 246, 0.48);
+}
 .hero-socials { display: flex; gap: 1.2rem; margin-top: 0; }
 .hero-socials a {
   display: grid;
